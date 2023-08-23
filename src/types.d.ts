@@ -16,4 +16,10 @@ interface TestimonialProps {
   name?: string;
   occupation?: string;
 }
+interface SimilarCoursesProps {
+  img?: string,
+  title?: string,
+  price?: number,
+  rating?: number,
+}
 
