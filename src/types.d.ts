@@ -22,4 +22,7 @@ interface SimilarCoursesProps {
   price?: number,
   rating?: number,
 }
+interface RatingPoint {
+  rating:number
+}
 

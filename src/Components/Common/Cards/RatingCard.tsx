@@ -1,10 +1,7 @@
 import StarIcon from '@mui/icons-material/Star';
 
-type Props = {
-    rating:number
-}
 
-function RatingCard({rating}: Props) {
+function RatingCard({rating}: RatingPoint) {
   return (
     <div>
         <StarIcon sx={{
