@@ -1,0 +1,15 @@
+.custom-pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+}
+
+.custom-pagination .splide__pagination__page {
+  background-color: rgba(38, 5, 242, 0.4);
+}
+
+/* Change the background color of the active pagination dot */
+.custom-pagination .splide__pagination__page.is-active {
+  background-color: rgb(38, 5, 242);
+}
