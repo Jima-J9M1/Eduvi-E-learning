@@ -12,7 +12,7 @@ const CourseVideoSectionCard: React.FC<Props> = ({
   duration,
 }) => {
   return (
-    <div className=" w-[400px] h-auto p-3 rounded-md  grid  grid-flow-col ">
+    <div className=" w-[400px] h-auto p-3 rounded-md  grid  grid-flow-col bg-red-300">
       <div className=" w-full col-span-2 pr-4">
         <img className=" w-full max-h-16 rounded-md" src={image} alt={adName} />
       </div>
