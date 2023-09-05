@@ -11,13 +11,15 @@ const CourseVideoSectionCard: React.FC<Props> = ({
   cardName,
   duration,
 }) => {
+  const truncatedCardName =
+    cardName.length > 15 ? cardName.substring(0, 15) + "..." : cardName;
   return (
-    <div className=" w-[400px] h-auto p-3 rounded-md  grid  grid-flow-col ">
-      <div className=" w-full col-span-2 pr-4">
-        <img className=" w-full max-h-16 rounded-md" src={image} alt={adName} />
+    <div className=" w-[400px] h-auto rounded-md  grid  grid-flow-col grid-cols-5 gap-16 bg-white shadow-md text-opacity-50 p-2 ">
+      <div className=" ">
+        <img className=" max-w-[80px] max-h-16 rounded-md" src={image} alt={adName} />
       </div>
-      <div className=" col-span-4 self-end w-full flex-row gap-0">
-        <p className="text-xl ">{cardName}</p>
+      <div className=" col-span-4  w-full flex-row gap-0">
+        <p className="text-xl ">{truncatedCardName}</p>
         <p className="text-md text-orange-600">{duration}</p>
       </div>
     </div>

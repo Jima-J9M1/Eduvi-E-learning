@@ -44,3 +44,9 @@ interface SimilarCoursesProps {
 interface RatingPoint {
   rating: number;
 }
+interface PaginatonProps {
+  totalPost?:number;
+  postPerPage?:number;
+  currentPage?:number;
+  setPage: (pageNumber:number) => void
+}
