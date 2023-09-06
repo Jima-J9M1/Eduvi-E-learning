@@ -6,8 +6,8 @@ interface Props {
 
 const AdsCard: React.FC<Props> = ({ image, adName }) => {
   return (
-    <div className="flex justify-center items-center max-w-[390px] h-auto overflow-hidden bg-white">
-      <img src={image} alt={adName} className="w-full h-full object-contain" />
+    <div className="flex justify-center items-start max-w-[390px] h-min overflow-hidden bg-white">
+      <img src={image} alt={adName} className="w-full h-auto object-contain" />
     </div>
   );
 };

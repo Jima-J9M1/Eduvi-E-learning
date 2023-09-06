@@ -3,6 +3,15 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      keyframes:{
+        'trans-right':{
+          '0% , 100%':{transform:'translateX(10px)'},
+          '50%':{transform: 'translateX(0)'}
+        }
+      },
+      animation:{
+        'trans-right': 'trans-right 1.5s ease-in-out infinite'
+      },
       spacing: {
         "card-width": "386px",
         "card-height": "418px",
@@ -31,6 +40,12 @@ export default {
         "quote-color": "#5D5A6F",
         "list-back": "#fff",
       },
+      width:{
+        "Apply-width": "1131px",
+      },
+      fontSize:{
+        "Apply-font-size": "100px",
+      }
     },
   },
   plugins: [],

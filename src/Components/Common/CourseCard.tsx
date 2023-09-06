@@ -2,7 +2,7 @@ import React from 'react';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import imagee from '../../../assets/images/imagee.jpg';
+import imagee from '../../assets/images/imagee.jpg';
 import {CourseCardProps} from '../types';
 
 
@@ -14,7 +14,6 @@ const CourseCard: React.FC<CourseCardProps> = ({
   duration = 4.5,
   name = `Dasar Pemrograman WEB`,
   students = 1900,
-  courseType = '',
   id = 1,
 }) => {
   const handleClick = (Id: number) => {

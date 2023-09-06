@@ -2,8 +2,8 @@ import React from "react";
 import CourseCard from "./CourseCard";
 import Button from '@mui/material/Button';
 import NativeSelectDemo from "./categories";
-import image3 from '../../../assets/images/image3.jpg';
-import image2 from '../../../assets/images/image2.jpg';
+import image3 from '../../assets/images/image3.jpg';
+import image2 from '../../assets/images/image2.jpg';
 
 const CourseList: React.FC = () => {
   const courses = [
