@@ -26,6 +26,7 @@ const Home = () => {
       <TestimonialCarousel/>
       <SubscriptionBox/>
       <Footer/>
+    </>
   );
 };
 
