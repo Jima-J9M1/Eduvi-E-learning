@@ -1,4 +1,5 @@
 import Testimonial from "../Cards/Testimonial";
+// @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "./pagination.css";
 
