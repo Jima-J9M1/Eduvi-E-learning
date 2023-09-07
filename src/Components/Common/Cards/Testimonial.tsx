@@ -1,4 +1,5 @@
 import TestimonialSampleImages from "../../../assets/images/TestimonialSampleImg.svg";
+import { TestimonialProps } from "../../../types";
 
 const Testimonial = ({
   img = TestimonialSampleImages,
