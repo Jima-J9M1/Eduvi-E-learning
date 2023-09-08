@@ -10,7 +10,7 @@ import Selecte from "../Ui/selecte"
 
 const Nav = () => {
   return (
-    <div className="flex align-middle mx-10 py-5 bg-[#f5f5f5] ">
+    <div className="flex align-middle mx-10 py-5 bg-[#ffffff] ">
       <div className="ml-3"><Logo  /></div>
 
       <div className="items-center ml-auto  hidden lg:flex  ">
