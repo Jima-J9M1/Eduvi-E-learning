@@ -1,7 +1,7 @@
 
 const api = () => {
   return (
-    <div>api</div>
+    <div> api </div>
   )
 }
 
