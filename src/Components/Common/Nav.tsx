@@ -18,7 +18,9 @@ const Nav = () => {
 
       <div className="items-center ml-auto  hidden lg:flex lg:gap-3 ">
       <Link text="Home"  url="/"/>
-      <NavLink to={'/CoursePage'} >Course</NavLink>
+{/*       <NavLink to={'/CoursePage'} >Course</NavLink> */}
+        
+      <NavLink to={'/AllCourses'} >Course</NavLink>
       {/* <NavLink to={'CoursePage'} >Course </NavLink> */}
       <div>
       <Selecte />
