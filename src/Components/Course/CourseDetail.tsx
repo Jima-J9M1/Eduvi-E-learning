@@ -3,9 +3,9 @@ import React from 'react';
 const CourseDetail: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row">
-      <div className="md:w-1/2 p-8">
-        <h1 className="text-4xl font-bold mb-4">Course Details</h1>
-        <p className="text-lg mb-4">
+      <div className="md:w-2/3 p-8">
+      <h2 className="font-bold text-2xl">Course Details</h2>
+        <p className="text-md mb-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis euismod ligula, id imperdiet nisi
           consequat quis. Aliquam erat volutpat. Nulla facilisi. Nunc sit amet semper justo. Fusce ultrices tempus
           ultrices. Morbi dapibus orci id lectus tincidunt facilisis. Etiam ac tristique risus, et sodales lectus.
@@ -15,9 +15,27 @@ const CourseDetail: React.FC = () => {
           hendrerit mauris. Nulla venenatis diam a tortor porttitor, sit amet dapibus ante efficitur. Sed id
           consectetur sem, eu finibus odio. Sed tempor at nunc sed fermentum. Nulla facilisi.
         </p>
+      <h2 className="font-bold text-2xl">Who this course is for</h2>
+        <p className="text-md mb-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis euismod ligula, id imperdiet nisi
+          consequat quis. Aliquam erat volutpat. Nulla facilisi. Nunc sit amet semper justo. Fusce ultrices tempus
+          ultrices. Morbi dapibus orci id lectus tincidunt facilisis. Etiam ac tristique risus, et sodales lectus.
+        </p>
+       
+      <h2 className="font-bold text-2xl">What you will learn in this course:</h2>
+        <ul  className="text-md mb-4">
+          <li>Lorem ipsum dolor sit amet consectetur</li>
+          <li>Lorem ipsum dolor sit amet consectetur</li>
+          <li>Lorem ipsum dolor sit amet consectetur</li>
+          <li>Lorem ipsum dolor sit amet consectetur</li>
+          <li>Lorem ipsum dolor sit amet consectetur</li>
+        </ul>
+       
       </div>
       
     </div>
+   
+
   );
 };
 
