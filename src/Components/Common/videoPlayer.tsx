@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import videojs,  {VideoJsPlayerOptions , VideoJsPlayer } from 'video.js';
-import 'video.js/dist/video-js.css';
+import React, { useRef, useEffect } from "react";
+import videojs, { VideoJsPlayerOptions, VideoJsPlayer } from "video.js";
+import "video.js/dist/video-js.css";
 
 interface Props {
   options: VideoJsPlayerOptions;
@@ -16,12 +16,12 @@ const VideoPlayer: React.FC<Props> = (props) => {
     // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
       // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode.
-      const videoElement = document.createElement('video');
-      videoElement.classList.add('video-js');
+      const videoElement = document.createElement("video");
+      videoElement.classList.add("video-js");
       videoRef.current?.appendChild(videoElement);
 
       const player = (playerRef.current = videojs(videoElement, options, () => {
-        videojs.log('player is ready');
+        videojs.log("player is ready");
         onReady && onReady(player);
       }));
 

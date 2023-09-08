@@ -1,5 +1,6 @@
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import { FC } from "react";
+import { PasswordFieldProps } from "../../../types";
 
 const NameField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
