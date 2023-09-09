@@ -1,8 +1,18 @@
-import React from "react";
+import imagee from "../../../assets/images/imagee.jpg";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import imagee from "./images/imagee.jpg";
+interface CourseCardProps {
+  image?: string;
+  rating?: number;
+  description?: string;
+  videos?: number;
+  duration?: number;
+  name?: string;
+  students?: number;
+  courseType?: string;
+  id: number;
+}
 
 const CourseCard: React.FC<CourseCardProps> = ({
   image = imagee,
@@ -12,16 +22,23 @@ const CourseCard: React.FC<CourseCardProps> = ({
   duration = 4.5,
   name = `Dasar Pemrograman WEB`,
   students = 1900,
+  id = 1,
 }) => {
+  const handleClick = (Id: number) => {
+    console.log(Id);
+  };
+
   return (
-    <div className="card bg-card-bg w-card-width h-card-height relative rounded-lg overflow-hidden">
+    <div
+      onClick={() => handleClick(id)}
+      className="card bg-card-bg w-card-width h-card-height relative rounded-lg overflow-hidden"
+    >
       <img
         src={image}
         alt="The course pic"
         className="w-card-width h-image-height"
       />
-
-      <div className="rating w-rating-width h-rating-height bg-rating-color flex justify-center items-center text-white absolute  bottom-44 right-2 rounded-2xl overflow-hidden">
+      <div className="rating w-rating-width h-rating-height bg-rating-color flex justify-center items-center text-white absolute  bottom-rating-bottom right-2 rounded-2xl overflow-hidden">
         <StarRateRoundedIcon className="text-yellow-500" />
         {rating}
       </div>

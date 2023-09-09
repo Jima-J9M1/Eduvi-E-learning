@@ -6,17 +6,16 @@ const Footer: React.FC = () => {
   const currentYear:number = new Date().getFullYear();
 
     return (
-     <footer className="bg-gray-900 text-white py-8">
-      <div className=" justify-content mx-auto w-5/6 gap-16 flex justify-between flex-row md:flex ">
+     <footer className="bg-[#0A033C] text-white py-8 w-full ">
+      <div className=" justify-content mx-auto w-5/6 gap-16 md:flex justify-between flex-row  ">
        
         {/* Column 1 */}
-        <div className="col-span-1">
+        <div className="col-span-1  mb-8">
           <h2 className="text-2xl font-bold mb-4 ">[Microsun<span className='whitespace-nowrap'> and Soution]</span> </h2>
           <p className="text-base font-light mb-4">
             Lorem ipsum dolor sit amet consectetur adipisicing.
           </p>
-          <div className="w-420 h-88 mx-auto mt-16 py-1 rounded-t-lg bg-yellow-200 flex flex-col text-black">
-                
+          <div className="w-4/5 h-88 mx-auto ml-0 mt-16 py-1 rounded-t-lg bg-yellow-200 flex flex-col text-black">              
             <div className="flex justify-evenly mb-2 font-light text-xs">
               <div >
                 <span>Email:</span>
@@ -36,7 +35,7 @@ const Footer: React.FC = () => {
        
         {/* column2 */}
          
-          <div className=" container w-626 h-144 top-64 left-738 flex justify-end flex-row  ">
+          <div className="container md:w-1/2 h-144 flex md:justify-between flex-row justify-center">
          
             <div className=''>
               <h3 className="text-lg font-medium mb-2 ">Social Media</h3>
@@ -119,25 +118,3 @@ const Footer: React.FC = () => {
    );
       };
 export default Footer; 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

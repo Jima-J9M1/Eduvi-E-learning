@@ -2,6 +2,7 @@
   "name": "my-vue-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "repositories/Eduvi-E-learning",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,16 +21,20 @@
     "@splidejs/splide": "^4.1.4",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@tanstack/react-query": "^4.33.0",
+    "@types/styled-components": "^5.1.26",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
+    "react-player": "^2.13.0",
     "react-router-dom": "^6.15.0",
+    "styled-components": "^6.0.7",
     "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/video.js": "^7.3.52",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
@@ -40,6 +45,7 @@
     "postcss": "^8.4.28",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
+    "video.js": "^8.5.2",
     "vite": "^4.4.5"
   }
 }

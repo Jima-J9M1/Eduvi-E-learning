@@ -17,12 +17,12 @@ const ApplyCard = () =>{
   return(
     <div className='p-3 m-auto'>
     <Card 
-    className="m-auto lg:flex md:flex lg:flex-row md:flex-row lg:justify-around md:justify-around p-3 shadow-lg lg:w-Apply-width md:w-Apply-width shadow-slate-300" 
+    className=" m-auto lg:flex md:flex lg:flex-row md:flex-row lg:justify-around md:justify-around p-3 shadow-lg  shadow-slate-2 sm:w-3/4" 
     sx={{
-      backgroundColor:"rgba(183, 241, 214, 0.39)", 
-      boxShadow:"0 5px 7px 12px rgba(0,0,0,0.25)", 
+      backgroundColor:"rgba(183, 241, 214, 0.19)", 
+      boxShadow:"0 5px 12px 5px rgba(0,0,0,0.15)", 
       borderRadius:"20px", height:'218px',
-      width:(isSmallerScreen || isSmallScreen) ? "100%": isMediumScreen  ? "90%": "1131px",
+      // width:(isSmallerScreen || isSmallScreen) ? "100%": isMediumScreen  ? "90%": "1131px",
       }}>
         
         <CardContent >
