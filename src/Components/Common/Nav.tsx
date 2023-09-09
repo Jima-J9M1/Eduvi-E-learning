@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <div className="flex align-middle mx-10 py-5 bg-[#f5f5f5] ">
+    <div className="flex align-middle py-5 bg-[#f5f5f5] 	">
       <div className="ml-3">
         <Logo />
       </div>
