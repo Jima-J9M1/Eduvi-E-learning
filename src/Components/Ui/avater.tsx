@@ -1,13 +1,12 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import  Link  from './link';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 interface avaterProps{
   name:string
-  img:string
+  img:any
 }
 
 
@@ -26,15 +25,12 @@ export default function avater({name,img}:avaterProps) {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div className='flex  text-center '>
+    <div className='flex items-center '>
       {name?(<span>{name}</span>):("My Account")}
-      <Button aria-describedby={id} variant="text" onClick={handleClick}>
-      <div className='flex'> <span className='ml-3  relative bottom-5 mt-3 hover:shadow-lg cursor-pointer '  >
-      <AccountCircleIcon  sx={{fontSize:40}}/>
-      
-        {/* {img?(<img className='w-5 h-5 rounded-full' src="img" alt="s" />):(<AccountCircleIcon />)} */}
-       </span></div>
-      </Button>
+        <span className='hover:shadow-lg  rounded-full ml-4  shadow-indigo-500/40'>
+        {img?(<img className='w-5 h-5' src={img} alt="s" />)
+        :(<span aria-describedby={id} ><AccountCircleIcon   color="primary" sx={{fontSize:40} } onClick={handleClick} className='m-2' /></span>)}
+        </span>
       <Popover
         id={id}
         open={open}
