@@ -16,7 +16,7 @@ const VisitButton: React.FC<ButtonProps> = ({text,onClick}) => {
       paddingRight: 0, // Equivalent to px-3 in Tailwind CSS
       paddingTop: 2, // Equivalent to py-3 in Tailwind CSS
       paddingBottom: 2, // Equivalent to py-3 in Tailwind CSS
-      fontFamily: 'Inter',
+      fontFamily: 'Inter, sans-serif',
         fontSize: 16,
         fontWeight: 500,
         lineHeight: '20px',
@@ -26,6 +26,7 @@ const VisitButton: React.FC<ButtonProps> = ({text,onClick}) => {
         height: 60,
         // top: 1149,
         // left: 1161,
+      textTransform: 'none',
     }}>
     {text}
   </Button>

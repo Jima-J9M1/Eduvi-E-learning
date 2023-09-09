@@ -12,16 +12,19 @@ const Nav = () => {
         <Logo />
       </div>
 
-      <div className="items-center ml-auto  hidden lg:flex  ">
-        <Link text="Home" url="/" />
-        <NavLink to={"/CoursePage"}>Course</NavLink>
-        {/* <NavLink to={'CoursePage'} >Course </NavLink> */}
-        <div>
-          <Selecte />
-        </div>
+      <div className="items-center ml-auto  hidden lg:flex lg:gap-3 ">
+      <Link text="Home"  url="/"/>
+{/*       <NavLink to={'/CoursePage'} >Course</NavLink> */}
+        
+      <NavLink to={'/AllCourses'} >Course</NavLink>
+      {/* <NavLink to={'CoursePage'} >Course </NavLink> */}
+      <div>
+      <Selecte />
+      </div>
+      
+      <Link text="About us" url="/Aboutus" />
+      <Link text="Contact" url="../Contact" />
 
-        <Link text="About us" url="/Aboutus" />
-        <Link text="Contact" url="./Contact" />
 
         <div className="ml-40">
           <Avatar name="My Account" img="#" />
@@ -35,4 +38,5 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Nav
+

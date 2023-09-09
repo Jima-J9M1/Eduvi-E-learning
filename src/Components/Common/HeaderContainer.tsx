@@ -17,6 +17,7 @@ const HeaderContainer:React.FC<HeaderContainerProps> = ({children}) =>
     <Box component="div" sx={{
        margin:isSmallerScreen? '0':'10px',
        backgroundColor:'rgba(239, 235, 245, 1)',
+        borderRadius : '20px',
     }}>
       <BreadCrumbs/>
       <Box component="div" sx={{
