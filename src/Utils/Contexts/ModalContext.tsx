@@ -1,8 +1,10 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
+
+
 const ModalContext = createContext({
   isSignin: true,
-  setIsSignin: (value: boolean) => {},
+  setIsSignin: (value:boolean) => {},
 });
 
 export const useModal = () => {

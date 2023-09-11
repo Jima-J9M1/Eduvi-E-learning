@@ -6,11 +6,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 interface avaterProps{
   name:string
-  img:any
+  img:string
 }
 
 
-export default function avater({name,img}:avaterProps) {
+export default function Avater({name,img}:avaterProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,7 +29,7 @@ export default function avater({name,img}:avaterProps) {
       {name?(<span>{name}</span>):("My Account")}
         <span className='hover:shadow-lg  rounded-full ml-4  shadow-indigo-500/40'>
         {img?(<img className='w-5 h-5' src={img} alt="s" />)
-        :(<span aria-describedby={id} ><AccountCircleIcon   color="primary" sx={{fontSize:40} } onClick={handleClick} className='m-2' /></span>)}
+        :(<span aria-describedby={id} ><AccountCircleIcon   color="primary" sx={{fontSize:40} } onClick={() => handleClick} className='m-2' /></span>)}
         </span>
       <Popover
         id={id}
