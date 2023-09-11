@@ -2,7 +2,7 @@ import * as React from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 
-const data=["hellow ","wellcom","maicro sun"]
+const data=["FullStack","Front-End","BackEnd"]
 
 
 export default function BasicSelect() {
