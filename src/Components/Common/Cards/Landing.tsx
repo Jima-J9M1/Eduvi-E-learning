@@ -2,7 +2,7 @@
 import InternButton from "../../Buttons/InternButton";
 
 // import blueScreen from "./assets/images/rect.png";
-import whiteScreen from "../../../assets/images/screen.png"
+import whiteScreen from "../../../assets/images/screen.png";
 
 
 const Landing = () => {

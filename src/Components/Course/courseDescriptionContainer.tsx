@@ -1,6 +1,5 @@
-import BreadcrumbTest from "../Common/Breadcrumbs";
+import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 import CoursePlaylists from "../Common/coursePlaylists";
-import VideoPlayer from "../Common/videoPlayer";
 
 const CourseDescriptionContainer = () => {
   return (
@@ -8,7 +7,7 @@ const CourseDescriptionContainer = () => {
       <div className=" grid grid-flow-col gap-4 w-full grid-cols-10">
         <div className=" grid gap-4  col-span-7">
           <div className="  h-[2px] pb-4 w-max  ">
-            <BreadcrumbTest />
+            <BreadCrumbs />
           </div>
           {/* <VideoPlayer /> */}
           <div className="bg-red-200">

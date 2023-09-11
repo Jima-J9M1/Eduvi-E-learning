@@ -2,6 +2,7 @@ import React from 'react'
 import { SvgIcon } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import Button from "@mui/material/Button";
+import { ButtonProps } from '../../types';
 
 
 const WithGoogleButton: React.FC<ButtonProps> = ({text,onClick}) => {

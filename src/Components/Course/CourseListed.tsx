@@ -20,6 +20,7 @@ type Course = {
 };
 
 const CousesListed: React.FC = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const courses: Course[] = [
     { id: 1, courseType: "High School" },
     { id: 5, courseType: "Engineering", image: a },
@@ -64,7 +65,7 @@ const CousesListed: React.FC = () => {
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
   const currentCourses = filteredCourses.slice(indexOfFirstCourse, indexOfLastCourse);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
 
@@ -85,7 +86,7 @@ const CousesListed: React.FC = () => {
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 mt-10 mb-10 sm:pl-20 md:pl-0 lg:pl-0">
         {currentCourses.map((course) => (
                   
-            <NavLink to={`/${course.id}`}>
+            <NavLink to={`/Course/${course.id}`}>
             <CourseCard
               id={course.id}
               key={course.id}

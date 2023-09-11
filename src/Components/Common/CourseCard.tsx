@@ -1,9 +1,9 @@
-import React from 'react';
-import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
+import React from 'react';
 import imagee from '../../assets/images/imagee.jpg';
-import {CourseCardProps} from '../types';
+import { CourseCardProps } from '../../types';
 
 
 const CourseCard: React.FC<CourseCardProps> = ({

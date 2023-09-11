@@ -10,7 +10,7 @@ function SimilarCourseCard({
   return (
     <div className="flex flex-row p-4 rounded-lg bg-white gap-4 mx-10 ">
       <div>
-        <img src={img} alt="course profile" />
+        <img src={img} alt="course profile" width="200px" height="200px"/>
       </div>
       <div>
         <h1 className="mb-5 text-2xl font-extralight italic">{title}</h1>

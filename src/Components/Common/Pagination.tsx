@@ -1,3 +1,4 @@
+import { PaginatonProps } from "../../types";
 
 function Pagination({
     totalPost = 20,
@@ -5,8 +6,8 @@ function Pagination({
     currentPage = 1,
     setPage
 }: PaginatonProps) {
-    let pages:number[] = [];
-    var availablePage: number = Math.ceil(totalPost/postPerPage) 
+    const pages:number[] = [];
+    const  availablePage: number = Math.ceil(totalPost/postPerPage) 
     for(let i=1;i<=availablePage;i++){
       console.log(i)
       pages.push(i)
