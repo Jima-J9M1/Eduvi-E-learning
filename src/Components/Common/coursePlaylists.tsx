@@ -1,5 +1,5 @@
 import vite from "../../assets/images/Image (1).png";
-import CourseVideoSectionCard from "./Cards/CourseVideoSectionCard";
+import CourseVideoSectionCard from "./Cards/courseVideoSectionCard";
 
 const CoursePlaylists = () => {
   return (

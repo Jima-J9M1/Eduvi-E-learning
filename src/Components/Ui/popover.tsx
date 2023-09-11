@@ -6,6 +6,7 @@ import Link from "./link"
 import  Avatar  from "./avater";
 import MenuIcon from '@mui/icons-material/Menu';
 import Selecter from "./selecte"
+import image  from '../../assets/images/Image (4).png';
 
 
 
@@ -45,7 +46,7 @@ export default function BasicPopover() {
         <Typography sx={{ p: 2 }}><Link text="About us" url="/Aboutus" /></Typography>
         <Typography sx={{ p: 2 }}><Link text="About us" url="/Aboutus" /></Typography>
         <Typography sx={{ p: 2 }}><Link text="Contact" url="./Contact" /></Typography>
-        <Typography sx={{ p: 2 }}> <Avatar /></Typography>
+        <Typography sx={{ p: 2 }}> <Avatar img={image} name='avatar'/></Typography>
       </Popover>
     </div>
   );

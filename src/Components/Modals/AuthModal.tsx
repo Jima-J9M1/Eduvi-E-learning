@@ -1,4 +1,5 @@
 import { Divider, Modal } from "@mui/material";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { useModal } from "../../Utils/Contexts/ModalContext";
