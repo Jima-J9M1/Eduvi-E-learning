@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - development
+
 name: 🚀 Deploy website on push
 
 jobs:
@@ -29,4 +30,5 @@ jobs:
           username: ${{ secrets.GIT_CPANEL_REACT_USER }}
           password: ${{ secrets.GIT_CPANEL_REACT_PWD }}
           protocol: ${{ secrets.GIT_CPANEL_REACT_PROTOCOL }}
+          dangerous-clean-slate: true
           local-dir: ./dist/
