@@ -7,7 +7,7 @@ const data=["hellow ","wellcom","maicro sun"]
 
 export default function BasicSelect() {
   const [open, setOpen] = React.useState(false);
-  const [select, setSelect] = React.useState('');
+  const [, setSelect] = React.useState('');
 
 
   const dropdown=()=>{
