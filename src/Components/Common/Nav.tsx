@@ -1,32 +1,71 @@
-import Link from "../Ui/link";
-import Logo from "../Ui/logo";
-import MouseOverPopover from "../Ui/popover";
-import Avatar from "../Ui/avater";
-import Selecte from "../Ui/selecte";
 import { NavLink } from "react-router-dom";
+import Avatar from "../Ui/avater";
+import MouseOverPopover from "../Ui/popover";
+import Selecte from "../Ui/selecte";
+import { useState } from "react";
+import { ModalProvider } from "../../Utils/Contexts/ModalContext";
+import AuthModal from "../Modals/AuthModal";
+import image from '../../assets/logo/mss 1.png'
 
 const Nav = () => {
+  const [modalOpen, isModalOpen] = useState(false)
+
+  const open = ()=>{
+     isModalOpen(!modalOpen)
+  }
   return (
-    <div className="flex align-middle py-5 bg-[#f5f5f5] 	">
+    <div className="flex align-middle justify-between py-2 	">
       <div className="ml-3">
-        <Logo />
+        <img src={image} width="70%" height="70%" />
       </div>
 
-      <div className="items-center ml-auto  hidden lg:flex lg:gap-3 ">
-      <Link text="Home"  url="/"/>
+      <div className="items-center w-1/2  hidden lg:flex lg:justify-between lg:gap-3">
+      <NavLink to={'/'}
+      className={({ isActive, isPending }) =>
+      isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+    }>
+      Home
+    </NavLink>
 {/*       <NavLink to={'/CoursePage'} >Course</NavLink> */}
         
-      <NavLink to={'/AllCourses'} >Course</NavLink>
+      <NavLink to={'/Courses'}  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+  }>
+    Course
+    
+    </NavLink>
       {/* <NavLink to={'CoursePage'} >Course </NavLink> */}
       <div>
       <Selecte />
       </div>
-      
-      <Link text="About us" url="/Aboutus" />
-      <Link text="Contact" url="../Contact" />
+       
+      <NavLink to={'/Aboutus'}  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+  }>
+   About us
+    
+    </NavLink>
+    
+    <NavLink to={'/Contact'}  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+  }>
+   Contact
+    
+    </NavLink>
+    
+    
+    <div onClick={open} className="rounded-full bg-yellow-200 w-24 text-center cursor-pointer">
+      Login
+    </div>
+
+    <ModalProvider>
+        <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
+      </ModalProvider>
+    
+    
 
 
-        <div className="ml-40">
+        <div className="ml-10">
           <Avatar name="My Account" img="#" />
         </div>
       </div>

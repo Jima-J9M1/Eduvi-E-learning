@@ -1,6 +1,6 @@
 import React from 'react';
 import {useForm,SubmitHandler} from 'react-hook-form';
-import SubscribeButton from './SubscribeButton';
+import SubscribeButton from '../Buttons/SubscribeButton';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 

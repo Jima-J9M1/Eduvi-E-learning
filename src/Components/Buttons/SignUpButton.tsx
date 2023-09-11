@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import { ButtonProps } from '../../types';
 
 const SignUpBtton: React.FC<ButtonProps> = ({text,onClick}) => {
   return (

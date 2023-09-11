@@ -1,5 +1,6 @@
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { FC } from "react";
+import { PasswordFieldProps } from "../../../types";
 
 const EmailField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (

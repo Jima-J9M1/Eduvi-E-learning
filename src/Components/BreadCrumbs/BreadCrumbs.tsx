@@ -2,7 +2,7 @@ import {Breadcrumbs,Typography, Box} from '@mui/material';
 import {Link} from 'react-router-dom';
 
 const BreadCrumbs = () =>(
-<Box component="div" className='ml-16'>
+<Box component="div" className="mb-4" >
   <Breadcrumbs maxItems={4} aria-label="breadcrumb">
     <Link color="inherit" to="#">
       Home

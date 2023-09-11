@@ -1,5 +1,4 @@
-import { Box, Theme, useMediaQuery } from "@mui/material"
-import BreadCrumbs from "./Breadcrumbs"
+import { Box, Theme, useMediaQuery } from "@mui/material";
 
 interface HeaderContainerProps {
     children: React.ReactNode;
@@ -8,18 +7,14 @@ interface HeaderContainerProps {
 const HeaderContainer:React.FC<HeaderContainerProps> = ({children}) => 
 {
     const isSmallerScreen = useMediaQuery((theme:Theme) => theme.breakpoints.down('sm'));
-    const isMediumScreen = useMediaQuery((theme:Theme) => theme.breakpoints.down('lg'));
-    const isLargeScreen = useMediaQuery((theme:Theme) => theme.breakpoints.up('lg'));
-    const isExtraLargeScreen = useMediaQuery((theme:Theme) => theme.breakpoints.up('xl'));
 
 
    return (
     <Box component="div" sx={{
-       margin:isSmallerScreen? '0':'10px',
+       margin:isSmallerScreen? '0':'30px',
        backgroundColor:'rgba(239, 235, 245, 1)',
         borderRadius : '20px',
     }}>
-      <BreadCrumbs/>
       <Box component="div" sx={{
     //    margin:isSmallerScreen? '0':'10px',
        marginLeft:isSmallerScreen? '0':'65px',

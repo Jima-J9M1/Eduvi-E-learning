@@ -1,16 +1,15 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
-import CourseCard from "./CourseCard";
-import Button from '@mui/material/Button';
-import NativeSelectDemo from "./categories";
-import image3 from '../../assets/images/image3.jpg';
 import image2 from '../../assets/images/image2.jpg';
+import image3 from '../../assets/images/image3.jpg';
+import VisitButton from "../Buttons/VisitButton";
+import CourseListComponents from "../CourseListComponent";
 
 const CourseList: React.FC = () => {
   const courses = [
     { id: 1, courseType: "FrontEnd" },
     { id: 2, courseType: "BackEnd", image: image3 },
     { id: 3, courseType: "FrontEnd", image: image2 },
+    { id: 4, courseType: "FrontEnd", image: image2 },
   ];
 
   
@@ -31,20 +30,8 @@ const CourseList: React.FC = () => {
           <VisitButton text = "Visit More Courses" />
         </div>
       </div>
-      <div className="grid border-t-2 border-solid border-gray-200 m-catb-pos sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center g-10 bg-list-back pt-20">
-        {courses.map((course) => (
-                
-            <NavLink to={`/${course.id}`}>
-            <CourseCard
-              id={course.id}
-              key={course.id}
-              courseType={course.courseType}
-              image={course.image} 
-            />
-          </NavLink>
-        ))}
+      <CourseListComponents courses={courses} />
       </div>
-    </div>
   );
 };
 

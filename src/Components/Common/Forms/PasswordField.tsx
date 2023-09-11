@@ -1,8 +1,9 @@
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { FC, useEffect, useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { IconButton } from "@mui/material";
+import { FC, useEffect, useState } from "react";
+import { PasswordFieldProps } from "../../../types";
 
 const PasswordField: FC<PasswordFieldProps> = ({ register, error }) => {
   const [Icon, setIcon] = useState<FC>(VisibilityOffOutlinedIcon);
