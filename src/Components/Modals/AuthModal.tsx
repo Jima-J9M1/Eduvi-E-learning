@@ -10,8 +10,7 @@ import MSSLogo from "../../assets/logos/mss logo.svg";
 import "../Common/Carousel/pagination.css";
 import SigninForm from "../Forms/SigninForm";
 import SignupForm from "../Forms/SignupForm";
-
-const Carousel = () => {
+export const Carousel = () => {
   const items = [
     {
       img: Dictionary,
@@ -73,7 +72,8 @@ const AuthModal = ({
       onClose={onClose}
       className="flex justify-center items-center"
     >
-      <div className="flex flex-row gap-24 justify-center items-center bg-white p-24 rounded-2xl">
+      <div className="p-3 mt-12 bg-white">
+      <div className="sm:flex sm:flex-row sm:gap-24 sm:justify-center sm:items-center bg-white p-24 rounded-2xl">
         <div className="flex flex-col w-fit gap-6">
           <img src={MSSLogo} className="w-1/6" />
           <p className="text-4xl font-bold w-fit">
@@ -85,6 +85,7 @@ const AuthModal = ({
         </div>
         <Divider orientation="vertical" className="" />
         {isSignin ? <SigninForm /> : <SignupForm />}
+      </div>
       </div>
     </Modal>
   );
