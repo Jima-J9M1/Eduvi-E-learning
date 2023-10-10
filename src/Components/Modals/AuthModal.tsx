@@ -3,6 +3,7 @@ import { Divider, Modal } from "@mui/material";
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { useModal } from "../../Utils/Contexts/ModalContext";
+import ClearIcon  from '@mui/icons-material/Clear'
 import Dictionary from "../../assets/illustrations/Dictionary.svg";
 import OnlineLearning from "../../assets/illustrations/Online_learning.svg";
 import Thesis from "../../assets/illustrations/Thesis.svg";
@@ -10,8 +11,7 @@ import MSSLogo from "../../assets/logos/mss logo.svg";
 import "../Common/Carousel/pagination.css";
 import SigninForm from "../Forms/SigninForm";
 import SignupForm from "../Forms/SignupForm";
-
-const Carousel = () => {
+export const Carousel = () => {
   const items = [
     {
       img: Dictionary,
@@ -61,8 +61,8 @@ const AuthModal = ({
 }: {
   open: boolean;
   onClose: (
-    event: React.MouseEvent<Element, MouseEvent>,
-    reason: "backdropClick" | "escapeKeyDown"
+    event: React.MouseEvent<MouseEvent, HTMLElement>,
+    reason: "backdropClick" | "escapeKeyDown"| "userClick"
   ) => void;
 }) => {
   const { isSignin } = useModal();
@@ -71,9 +71,11 @@ const AuthModal = ({
     <Modal
       open={open}
       onClose={onClose}
-      className="flex justify-center items-center"
+      className="md:flex md:justify-center md:items-center overflow-scroll "
     >
-      <div className="flex flex-row gap-24 justify-center items-center bg-white p-24 rounded-2xl">
+      <div className="sm:pt-24 sm:mt-20 bg-white ">
+      <div className="w-fit mx-16  float-right" onClick={onClose}><ClearIcon fontSize="large" className="sm:hidden cursor-pointer hover:bg-yellow-200 hover:text-slate-600 hover:rounded-full" /></div>
+      <div className="sm:flex sm:flex-row sm:gap-24 sm:justify-center sm:items-center bg-white p-20 rounded-2xl">
         <div className="flex flex-col w-fit gap-6">
           <img src={MSSLogo} className="w-1/6" />
           <p className="text-4xl font-bold w-fit">
@@ -85,6 +87,7 @@ const AuthModal = ({
         </div>
         <Divider orientation="vertical" className="" />
         {isSignin ? <SigninForm /> : <SignupForm />}
+      </div>
       </div>
     </Modal>
   );

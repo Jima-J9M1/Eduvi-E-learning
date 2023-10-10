@@ -18,7 +18,7 @@ const CourseDetailPage = () =>(
       <Nav />
       <HeaderContainer>
       <Grid container className="">
-       <Grid  sm={12} lg={8} className=" w-[100%]" alignItems="flex-end">
+       <Grid  sm={12} lg={8} className=" w-[100%] mb-5" alignItems="flex-end">
        <BreadCrumbs/>
        <ReactPlayer
        className="rounded-xl object-cover"

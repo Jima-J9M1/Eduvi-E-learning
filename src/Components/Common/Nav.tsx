@@ -14,7 +14,7 @@ const Nav = () => {
      isModalOpen(!modalOpen)
   }
   return (
-    <div className="flex align-middle justify-between py-2 	">
+    <div className="flex align-middle justify-between px-4 	">
       <div className="ml-3">
         <img src={image} width="70%" height="70%" />
       </div>
@@ -54,20 +54,20 @@ const Nav = () => {
     </NavLink>
     
     
-    <div onClick={open} className="rounded-full bg-yellow-200 w-24 text-center cursor-pointer">
+    <div onClick={open} className="rounded-full bg-yellow-200 sm:w-24  text-center cursor-pointer">
       Login
     </div>
 
-    <ModalProvider>
-        <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
-      </ModalProvider>
-    
-    
+      <ModalProvider>
+          <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
+        </ModalProvider>
+      
+      
 
 
-        <div className="ml-10">
+        {/* <div className="ml-10">
           <Avatar name="My Account" img="#" />
-        </div>
+        </div> */}
       </div>
 
       <div className="ml-auto lg:hidden ">

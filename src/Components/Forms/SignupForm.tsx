@@ -29,7 +29,7 @@ const SignupForm = () => {
   const { setIsSignin } = useModal();
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="md:flex md:flex-col md:gap-6">
       {/* Use Button from Nebil*/}
       <Button
         variant="outlined"

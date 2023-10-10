@@ -15,18 +15,16 @@ const CourseList: React.FC = () => {
   
 
   return (
-    <div className="mt-10">
+    <div className="mt-24">
       <div className="flex sm:justify-start lg:justify-end mb-catb-pos mr-cat-pos ml-cat-pos">
-        <div className="flex ">
-          <div className = " pt-2 pr-10 font-poppins text-xl font-medium leading-6 tracking-tight text-left text-gray-800">
-          <select>
+        <div className="flex sm:justify-end  justify-around w-full ">
+          <select className="p-2 rounded bg-[#7c3aed] text-white sm:mx-4">
             <option selected disabled>Categories</option>
             <option value="Front end">Front end</option>
             <option value="Back end">Back end</option>
             
           </select>  
             
-          </div>
           <VisitButton text = "Visit More Courses" />
         </div>
       </div>

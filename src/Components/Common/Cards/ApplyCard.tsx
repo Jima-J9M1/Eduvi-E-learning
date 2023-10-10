@@ -1,6 +1,6 @@
-import {Typography, CardContent, Card, CardActions, useMediaQuery } from '@mui/material';
-import ApplyButton from '../../Buttons/ApplyButton';
+import { Card, CardActions, CardContent, Typography, useMediaQuery } from '@mui/material';
 import { Theme } from '@mui/material/styles';
+import ApplyButton from '../../Buttons/ApplyButton';
 
 
 
