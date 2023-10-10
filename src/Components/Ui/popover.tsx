@@ -54,8 +54,7 @@ export default function BasicPopover() {
         <Typography sx={{ p: 2 }}><Selecter /></Typography>
         <Typography sx={{ p: 2 }}><Link text="About us" url="/Aboutus" /></Typography>
         <Typography onClick={openModalMethod} sx={{ p: 2 }}><Link text="Contact" url="./Contact" /></Typography>
-        <Typography onClick={openModalMethod} sx={{ p: 2 }} className='rounded-xl bg-yellow-300 cursor-pointer'>Login</Typography>
-        <Typography sx={{ p: 2 }}> <Avatar img={image} name='avatar'/></Typography>
+        <Typography onClick={openModalMethod} sx={{ p: 0.5, m:1 }} className='rounded-3xl bg-yellow-200 p-0 cursor-pointer text-center'>Login</Typography>
       </Popover>
       
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Link } from 'react-router-dom';
 
 
 const data=["FullStack","Front-End","BackEnd"]
@@ -20,8 +21,7 @@ export default function BasicSelect() {
 
   const item=()=>{
     return <div className='absolute lg:top-20 top-70  bg-white border shadow-lg w-32  text-center '> { data.map((category)=>(
-      <span onClick={dropdown}> <h1 onClick={()=>handleChange(category)} className='hover:text-purple-500 cursor-pointer my-2 '>{category}</h1></span>
-     
+      <span onClick={dropdown}> <h1 onClick={()=>handleChange(category)} className='hover:text-purple-500 cursor-pointer my-2 '><Link to="/courses"> {category} </Link></h1></span>
     ))}
   </div>}
 
