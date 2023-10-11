@@ -35,7 +35,7 @@ jobs:
 on:
   push:
     branches:
-      - github-actions
+      - Jima-J9M1.github-actions
       
 name: 🚀 Deploy website on push
 
