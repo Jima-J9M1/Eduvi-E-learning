@@ -28,8 +28,6 @@ const SignUp2Button: React.FC<ButtonProps> = ({text,onClick}) => {
         textAlign: 'center',
         width: 432,
         height: 64,
-        // top: 3050,
-        // left: 831,
     }}>
     {text}
   </Button>
