@@ -5,6 +5,7 @@ import { ButtonProps } from '../../types';
 
 
 const SignUp2Button: React.FC<ButtonProps> = ({text,onClick}) => {
+
   return (
     <div>
       <Button onClick={onClick} sx={{
@@ -36,4 +37,4 @@ const SignUp2Button: React.FC<ButtonProps> = ({text,onClick}) => {
   )
 }
 
-export default SignUp2Button
+export default SignUp2Button;
