@@ -62,7 +62,7 @@ const AuthModal = ({
   open: boolean;
   onClose: (
     event: React.MouseEvent<MouseEvent, HTMLElement>,
-    reason: "backdropClick" | "escapeKeyDown"| "userClick"
+    reason: "backdropClick" | "escapeKeyDown"
   ) => void;
 }) => {
   const { isSignin } = useModal();
