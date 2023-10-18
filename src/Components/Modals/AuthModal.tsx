@@ -61,7 +61,7 @@ const AuthModal = ({
 }: {
   open: boolean;
   onClose: (
-    event: React.MouseEvent<MouseEvent, HTMLElement>,
+    event: React.MouseEvent<Element, MouseEvent>,
     reason: "backdropClick" | "escapeKeyDown"
   ) => void;
 }) => {
