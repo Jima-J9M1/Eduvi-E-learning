@@ -3,10 +3,8 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from "./link"
-import  Avatar  from "./avater";
 import MenuIcon from '@mui/icons-material/Menu';
 import Selecter from "./selecte"
-import image  from '../../assets/images/Image (4).png';
 import { ModalProvider } from '../../Utils/Contexts/ModalContext';
 import AuthModal from '../Modals/AuthModal';
 
