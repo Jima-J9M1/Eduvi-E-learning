@@ -25,7 +25,6 @@ const  request=({...options})=>{
    method:'get',
    url: '/categories',
    headers: {
-    'X-Requested-With': 'XMLHttpRequest',
     "X-API-Key":"token"
   },
   
