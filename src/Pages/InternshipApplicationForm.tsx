@@ -9,19 +9,21 @@ const Form = () => {
     longitude: "",
     type: "",
   });
-  const [selectedFile, setSelectedFile] = useState({ selectedFile: null });
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const changeHandler = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
   const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("clicked");
+    console.log(event.target);
   };
   const fileHandleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const fileInput = event.target;
     if (fileInput.files && fileInput.files.length > 0) {
       const userSelectedFile = fileInput.files[0];
-      setSelectedFile({ selectedFile: userSelectedFile });
+      setSelectedFile(userSelectedFile);
     }
   };
   return (
@@ -50,6 +52,7 @@ const Form = () => {
               className="border rounded m-4 w-96 shadow appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-lime-600"
               type="file"
               onChange={fileHandleFileChange}
+              accept=".pdf,.doc,.docx"
             ></input>
           </label>
         </div>
