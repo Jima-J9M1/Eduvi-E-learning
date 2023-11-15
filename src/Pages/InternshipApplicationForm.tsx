@@ -17,9 +17,6 @@ const Form = () => {
   const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     console.log("clicked");
   };
-  //   useEffect(() => {
-  //     console.log(selectedFile);
-  //   }, [selectedFile]);
   const fileHandleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const fileInput = event.target;
     if (fileInput.files && fileInput.files.length > 0) {
