@@ -8,13 +8,14 @@ import Error404 from "../Pages/ErrorPages/404";
 import CoursePage from "../Pages/CoursePage";
 import CoursesDetails from "../Pages/CoursesDetails";
 import SubscriptionBox from "../Components/Common/SubscriptionBox";
+import InternshipApplicationForm from "../Pages/InternshipApplicationForm";
 //Add your routes here
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>      
-    <Route 
-        index 
+    <Route>
+      <Route
+        index
         element={
           <>
             <Home />
@@ -22,15 +23,19 @@ const router = createBrowserRouter(
         }
       />
       <Route path="*" element={<Error404 />} />
-      <Route path="/program/free" element={''} />
-      <Route path="/program/backend" element={''} />
-      <Route path="/program/frontend" element={''} />
-      <Route path="/privacy" element={''} />
-      <Route path="/provision" element={''} />
-      <Route path="/provision" element={''} />
+      <Route path="/program/free" element={""} />
+      <Route path="/program/backend" element={""} />
+      <Route path="/program/frontend" element={""} />
+      <Route path="/privacy" element={""} />
+      <Route path="/provision" element={""} />
+      <Route path="/provision" element={""} />
       <Route path="CoursePage" element={<CoursePage />} />
-      <Route path="/:id" element={<CoursesDetails />} />    
-    </Route >
+      <Route path="/:id" element={<CoursesDetails />} />
+      <Route
+        path="/InternshipApplicationForm"
+        element={<InternshipApplicationForm />}
+      />
+    </Route>
   )
 );
 

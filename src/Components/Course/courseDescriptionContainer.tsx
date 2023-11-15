@@ -1,6 +1,6 @@
 import BreadcrumbTest from "../Common/Breadcrumbs";
 import CoursePlaylists from "../Common/coursePlaylists";
-import VideoPlayer from "../Common/videoPlayer";
+// import VideoPlayer from "../Common/videoPlayer";
 
 const CourseDescriptionContainer = () => {
   return (
