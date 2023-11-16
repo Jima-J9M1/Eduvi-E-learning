@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import Avatar from "../Ui/avater";
 import MouseOverPopover from "../Ui/popover";
 import Selecte from "../Ui/selecte";
 import { useState } from "react";
