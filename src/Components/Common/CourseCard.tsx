@@ -4,6 +4,7 @@ import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import React from 'react';
 import imagee from '../../assets/images/imagee.jpg';
 import { CourseCardProps } from '../../types';
+import { ListCourses } from '../../Api/courselist-api';
 
 
 const CourseCard: React.FC<CourseCardProps> = ({
@@ -19,7 +20,10 @@ const CourseCard: React.FC<CourseCardProps> = ({
   const handleClick = (Id: number) => {
     console.log(Id);
   };
+   
+  const {data} = ListCourses()
 
+  console.log("this is new data", data)
 
   return (
     <div 
