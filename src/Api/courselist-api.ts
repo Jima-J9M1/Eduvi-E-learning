@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 
 type categories = {
-  categoryId:number,
+  categoryId:string,
   name:string
 }
 /*
@@ -39,27 +39,26 @@ type course = {
   "linkdln_link": "https://www.linkedin.com/in/amanuel",
   "profile_img": "https://example.com/profile-image.jpg"
 */
-type userRegister = {
-  id:number,
-  first_name: string,
-  last_name: string,
-  phone_number: string,
-  email: string,
-  password: string,
-  country: string,
-  city: string,
-  university: string,
-  department: string,
-  git_link: string,
-  linkdln_link: string,
-  profile_img: string,
-}
+// type userRegister = {
+//   id:number,
+//   first_name: string,
+//   last_name: string,
+//   phone_number: string,
+//   email: string,
+//   password: string,
+//   country: string,
+//   city: string,
+//   university: string,
+//   department: string,
+//   git_link: string,
+//   linkdln_link: string,
+//   profile_img: string,
+// }
 
-type userLogin = {
-  email:string, 
-  password:string,
-}
-
+// type userLogin = {
+//   email:string, 
+//   password:string,
+// }
 
 
 
@@ -93,9 +92,6 @@ export const ListCourses = () => {
  }
 
 
-export const listCategories = () => {
-  return useQuery
-}
 // type props={
 //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
 //     onSuccess:(test:any)=>void,
