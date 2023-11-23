@@ -25,6 +25,7 @@ export default function BasicSelect() {
 
 // const{data}=useCourseCategorie(props)
 const {data,isLoading, isError} = ListCategories()
+
 console.log("Categories",  data?.data, isLoading, isError)
 
 const handleClick=(event:string)=>{
@@ -41,7 +42,7 @@ const handleClick=(event:string)=>{
  
   const item=()=>{
     return <div className='absolute lg:top-20 top-70  bg-white border shadow-lg w-32  text-center '> 
-    { data && data.data && data.data.map((category)=>(
+    { data && data.data && data.data.categories.map((category)=>(
       
       <h1 onClick={()=>handleClick(category.categoryId)} className='hover:text-purple-500 cursor-pointer my-2 ' key={category.categoryId}>
         {category.name}

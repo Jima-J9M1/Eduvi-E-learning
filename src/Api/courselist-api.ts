@@ -63,7 +63,9 @@ type course = {
 
 
 type ApiResponseCategory = {
-  data:categories[]
+  data: {
+    categories: categories[];
+  };
 }
 
 type ApiResponseCourse = {
@@ -77,7 +79,7 @@ const fetchCategory = async ():Promise<ApiResponseCategory> => {
 
 const fetchCourses = async ():Promise<ApiResponseCourse> => {
   const response =  await axios.get('https://portal.bluemarkcollege.com/courses')
-  return response
+  return response.data
 }
 
 

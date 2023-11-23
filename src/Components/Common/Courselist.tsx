@@ -19,17 +19,17 @@ const CourseList: React.FC = () => {
   ];
 
 
-const{data, isLoading}=ListCategories()
+const{data:categoryData, isLoading:categoryLoading}=ListCategories()
 
-console.log("data", data?.data, isLoading)
+console.log("data", categoryData, categoryLoading)
   return (
     <div className="mt-24">
       <div className="flex sm:justify-start lg:justify-end mb-catb-pos mr-cat-pos ml-cat-pos">
         <div className="flex sm:justify-end  justify-around w-full ">
           <select className="p-2 rounded bg-[#7c3aed] text-white sm:mx-4">
             <option selected disabled>Categories</option>
-            {data &&  data?.data.map((d)=>{
-                     return <option value={d.categoryId} >{d.name}</option>
+            {categoryData && categoryData.data && categoryData.data.categories.map((d)=>{
+                     return <option value={d.categoryId} key={d.categoryId}>{d.name}</option>
             })}
           </select>  
             
