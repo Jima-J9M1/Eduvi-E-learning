@@ -74,7 +74,7 @@ const SignupForm = () => {
           className="text-primary cursor-pointer"
           onClick={() => setIsSignin(true)}
         >
-          Sign in
+          Sign up
         </span>{" "}
       </p>
     </div>

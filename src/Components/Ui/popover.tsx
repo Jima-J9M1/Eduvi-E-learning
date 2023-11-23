@@ -3,13 +3,11 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from "./link"
-import  Avatar  from "./avater";
 import MenuIcon from '@mui/icons-material/Menu';
 import Selecter from "./selecte"
-import image  from '../../assets/images/Image (4).png';
 import { ModalProvider } from '../../Utils/Contexts/ModalContext';
 import AuthModal from '../Modals/AuthModal';
-
+import '../../styles/global.css';
 
 
 
@@ -54,7 +52,7 @@ export default function BasicPopover() {
         <Typography sx={{ p: 2 }}><Selecter /></Typography>
         <Typography sx={{ p: 2 }}><Link text="About us" url="/Aboutus" /></Typography>
         <Typography onClick={openModalMethod} sx={{ p: 2 }}><Link text="Contact" url="./Contact" /></Typography>
-        <Typography onClick={openModalMethod} sx={{ p: 0.5, m:1 }} className='rounded-3xl bg-yellow-200 p-0 cursor-pointer text-center'>Login</Typography>
+        <Typography onClick={openModalMethod} sx={{ p: 0.5, m:1, ml:3 }} className='button-29 m-auto p-24'>Login</Typography>
       </Popover>
       
 
