@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ModalProvider } from "../../Utils/Contexts/ModalContext";
 import AuthModal from "../Modals/AuthModal";
 import image from '../../assets/logo/mss 1.png'
+import '../../styles/global.css';
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
@@ -51,12 +52,7 @@ const Nav = () => {
    Contact
     
     </NavLink>
-    
-    
-    <div onClick={open} className="rounded-full bg-yellow-200 sm:w-24  text-center cursor-pointer">
-      Login
-    </div>
-
+      <button onClick={open} className="button-29" role="button">Login</button>
       <ModalProvider>
           <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
         </ModalProvider>
