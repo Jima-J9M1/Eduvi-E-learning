@@ -29,7 +29,7 @@ export default function ApplicationForm() {
             <input type="password" id="password" className="outline-0 shadow-sm  text-sm rounded-lg border border-green-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Portfolio Link"></input>
         </div>
 
-        <div className='my-12 flex justify-center border'>
+        <div className='my-12 flex justify-center'>
             <button type="button" className="w-1/2 sm:w-1/3 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 
             font-medium rounded-lg text-sm sm:px-16 py-2.5  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Apply</button>
         </div>

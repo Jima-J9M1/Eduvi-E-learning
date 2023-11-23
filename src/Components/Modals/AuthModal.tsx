@@ -61,7 +61,7 @@ const AuthModal = ({
 }: {
   open: boolean;
   onClose: (
-    event: React.MouseEvent<MouseEvent, HTMLElement>,
+    event: React.MouseEvent,
     reason: "backdropClick" | "escapeKeyDown"| "userClick"
   ) => void;
 }) => {
@@ -74,7 +74,7 @@ const AuthModal = ({
       className="md:flex md:justify-center md:items-center overflow-scroll "
     >
       <div className="sm:pt-24 sm:mt-20 bg-white ">
-      <div className="w-fit mx-16  float-right" onClick={onClose}><ClearIcon fontSize="large" className="sm:hidden cursor-pointer hover:bg-yellow-200 hover:text-slate-600 hover:rounded-full" /></div>
+      <div className="w-fit mx-16  float-right" onClick={(event) => onClose(event, 'userClick')}><ClearIcon fontSize="large" className="sm:hidden cursor-pointer hover:bg-yellow-200 hover:text-slate-600 hover:rounded-full" /></div>
       <div className="sm:flex sm:flex-row sm:gap-24 sm:justify-center sm:items-center bg-white p-20 rounded-2xl">
         <div className="flex flex-col w-fit gap-6">
           <img src={MSSLogo} className="w-1/6" />

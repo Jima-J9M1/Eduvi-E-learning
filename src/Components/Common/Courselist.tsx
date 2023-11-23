@@ -4,10 +4,11 @@ import image3 from '../../assets/images/image3.jpg';
 import VisitButton from "../Buttons/VisitButton";
 import CourseListComponents from "../CourseListComponent";
 import { ListCategories } from "../../Api/courselist-api";
-type dataprops={
-  categoryId:string
-  name:string
-}
+
+// type dataprops={
+//   categoryId:string
+//   name:string
+// }
 
 const CourseList: React.FC = () => {
   const courses = [
@@ -18,16 +19,16 @@ const CourseList: React.FC = () => {
   ];
 
 
-const{data, isLoading, isError}=ListCategories()
+const{data, isLoading}=ListCategories()
 
-console.log("data", data?.data.categories, isLoading)
+console.log("data", data?.data, isLoading)
   return (
     <div className="mt-24">
       <div className="flex sm:justify-start lg:justify-end mb-catb-pos mr-cat-pos ml-cat-pos">
         <div className="flex sm:justify-end  justify-around w-full ">
           <select className="p-2 rounded bg-[#7c3aed] text-white sm:mx-4">
             <option selected disabled>Categories</option>
-            {data && data.data && data?.data.categories.map((d:dataprops)=>{
+            {data &&  data?.data.map((d)=>{
                      return <option value={d.categoryId} >{d.name}</option>
             })}
           </select>  
