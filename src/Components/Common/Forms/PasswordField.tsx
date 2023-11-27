@@ -20,7 +20,7 @@ const PasswordField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
       <label htmlFor="password">Password</label>
-      <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 gap-6">
+      <div className="flex border-2 border-solid border-slate-200 rounded-lg  gap-6">
         <LockOutlinedIcon className="text-slate-300 self-center" />
         {!visible ? (
           <input

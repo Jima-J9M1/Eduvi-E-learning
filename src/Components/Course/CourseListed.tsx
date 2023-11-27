@@ -12,6 +12,7 @@ import c from '../../assets/images/c.svg';
 import d from '../../assets/images/d.svg';
 import e from '../../assets/images/e.svg';
 import f from '../../assets/images/f.svg';
+import { ListCourses } from '../../Api/courselist-api';
 
 type Course = {
   id: number;
@@ -19,7 +20,11 @@ type Course = {
   image?: string;
 };
 
-const CousesListed: React.FC = () => {
+
+
+const CourseListed: React.FC = () => {
+
+  const {data:courseData} = ListCourses();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const courses: Course[] = [
     { id: 1, courseType: "High School" },
@@ -90,14 +95,23 @@ const CousesListed: React.FC = () => {
       
 
       <div className="sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 mt-10 mb-10 sm:pl-20 md:pl-0 lg:pl-0">
-        {currentCourses.map((course) => (
+        {courseData && courseData?.courses.map((course) => (
                   
-            <NavLink to={`/Course/${course.id}`}>
+            <NavLink to={`/courses/${course.id}`} state={{data:course}}>
             <CourseCard
+              video_count={course.video_count}
+              target_audience={course.target_audience}
+              average_rating={course.average_rating}
+              enrollment_count={course.enrollment_count}
+              category={course.name}
+              introduction_video={course.introduction_video}
+              price={course.price}
+              name={course.category}
               id={course.id}
               key={course.id}
-              courseType={course.courseType}
-              image={course.image} 
+              thumbnail={course.thumbnail} 
+              category_id={course.category_id}
+              description={course.description}
             />
           </NavLink>
         ))}
@@ -119,4 +133,4 @@ const CousesListed: React.FC = () => {
   );
 }
 
-export default CousesListed;
+export default CourseListed;

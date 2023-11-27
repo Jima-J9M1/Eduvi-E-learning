@@ -5,18 +5,82 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import LabeledCheckbox from "../Common/Checkbox/LabeledCheckbox";
 import EmailField from "../Common/Forms/EmailField";
-import NameField from "../Common/Forms/NameField";
+import  { CityField, CountryField, DepartmentField, FirstName, GitLinkField, LastName, LinkdlnLinkField, PhoneNumberField, ProfileImgField, UniversityField } from "../Common/Forms/NameField";
 import PasswordField from "../Common/Forms/PasswordField";
-import { useModal } from "../../Utils/Contexts/ModalContext";
+import {  useModal } from "../../Utils/Contexts/ModalContext";
+import { useCreateCourseMutation } from "../../Api/user-api";
+import { authenticate } from "../../Api/authenticate";
+// import { useState } from "react";
 
-const SigninForm = () => {
+
+/*
+curl --location 'http://localhost:4000/student/register' \
+--data-raw '{
+  "first_name": "amanuel",
+  "last_name": "wonde",
+  "phone_number": "123456780",
+  "email": "amanuellld@gmail.com",
+  "password": "secretpassword",
+  "country": "ethiopia",
+  "city": "addis ababa",
+  "university": "aastu",
+  "department": "Software Engineering",
+  "git_link": "https://github.com/johndoe",
+  "linkdln_link": "https://www.linkedin.com/in/amanuel",
+  "profile_img": "https://example.com/profile-image.jpg"
+}'
+
+*/
+type userData = {
+  first_name:string,
+  last_name:string,
+  email:string,
+  password:string,
+  phone_number:string,
+  country:string,
+  city:string,
+  university:string,
+  department:string,
+  git_link:string,
+  linkdln_link:string,
+  profile_img:string
+}
+const SigninForm = (
+  {
+    open,
+    onClose,
+  }: {
+    open: boolean;
+    onClose: (
+      event: React.MouseEvent,
+      reason: "backdropClick" | "escapeKeyDown"| "userClick"
+    ) => void;
+  }
+) => {
+  
+  const createCourseMutation = useCreateCourseMutation()
+  
+  // const [modalOpen, isModalOpen] = useState(false)
+
+  
   const schema = yup
     .object({
-      fullname: yup.string().required(),
+      first_name:yup.string().required(),
+      last_name:yup.string().required(),
       email: yup.string().email().required(),
       password: yup.string().min(8).required(),
+      phone_number: yup.string().length(10).required(),
+      country: yup.string().required(),
+      city: yup.string().required(),
+      university: yup.string().required(),
+      department: yup.string().required(),
+      git_link: yup.string().url().required(),
+      linkdln_link: yup.string().url().required(),
+      profile_img: yup.string().url().required()
     })
     .required();
+
+
   type FormData = yup.InferType<typeof schema>;
   const {
     register,
@@ -25,7 +89,23 @@ const SigninForm = () => {
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: any) => console.log(data);
+
+
+  const onSubmit = async (event, data: userData) => {
+      const response = await createCourseMutation.mutateAsync(data);
+
+      if(response.token){
+
+        authenticate(response?.token, response?.student)
+      }else{
+        
+        console.log("Error", response.error)
+
+      }
+
+      
+      
+  };
 
   const { setIsSignin } = useModal();
 
@@ -43,9 +123,39 @@ const SigninForm = () => {
       </Button>
       <Divider>OR sign in with your email</Divider>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <NameField register={register} error={errors.fullname?.message} />
+        <div className="sm:flex sm:gap-8">
+        <FirstName register={register} error={errors.first_name?.message} />
+        <LastName register={register} error={errors.last_name?.message} />
+        </div>
+        <div className="sm:flex sm:gap-8">
         <EmailField register={register} error={errors.email?.message} />
         <PasswordField register={register} error={errors.password?.message} />
+        </div>
+
+        <div className="sm:flex sm:gap-8">
+          <PhoneNumberField register={register} error={errors.phone_number?.message} />
+          <UniversityField register={register} error={errors.university?.message} />
+        </div>
+
+        <div className="sm:flex sm:gap-8">
+          <CityField register={register} error={errors.city?.message} />
+          <DepartmentField register={register} error={errors.department?.message} />
+        </div>
+
+
+        <div className="sm:flex sm:gap-8">
+          <GitLinkField register={register} error={errors.git_link?.message} />
+          <LinkdlnLinkField register={register} error={errors.linkdln_link?.message} />
+        </div>
+
+
+        <div className="sm:flex sm:gap-8">
+          <CountryField register={register} error={errors.country?.message} />
+          <ProfileImgField register={register} error={errors.profile_img?.message} />
+        </div>
+
+
+
         <LabeledCheckbox
           label={
             <label className="text-sm italic font-light text-slate-500">
@@ -53,6 +163,7 @@ const SigninForm = () => {
               <span className="text-slate-800">terms and conditions</span>
             </label>
           }
+          require = {false}
         />
         <Button
           type="submit"

@@ -6,6 +6,7 @@ import { ModalProvider } from "../../Utils/Contexts/ModalContext";
 import AuthModal from "../Modals/AuthModal";
 import image from '../../assets/logo/mss 1.png'
 import '../../styles/global.css';
+import { isAuthenticated, logout } from "../../Api/authenticate";
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
@@ -22,14 +23,14 @@ const Nav = () => {
       <div className="items-center w-1/2  hidden lg:flex lg:justify-between lg:gap-3">
       <NavLink to={'/'}
       className={({ isActive, isPending }) =>
-      isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+      isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600 text-gray-600" : "text-gray-600"
     }>
       Home
     </NavLink>
 {/*       <NavLink to={'/CoursePage'} >Course</NavLink> */}
         
       <NavLink to={'/Courses'}  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600 text-gray-600" : "text-gray-600"
   }>
     Course
     
@@ -40,22 +41,26 @@ const Nav = () => {
       </div>
        
       <NavLink to={'/Aboutus'}  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600 text-gray-600" : "text-gray-600"
   }>
    About us
     
     </NavLink>
     
     <NavLink to={'/Contact'}  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600" : ""
+    isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600 text-gray-600" : "text-gray-600"
   }>
    Contact
     
     </NavLink>
+    {
+     isAuthenticated() ?
+      <button onClick={logout} className="button-29" role="button">Logout</button>:
       <button onClick={open} className="button-29" role="button">Login</button>
+    }
       <ModalProvider>
           <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
-        </ModalProvider>
+      </ModalProvider>
       
       
 
