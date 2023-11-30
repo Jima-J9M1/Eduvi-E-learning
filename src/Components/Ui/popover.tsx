@@ -8,6 +8,7 @@ import Selecter from "./selecte"
 import { ModalProvider } from '../../Utils/Contexts/ModalContext';
 import AuthModal from '../Modals/AuthModal';
 import '../../styles/global.css';
+import ToggleButton from '../Forms/toggleButton';
 
 
 
@@ -34,6 +35,7 @@ export default function BasicPopover() {
   
   return (
     <div>
+       <ModalProvider>
       <Button aria-describedby={id} variant="text" onClick={handleClick}>
         <MenuIcon fontSize='large' />
       </Button>
@@ -52,11 +54,12 @@ export default function BasicPopover() {
         <Typography sx={{ p: 2 }}><Selecter /></Typography>
         <Typography sx={{ p: 2 }}><Link text="About us" url="/Aboutus" /></Typography>
         <Typography onClick={openModalMethod} sx={{ p: 2 }}><Link text="Contact" url="./Contact" /></Typography>
-        <Typography onClick={openModalMethod} sx={{ p: 0.5, m:1, ml:3 }} className='button-29 m-auto p-24'>Login</Typography>
+        <Typography onClick={openModalMethod} sx={{ p: 0.5, m:1, ml:3 }} className=' m-auto p-24'>  
+        
+           <ToggleButton onClose={isModalOpen}  />
+         
+        </Typography>
       </Popover>
-      
-
-    <ModalProvider>
         <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
       </ModalProvider>
     

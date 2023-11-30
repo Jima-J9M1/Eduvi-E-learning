@@ -66,7 +66,7 @@ const AuthModal = ({
   ) => void;
 }) => {
   const { isSignin } = useModal();
-
+   
   return (
     <Modal
       open={open}
@@ -86,7 +86,7 @@ const AuthModal = ({
           <Carousel />
         </div>
         <Divider orientation="vertical" className="" />
-        {isSignin ? <SigninForm /> : <SignupForm />}
+        {isSignin? <SigninForm /> : <SignupForm />}
       </div>
       </div>
     </Modal>

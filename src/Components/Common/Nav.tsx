@@ -6,13 +6,23 @@ import { ModalProvider } from "../../Utils/Contexts/ModalContext";
 import AuthModal from "../Modals/AuthModal";
 import image from '../../assets/logo/mss 1.png'
 import '../../styles/global.css';
+import ToggleButton from "../Forms/toggleButton";
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
+  // const { setIsSignin } = useModal();
 
-  const open = ()=>{
-     isModalOpen(!modalOpen)
-  }
+  // const open = ()=>{
+  //   setIsSignin(true)
+  //   isModalOpen(!modalOpen) 
+     
+  // }
+  // const opens = ()=>{
+  //   setIsSignin(false)
+  //   isModalOpen(!modalOpen)
+   
+     
+  // }
   return (
     <div className="flex align-middle justify-between px-4 	">
       <div className="ml-3">
@@ -52,14 +62,12 @@ const Nav = () => {
    Contact
     
     </NavLink>
-      <button onClick={open} className="button-29" role="button">Login</button>
+      {/* <button onClick={open} className="button-29" role="button">Login</button>
+      <button onClick={opens} className="button-29" role="button">Sign Up</button> */}
       <ModalProvider>
-          <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
+         <ToggleButton  onClose={isModalOpen} />
+          <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}/>
         </ModalProvider>
-      
-      
-
-
         {/* <div className="ml-10">
           <Avatar name="My Account" img="#" />
         </div> */}

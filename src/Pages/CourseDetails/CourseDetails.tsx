@@ -44,7 +44,6 @@ const CourseDetailPage = () =>(
       <AdsCard image={image} adName="adds"/>
       </Grid>
       </Grid>
-     
       <SimilarCourses />
       <SubscriptionBox />
       <Footer />

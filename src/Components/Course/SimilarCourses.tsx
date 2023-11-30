@@ -3,14 +3,20 @@ import img1 from '../../assets/images/Image (1).png'
 import img2 from '../../assets/images/Image (3).png'
 import img3 from '../../assets/images/Image (4).png'
 import img4 from '../../assets/images/Image (2).png'
+import InternButton from "../Buttons/InternButton";
+import { Link } from "react-router-dom";
 
 
 
 const SimilarCourses = () => {
   return (
     <div >
-    <p className="text-3xl font-bold py-12 ml-10">
-        Similar Courses
+    <p className="text-3xl font-bold pb-5  ml-10">
+    <Link 
+            to="/application"
+           ><InternButton text="Apply to internship" />
+           </Link>
+        <p className='mt-3'> Similar Courses</p>
       </p>
     <div className='md:grid md:grid-cols-2 gap-8 ml-3'>
         <SimilarCourseCard img={img1}/>

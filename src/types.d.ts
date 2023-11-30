@@ -9,6 +9,7 @@ interface CourseCardProps {
     description?: string;
     videos?: number;
     duration?: number;
+    price?:number
     name?: string;
     students?: number;
     courseType?: string;

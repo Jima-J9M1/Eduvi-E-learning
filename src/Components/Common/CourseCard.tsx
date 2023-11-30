@@ -1,9 +1,10 @@
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+// import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import React from 'react';
 import imagee from '../../assets/images/imagee.jpg';
 import { CourseCardProps } from '../../types';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 
 const CourseCard: React.FC<CourseCardProps> = ({
@@ -11,7 +12,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   rating = 4.9,
   description = `Materi pembelajarn mengenai pembuatan website tingkat pemula`,
   videos = 20,
-  duration = 4.5,
+  price=45,
   name = `Dasar Pemrograman WEB`,
   students = 1900,
   id = 1,
@@ -33,7 +34,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
         <h4 className="font-medium font-poppins text-xl leading-9 tracking-tighter text-left text-[#282938]  w-354 h-34 top-783 left-85">{name}</h4>
         <p className="font-regular text-base font-poppins font-normal leading-6  text-desc-color text-opacity-80 text-justify">{description}</p>
         <div className="info  flex justify-between font-regular text-base font-poppins font-normal leading-6 text-desc-color text-opacity-80">
-        <div><AccessTimeIcon className = "text-icon-color-opacity-80" />{duration} Jam</div>
+        <div><AttachMoneyIcon className = "text-icon-color-opacity-80" />{price}Birr</div>
         <div>{videos} Videos</div>
         <div><PeopleAltOutlinedIcon className = "text-icon-color-opacity-80" />{students} Siswa</div>
         </div>
