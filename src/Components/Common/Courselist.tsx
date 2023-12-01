@@ -29,7 +29,6 @@ const{data:categoryData}=ListCategories()
                      return <option value={d.categoryId} key={d.categoryId}>{d.name} what</option>
             })}
           </select>  
-            
           <VisitButton text = "Visit More Courses" />
         </div>
       </div>

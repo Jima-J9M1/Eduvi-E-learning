@@ -6,14 +6,13 @@ import { ModalProvider } from "../../Utils/Contexts/ModalContext";
 import AuthModal from "../Modals/AuthModal";
 import image from '../../assets/logo/mss 1.png'
 import '../../styles/global.css';
+import ToggleButton from "../Forms/toggleButton";
 import { isAuthenticated, logout } from "../../Api/authenticate";
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
 
-  const open = ()=>{
-     isModalOpen(!modalOpen)
-  }
+  
   return (
     <div className="flex align-middle justify-between px-4 	">
       <div className="ml-3">
@@ -59,11 +58,9 @@ const Nav = () => {
       <button onClick={open} className="button-29" role="button">Login</button>
     }
       <ModalProvider>
+          <ToggleButton  onClose={isModalOpen} />
           <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
       </ModalProvider>
-      
-      
-
 
         {/* <div className="ml-10">
           <Avatar name="My Account" img="#" />

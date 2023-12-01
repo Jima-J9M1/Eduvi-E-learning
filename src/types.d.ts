@@ -4,20 +4,6 @@ interface AvaterProps {
 }
 
 
-/*
- average_rating : 0
- category : "IDS"
- category_id : 4
- description : "IDS Account Receivable Module."
- enrollment_count : 0
- id: 4
- introduction_video: "https://youtu.be/8vIbW9bIhB4?si=dP36HWgYvj1O3n6o"
- name: "IDS Account Receivable Module"
- price: "0.00"
- target_audience: "All users who is curios about IDS."
- thumbnail: "http://learn.bluemarkcollege.com/images/thumbnails/themnail-1700576407233.png"
- video_count: 1
-*/
 export interface CourseCardProps {
   average_rating:number,
   category : string,

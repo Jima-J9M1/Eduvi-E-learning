@@ -10,14 +10,14 @@ import SubscriptionBox from "../../Components/Common/SubscriptionBox";
 import { Wrapper } from "./Home.styles";
 
 
+
 const Home = () => {
   // const {data} = ListCourses()
   const {data} = ListCategories()
   console.log("this is new data", data)
   return (
     <Wrapper>
-      <Nav />
-        
+      <Nav /> 
       <Landing />
       <Quote />
       <CourseList />

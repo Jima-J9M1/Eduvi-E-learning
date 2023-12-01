@@ -27,7 +27,7 @@ const CourseDetailPage = () => {
           <Grid sm={12} lg={8} className=" w-[100%] mb-5" alignItems="flex-end">
             <ReactPlayer
               className="rounded-xl object-cover"
-              width='95%'
+              width='100%'
               height='90%'
               url="https://www.youtube.com/watch?v=TiSGujM22OI&list=PLC3y8-rFHvwi1AXijGTKM0BKtHzVC-LSK"
             />
@@ -40,6 +40,7 @@ const CourseDetailPage = () => {
           </Grid>
           <h2 className="text-lg text-blue-400">Maths for Standard 3 student | Episode 3 </h2>
         </Grid>
+
       </HeaderContainer>
 
       <Grid container gap={3} className=" w-1/2" width="1/3">

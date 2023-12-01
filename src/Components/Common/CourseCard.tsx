@@ -1,11 +1,13 @@
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+// import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import React from 'react';
 import { CourseCardProps } from '../../types';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 
 const CourseCard: React.FC<CourseCardProps> = ({
+
   average_rating,
 // category_id= 4,
 description,
@@ -17,6 +19,7 @@ category,
 // target_audience= "All users who is curios about IDS.",
 thumbnail,
 video_count,
+
 }) => {
   const handleClick = (Id: number) => {
     console.log(Id);
@@ -35,9 +38,11 @@ video_count,
         <h4 className="font-medium font-poppins text-xl leading-9 tracking-tighter text-left text-[#282938]  w-354 h-34 top-783 left-85">{category}</h4>
         <p className="font-regular text-base font-poppins font-normal leading-6  text-desc-color text-opacity-80 text-justify">{description}</p>
         <div className="info  flex justify-between font-regular text-base font-poppins font-normal leading-6 text-desc-color text-opacity-80">
-        <div><AccessTimeIcon className = "text-icon-color-opacity-80" />{video_count} Jam</div>
-        <div>{video_count} Videos</div>
-        <div><PeopleAltOutlinedIcon className = "text-icon-color-opacity-80" />{video_count} Siswa</div>
+
+        <div><AttachMoneyIcon className = "text-icon-color-opacity-80" />{price}Birr</div>
+        <div>{videos} Videos</div>
+        <div><PeopleAltOutlinedIcon className = "text-icon-color-opacity-80" />{students} Siswa</div>
+
         </div>
       </div>
     </div>

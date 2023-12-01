@@ -13,7 +13,7 @@ export default {
         'trans-right': 'trans-right 1.5s ease-in-out infinite'
       },
       spacing: {
-        "card-width": "386px",
+        "card-width": "370px",
         "card-height": "418px",
         "rating-width": "63px",
         "rating-height": "25px",
@@ -22,7 +22,7 @@ export default {
         "quote-height": "135px",
         "cat-align": "1008px",
         "cat-pos": "10%",
-        "catb-pos": "5%",
+        "catb-pos": "1%",
         "rating-bottom": "40%",
         "b-width": "1300px",
         'header-width' : '1280px',
