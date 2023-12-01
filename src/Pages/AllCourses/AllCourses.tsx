@@ -10,6 +10,7 @@ function AllCourses() {
     <div>
         <Nav />        
         <div className = "m-catb-pos">
+        
         <HeaderContainer>
          <AllCourseHeader />
         </HeaderContainer>
