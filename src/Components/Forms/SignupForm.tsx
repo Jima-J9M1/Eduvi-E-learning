@@ -4,12 +4,21 @@ import { Button, Divider } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { useModal } from "../../Utils/Contexts/ModalContext";
+import { ModalProvider, useModal } from "../../Utils/Contexts/ModalContext";
 import LabeledCheckbox from "../Common/Checkbox/LabeledCheckbox";
 import EmailField from "../Common/Forms/EmailField";
 import PasswordField from "../Common/Forms/PasswordField";
+import { useLoginCourseMutation, userLogin } from "../../Api/user-api";
+import { authenticate } from "../../Api/authenticate";
+import AuthModal from "../Modals/AuthModal";
+import { useState } from "react";
 
 const SignupForm = () => {
+
+  const loginCourseMutation = useLoginCourseMutation()
+  const [modalOpen, isModalOpen] = useState(false)
+  
+
   const schema = yup
     .object({
       email: yup.string().email().required(),
@@ -24,7 +33,33 @@ const SignupForm = () => {
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = async (data: userLogin) =>{
+
+     const response = await loginCourseMutation.mutateAsync(data)
+     
+
+
+
+    //  const open = ()=>{
+    //  isModalOpen(!modalOpen)
+    //  }
+
+     if(response.token){
+
+      authenticate(response?.token, response?.student)
+      return (
+        <ModalProvider>
+          <AuthModal open={modalOpen} onClose={()=>isModalOpen(false)}   />
+        </ModalProvider>
+        )
+
+    }else{
+      
+      console.log("Error", response.error)
+
+    }
+
+  }
 
   const { setIsSignin } = useModal();
 
@@ -46,11 +81,14 @@ const SignupForm = () => {
         <PasswordField register={register} error={errors.password?.message} />
         <div className="flex flex-row justify-between">
           <LabeledCheckbox
+            
             label={
               <label className="text-sm italic font-light text-slate-500">
                 Keep me signed in
               </label>
             }
+
+            require = {true}
           />
           <Link to="" className="self-center">
             <p className="text-sm italic font-light text-slate-600">

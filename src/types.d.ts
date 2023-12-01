@@ -3,17 +3,20 @@ interface AvaterProps {
     img?:string
 }
 
-interface CourseCardProps {
-    image?: string;
-    rating?: number;
-    description?: string;
-    videos?: number;
-    duration?: number;
-    price?:number
-    name?: string;
-    students?: number;
-    courseType?: string;
-    id: number;
+
+export interface CourseCardProps {
+  average_rating:number,
+  category : string,
+  category_id : number,
+  description : string,
+  enrollment_count : number,
+  id:number,
+  introduction_video:string,
+  name:string,
+  price:string,
+  target_audience:string,
+  thumbnail:string,
+  video_count:number,
   }
   
   interface QuoteProps {
@@ -27,11 +30,23 @@ interface CourseCardProps {
     occupation?: string;
   }
   
-  interface PasswordFieldProps {
+  export interface PasswordFieldProps {
     register: UseFormRegister<{
       password: string;
       email: string;
-      fullname: string;
+      firstName:string,
+      lastName:string;
+      email:string;
+      password:string;
+      phone_number:string;
+      country:string;
+      city:string;
+      university:string;
+      department:string;
+      git_link:string;
+      linkdln_link:string;
+      profile_img:string
+
     }>;
     error: string | undefined;
   }

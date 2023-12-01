@@ -1,10 +1,10 @@
 import { Checkbox } from "@mui/material";
 import { ReactNode } from "react";
 
-const LabeledCheckbox = ({ label }: { label: ReactNode }) => {
+const LabeledCheckbox = ({ label, require}: { label: ReactNode, require:boolean }) => {
   return (
     <div>
-      <Checkbox className="w-fit !text-primary" required />
+      {require ? <Checkbox className="w-fit !text-primary" required/> : <Checkbox className="w-fit !text-primary" /> }
       {label}
     </div>
   );
