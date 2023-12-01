@@ -22,10 +22,6 @@ const Landing = () => {
             </h1>
           </div>
           <div className="inline-block mt-5 mb-5 sm:mt-60 sm:ml-24 rounded-lg shadow-2xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-700">
-           {/* <Link 
-            to="/application"
-           ><InternButton text="Apply to internship" />
-           </Link> */}
           </div>
         </div>
         {/* animated */}

@@ -10,19 +10,8 @@ import ToggleButton from "../Forms/toggleButton";
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
-  // const { setIsSignin } = useModal();
 
-  // const open = ()=>{
-  //   setIsSignin(true)
-  //   isModalOpen(!modalOpen) 
-     
-  // }
-  // const opens = ()=>{
-  //   setIsSignin(false)
-  //   isModalOpen(!modalOpen)
-   
-     
-  // }
+  
   return (
     <div className="flex align-middle justify-between px-4 	">
       <div className="ml-3">
@@ -62,8 +51,6 @@ const Nav = () => {
    Contact
     
     </NavLink>
-      {/* <button onClick={open} className="button-29" role="button">Login</button>
-      <button onClick={opens} className="button-29" role="button">Sign Up</button> */}
       <ModalProvider>
          <ToggleButton  onClose={isModalOpen} />
           <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}/>
