@@ -17,9 +17,6 @@ category,
 // target_audience= "All users who is curios about IDS.",
 thumbnail,
 video_count,
-
-
-
 }) => {
   const handleClick = (Id: number) => {
     console.log(Id);

@@ -29,6 +29,15 @@ const fetchCourses = async ():Promise<ApiResponseCourse> => {
   return response.data
 }
 
+export const fetchCoursesWithCategory = async(category:string) => {
+    const {data} = ListCourses();
+
+    const course = data?.courses.filter((course) => course.category == category)
+    
+    console.log("course with category" , course);
+
+    // return course
+}
 
 
 export const ListCategories = () => {

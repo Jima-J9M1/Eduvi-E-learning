@@ -25,12 +25,12 @@ const BreadCrumbs = () => (
 
 export const BreadCrumb = () => {
   // const { state } = useLocation()
-  const match = window.location.pathname  
-
+  let match = window.location.pathname 
+  match = match.replaceAll("%20", " ")
   const pathnames = match.split('/').filter((x:string) => x);
 
   return (
-    <Breadcrumbs aria-label="breadcrumb" className="p-3">
+    <Breadcrumbs maxItems={4} aria-label="breadcrumb" className="p-3">
       {pathnames.length > 0 ? (
         <Link to="/" color="inherit">
           Home
