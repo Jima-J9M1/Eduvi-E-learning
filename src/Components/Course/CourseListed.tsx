@@ -89,7 +89,7 @@ const CousesListed: React.FC = () => {
 
       
 
-      <div className="sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 mt-10 mb-10 sm:pl-20 md:pl-0 lg:pl-0">
+      <div className="sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-10 mx-1  sm:pl-20 md:pl-0 lg:pl-0">
         {currentCourses.map((course) => (
                   
             <NavLink to={`/Course/${course.id}`}>

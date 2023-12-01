@@ -17,17 +17,17 @@ const CourseDetailPage = () =>(
      <Wrapper>
       <Nav />
       <HeaderContainer>
-      <Grid container className="">
+      <Grid container >
        <Grid  sm={12} lg={8} className=" w-[100%] mb-5" alignItems="flex-end">
        <BreadCrumbs/>
        <ReactPlayer
        className="rounded-xl object-cover"
-       width='95%'
+       width='100%'
        height='90%'
        url="https://www.youtube.com/watch?v=TiSGujM22OI&list=PLC3y8-rFHvwi1AXijGTKM0BKtHzVC-LSK" />
-       </Grid>
+       </Grid> 
        <Grid sm={12} lg={3} justifyContent="center" className="justify-center align-center">
-        <p className=" font-sans text-base italic font-light leading-8 tracking-normal text-left text-indigo-900">
+        <p className=" font-sans text-base italic font-light leading-8 tracking-normal text-left text-indigo-900 ml-3 ">
         Course Playlists
         </p>
         <CoursePlaylists />

@@ -8,7 +8,7 @@ import Nav from "../../Components/Common/Nav";
 import Quote from "../../Components/Common/Quote";
 import SubscriptionBox from "../../Components/Common/SubscriptionBox";
 import { Wrapper } from "./Home.styles";
-import { ModalProvider } from "../../Utils/Contexts/ModalContext";
+
 
 
 const Home = () => {
@@ -17,10 +17,7 @@ const Home = () => {
   console.log("this is new data", data)
   return (
     <Wrapper>
-      <ModalProvider>
-      <Nav />
-      </ModalProvider>
-        
+      <Nav /> 
       <Landing />
       <Quote />
       <CourseList />

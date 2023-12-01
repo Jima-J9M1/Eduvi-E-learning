@@ -32,7 +32,6 @@ console.log("data", categoryData, categoryLoading)
                      return <option value={d.categoryId} key={d.categoryId}>{d.name}</option>
             })}
           </select>  
-            
           <VisitButton text = "Visit More Courses" />
         </div>
       </div>
