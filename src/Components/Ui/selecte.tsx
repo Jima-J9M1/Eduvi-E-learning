@@ -1,20 +1,23 @@
 import * as React from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { ListCategories } from "../../Api/courselist-api";
+import { fetchCoursesWithCategory } from '../../Api/courselist-api';
 
 
 
 export default function BasicSelect() {
   const [open, setOpen] = React.useState(false);
-  const [, setSelect]= React.useState('');
-
-
-const {data} = ListCategories()
+  const [category, setCategory]= React.useState('');
+  const {data} = ListCategories()
+ 
+React.useEffect(()=>{
+  fetchCoursesWithCategory(category)
+},[category])
 
 
 const handleClick=(event:string)=>{
   setOpen(false)
-  setSelect(event)
+  setCategory(event)
 }
 
 
