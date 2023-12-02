@@ -56,7 +56,7 @@ const CourseDetailPage = () => {
 
           <form method="POST" action="https://api.chapa.co/v1/hosted/pay" className="p-6">
             <input type="hidden" name="public_key" value="CHAPUBK_TEST-KKMPCkjXePdMqb7nAMHSGc8kSMD0TH4y" />
-            <input type="hidden" name="tx_ref" value="negade-tx-12345678sss1" />
+            <input type="hidden" name="tx_ref" value={`negade-tx-12345678sss23${Date.now()}`} />
             <input type="hidden" name="amount" value="100" />
             <input type="hidden" name="currency" value="ETB" />
             <input type="hidden" name="email" value="jimd3730@gmail.com" />

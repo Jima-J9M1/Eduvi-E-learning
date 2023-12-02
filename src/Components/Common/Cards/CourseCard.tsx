@@ -12,6 +12,7 @@ interface CourseCardProps {
   students?: number;
   courseType?: string;
   id: number;
+  price:string;
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({

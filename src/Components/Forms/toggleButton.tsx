@@ -1,3 +1,4 @@
+import { isAuthenticated, logout } from "../../Api/authenticate";
 import { useModal } from "../../Utils/Contexts/ModalContext";
 
 type props={
@@ -16,8 +17,14 @@ const { setIsSignin } = useModal();
   }
   return (
     <div>
-     <button onClick={()=>Open()} className="button-29 py-3" role="button">Login</button>
-      <button  onClick={()=>Opens()} className="button-29 py-3 mx-2" role="button">Sign Up</button>
+      {
+        isAuthenticated() ?  <button onClick={logout} className="button-29 py-3" role="button">Logout</button>  :
+         <>
+        <button onClick={()=>Open()} className="button-29 py-3" role="button">Login</button>
+        <button  onClick={()=>Opens()} className="button-29 py-3 mx-2" role="button">Sign Up</button>
+        </>
+      }
+
     </div>
   )
 }
