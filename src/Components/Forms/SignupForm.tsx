@@ -2,21 +2,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Google } from "@mui/icons-material";
 import { Button, Divider } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { ModalProvider, useModal } from "../../Utils/Contexts/ModalContext";
+import { useModal } from "../../Utils/Contexts/ModalContext";
 import LabeledCheckbox from "../Common/Checkbox/LabeledCheckbox";
 import EmailField from "../Common/Forms/EmailField";
 import PasswordField from "../Common/Forms/PasswordField";
 import { useLoginCourseMutation, userLogin } from "../../Api/user-api";
 import { authenticate } from "../../Api/authenticate";
-import AuthModal from "../Modals/AuthModal";
-import { useState } from "react";
 
 const SignupForm = () => {
 
   const loginCourseMutation = useLoginCourseMutation()
-  const [modalOpen, isModalOpen] = useState(false)
   
 
   const schema = yup
@@ -47,11 +43,6 @@ const SignupForm = () => {
      if(response.token){
 
       authenticate(response?.token, response?.student)
-      return (
-        <ModalProvider>
-          <AuthModal open={modalOpen} onClose={()=>isModalOpen(false)}   />
-        </ModalProvider>
-        )
 
     }else{
       
@@ -65,7 +56,6 @@ const SignupForm = () => {
 
   return (
     <div className="md:flex md:flex-col md:gap-6">
-      {/* Use Button from Nebil*/}
       <Button
         variant="outlined"
         className="border-2 border-solid  !border-slate-200 rounded-lg !text-slate-800 !normal-case"

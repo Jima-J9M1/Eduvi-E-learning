@@ -52,11 +52,6 @@ const Nav = () => {
    Contact
     
     </NavLink>
-    {
-     isAuthenticated() ?
-      <button onClick={logout} className="button-29" role="button">Logout</button>:
-      <button onClick={open} className="button-29" role="button">Login</button>
-    }
       <ModalProvider>
           <ToggleButton  onClose={isModalOpen} />
           <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
