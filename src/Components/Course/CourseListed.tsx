@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import CourseCard from '../Common/CourseCard';
 import Pagination from '@mui/material/Pagination';
 import ButtonList from './ButtonList';
+import EmptyCategoriy from './EmptyCategoriy';
 
 import { ListCourses, fetchCoursesWithCategory } from '../../Api/courselist-api';
 
@@ -73,19 +74,13 @@ const CourseListed: React.FC = () => {
     },
   }), []);
   
-
-
-
+  const L=currentCourses?.length
+  if(L===0) return <EmptyCategoriy />
   return (
     <div>
       <ButtonList handleButtonClick={handleButtonClick} activeButton={selectedCourseType} selectedCourseType={selectedCourseType}/>
-      
-
-      
-
       <div className="sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 mt-10 mb-10 sm:pl-20 md:pl-0 lg:pl-0">
-        {currentCourses ? currentCourses.map((course) => (
-                  
+        {currentCourses ? currentCourses.map((course) =>(       
             <NavLink to={`/courses/${course.name}`} state={{data:course}}>
             <CourseCard
               video_count={course.video_count}
