@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Wrapper } from "./CourseDetails.styles";
 import Nav from "../../Components/Common/Nav";
 import { Grid } from "@mui/material";
@@ -10,15 +11,45 @@ import Footer from "../../Components/Common/Footer";
 import CourseDetail from "../../Components/Course/CourseDetail";
 import AdsCard from "../../Components/Course/AdsCard";
 import image from "../../assets/images/Image (4).png";
-import { useLocation } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import '../../styles/global.css'
+import { isAuthenticated, returnTokenData } from "../../Api/authenticate";
+import { useBuyCourseMutation } from "../../Api/user-api";
 
 const CourseDetailPage = () => {
   const { state } = useLocation();
-  const [disable, _] = useState<boolean>(true)
+  const [disable] = useState<boolean>(true)
+  const navigate = useNavigate();
   const data = state.data
+  console.log(data)
+  const buyCourseMutation = useBuyCourseMutation()
 
+  const handleSubmit = async () => {
+       if(isAuthenticated()){
+        const U_Id = String(returnTokenData())
+        console.log("user id", U_Id)
+        const purchaseData = 
+        {
+          studentId:U_Id,
+          courseId:data.id,
+          portfolio:"https://example.com/portfolio"
+        }
+        
+        console.log(purchaseData)
+
+        const response = await buyCourseMutation.mutateAsync(purchaseData)
+        console.log("response values" ,response.paymentUrl)
+        
+        console.log("type", typeof(response.paymentUrl))
+        // navigate('../courses',{replace:true})
+        window.location.replace(response.paymentUrl);
+        // return <Navigate to={response.paymentUrl} />
+       }else{
+        alert("UnAhuthorized User")
+       }
+
+  }
   return (
     <Wrapper>
       <Nav />
@@ -50,26 +81,10 @@ const CourseDetailPage = () => {
             name={data.name}
             description={data.description}
           />
-          <form method="POST" action="https://api.chapa.co/v1/hosted/pay" className="p-6" >
-            <button type="submit" className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Pay Now</button>
-          </form>
 
-          <form method="POST" action="https://api.chapa.co/v1/hosted/pay" className="p-6">
-            <input type="hidden" name="public_key" value="CHAPUBK_TEST-KKMPCkjXePdMqb7nAMHSGc8kSMD0TH4y" />
-            <input type="hidden" name="tx_ref" value={`negade-tx-12345678sss23${Date.now()}`} />
-            <input type="hidden" name="amount" value="100" />
-            <input type="hidden" name="currency" value="ETB" />
-            <input type="hidden" name="email" value="jimd3730@gmail.com" />
-            <input type="hidden" name="first_name" value="Jima"/>
-            <input type="hidden" name="last_name" value="Dube"/>
-            <input type="hidden" name="title" value="Let us do this" />
-            <input type="hidden" name="description" value="Paying with Confidence with cha" />
-            <input type="hidden" name="logo" value="https://chapa.link/asset/images/chapa_swirl.svg" />
-            <input type="hidden" name="callback_url" value={`http://localhost:5173/courses/${data.id}`} />
-            <input type="hidden" name="return_url" value={`http://localhost:5173/courses/${data.id}`} />
-            <input type="hidden" name="meta[title]" value="test" />
-            <button type="submit" className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Pay Now</button>
-          </form>
+          <div className="m-6">
+            <button className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleSubmit()}>Pay Now</button>
+          </div>
         </Grid>
         <Grid xs={12} lg={3} className="w-[100%]">
           <AdsCard image={image} adName="adds" />
