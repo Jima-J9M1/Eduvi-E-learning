@@ -12,7 +12,7 @@ import CourseDetail from "../../Components/Course/CourseDetail";
 import AdsCard from "../../Components/Course/AdsCard";
 import image from "../../assets/images/Image (4).png";
 import {  useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../../styles/global.css'
 import { isAuthenticated, returnTokenData } from "../../Api/authenticate";
 import { useBuyCourseMutation } from "../../Api/user-api";
@@ -20,9 +20,20 @@ import { useBuyCourseMutation } from "../../Api/user-api";
 const CourseDetailPage = () => {
   const { state } = useLocation();
   const [disable] = useState<boolean>(true)
+  const [error, setError] = useState<string>('')
+
   const data = state.data
   console.log(data)
   const buyCourseMutation = useBuyCourseMutation()
+
+ 
+ 
+
+
+
+
+
+  
 
   const handleSubmit = async () => {
        if(isAuthenticated()){
@@ -31,27 +42,41 @@ const CourseDetailPage = () => {
         const purchaseData = 
         {
           studentId:U_Id,
-          courseId:data.id,
+          courseId:String(data.id),
           portfolio:"https://example.com/portfolio"
         }
         
         console.log(purchaseData)
 
         const response = await buyCourseMutation.mutateAsync(purchaseData)
+        console.log(response);
+        if(response.error){
+          console.log(response.error)
+          setError(response.error)
+        }
         console.log("response values" ,response.paymentUrl)
         
         console.log("type", typeof(response.paymentUrl))
         // navigate('../courses',{replace:true})
-        window.location.replace(response.paymentUrl);
+        // window.location.replace(response.paymentUrl);
         // return <Navigate to={response.paymentUrl} />
        }else{
         alert("UnAhuthorized User")
        }
 
   }
+
+  useEffect(()=>{
+    setTimeout(() => {
+      setError('')
+    }, 5000);
+  }, [error])
   return (
     <Wrapper>
       <Nav />
+      <div className="flex justify-center mt-3">
+      <span className={error ? "bg-red-500 p-3 rounded-lg text-white": ''}>{error}</span>
+      </div>
       <HeaderContainer>
         <Grid container className="">
           <Grid sm={12} lg={8} className=" w-[100%] mb-5" alignItems="flex-end">

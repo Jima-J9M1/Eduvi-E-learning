@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useMutation } from "@tanstack/react-query"
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import axios from "axios"
 import { user } from "./authenticate"
 
@@ -37,7 +38,18 @@ export type byeCoursetype = {
   portfolio: string
 }
 
+
+
+
+
+
+
+
+
+
 const createCourse = async (data: userData): Promise<user> => {
+
+
     const response = await axios.post('https://portal.bluemarkcollege.com/student/register', data);
     return response.data;
   };
@@ -52,12 +64,12 @@ const createCourse = async (data: userData): Promise<user> => {
     try {
       const response = await axios.post('https://portal.bluemarkcollege.com/apply/buy-course', data)
       
-
+      
       return response.data
 
     } catch (error) {
 
-      return error
+      return error.response.data
 
     }
   }
