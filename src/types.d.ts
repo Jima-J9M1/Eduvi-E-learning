@@ -3,7 +3,6 @@ interface AvaterProps {
     img?:string
 }
 
-
 export interface CourseCardProps {
   average_rating:number,
   category : string,
@@ -19,6 +18,7 @@ export interface CourseCardProps {
   video_count:number,
   }
   
+
   interface QuoteProps {
     title?: string;
     quote?: string;
@@ -36,8 +36,6 @@ export interface CourseCardProps {
       email: string;
       firstName:string,
       lastName:string;
-      email:string;
-      password:string;
       phone_number:string;
       country:string;
       city:string;

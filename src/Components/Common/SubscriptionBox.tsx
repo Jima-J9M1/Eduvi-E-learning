@@ -1,5 +1,5 @@
 import React from 'react';
-import {useForm,SubmitHandler} from 'react-hook-form';
+import {useForm,SubmitHandler, Resolver} from 'react-hook-form';
 import SubscribeButton from '../Buttons/SubscribeButton';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -18,11 +18,11 @@ const schema = yup.object({
 
 const SubscriptionBox: React.FC = () => {
 
-    const {register,handleSubmit, formState: {errors},} = useForm<FormValues>(
-      { resolver: yupResolver(schema),}
-    );
+    const {register,handleSubmit, formState: {errors},} = useForm<FormValues>({ 
+        resolver: yupResolver(schema) as Resolver<FormValues>,
+      });
    
-    const onSubmit: SubmitHandler<FormValues> = (data:{data:FormValues}) => console.log(data);
+    const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
    
  
     return (
