@@ -43,9 +43,9 @@ const createCourse = async (data: userData): Promise<user> => {
   };
   
   const loginUser = async (data: userLogin): Promise<user> => {
-    const response = await axios.post('https://portal.bluemarkcollege.com/student/login', data);
-    console.log(response)
-    return response.data;
+    const response = await axios.post('https://portal.bluemarkcollege.com/student/login', data).
+    then((res)=>res.data).catch((err)=>err)
+    return response
   };
 
   const buyCourse = async (data:byeCoursetype) => {

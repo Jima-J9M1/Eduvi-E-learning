@@ -9,13 +9,18 @@ import EmailField from "../Common/Forms/EmailField";
 import PasswordField from "../Common/Forms/PasswordField";
 import { useLoginCourseMutation, userLogin } from "../../Api/user-api";
 import { authenticate } from "../../Api/authenticate";
-import { Link } from "react-router-dom";
+import { Link,} from "react-router-dom";
+import {Toaster,toast} from "react-hot-toast"
+
+
+ 
+
+
 
 const SignupForm = () => {
 
   const loginCourseMutation = useLoginCourseMutation()
   
-
   const schema = yup
     .object({
       email: yup.string().email().required(),
@@ -42,11 +47,11 @@ const SignupForm = () => {
     //  }
 
      if(response.token){
-
       authenticate(response?.token, response?.student)
+      return window.location.href =("/")
 
     }else{
-      
+        toast.error("some thing is wrong please try a gain");
       console.log("Error", response.error)
 
     }
@@ -106,6 +111,10 @@ const SignupForm = () => {
           Sign up
         </span>{" "}
       </p>
+      <Toaster
+       position="bottom-right"
+       reverseOrder={false}
+      />
     </div>
   );
 };

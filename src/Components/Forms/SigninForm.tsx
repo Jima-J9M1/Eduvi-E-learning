@@ -10,6 +10,8 @@ import PasswordField from "../Common/Forms/PasswordField";
 import {  useModal } from "../../Utils/Contexts/ModalContext";
 import { useCreateCourseMutation } from "../../Api/user-api";
 import { authenticate } from "../../Api/authenticate";
+import {Toaster,toast} from "react-hot-toast"
+
 // import { useState } from "react";
 
 
@@ -46,7 +48,7 @@ type userData = {
   profile_img:string
 }
 const SigninForm = () => {
-  
+ 
   const createCourseMutation = useCreateCourseMutation()
   
   // const [modalOpen, isModalOpen] = useState(false)
@@ -86,8 +88,9 @@ const SigninForm = () => {
       if(response.token){
 
         authenticate(response?.token, response?.student)
+        return window.location.href =("/")
       }else{
-        
+        toast.error("some thing is wrong please try a gain");
         console.log("Error", response.error)
 
       }
@@ -172,6 +175,10 @@ const SigninForm = () => {
           Sign in
         </span>{" "}
       </p>
+      <Toaster
+       position="top-center"
+       reverseOrder={false}
+      />
     </div>
   );
 };

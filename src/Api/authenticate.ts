@@ -32,6 +32,7 @@ export const authenticate = (token: string, userData: user["student"]) => {
   export const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
+    window.location.href =("/")
   };
 
 
