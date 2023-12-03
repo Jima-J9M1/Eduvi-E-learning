@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import vite from "../../assets/images/Image (1).png";
 import CourseVideoSectionCard from "./Cards/CourseVideoSectionCard";
 
-const CoursePlaylists = ({disable}: { disable: boolean }) => {
+const CoursePlaylists = (disable:boolean) => {
   const data = {
     name: "jima"
   }

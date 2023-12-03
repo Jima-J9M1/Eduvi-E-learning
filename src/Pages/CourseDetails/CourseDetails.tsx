@@ -20,7 +20,6 @@ import { useBuyCourseMutation } from "../../Api/user-api";
 const CourseDetailPage = () => {
   const { state } = useLocation();
   const [disable] = useState<boolean>(true)
-  const navigate = useNavigate();
   const data = state.data
   console.log(data)
   const buyCourseMutation = useBuyCourseMutation()

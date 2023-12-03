@@ -7,7 +7,6 @@ import AuthModal from "../Modals/AuthModal";
 import image from '../../assets/logo/mss 1.png'
 import '../../styles/global.css';
 import ToggleButton from "../Forms/toggleButton";
-import { isAuthenticated, logout } from "../../Api/authenticate";
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
