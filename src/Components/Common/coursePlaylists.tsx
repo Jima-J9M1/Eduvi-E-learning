@@ -2,7 +2,13 @@ import { NavLink } from "react-router-dom";
 import vite from "../../assets/images/Image (1).png";
 import CourseVideoSectionCard from "./Cards/CourseVideoSectionCard";
 
-const CoursePlaylists = (disable:boolean) => {
+
+interface CoursePlaylistProps {
+  disable:boolean;
+}
+
+
+const CoursePlaylists: React.FC<CoursePlaylistProps> = (disable) => {
   const data = {
     name: "jima"
   }

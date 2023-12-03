@@ -15,7 +15,7 @@ const CourseDescriptionContainer = () => {
           </div>
         </div>
         <div className=" col-span-5">
-          <CoursePlaylists />
+          <CoursePlaylists disable={false} />
         </div>
       </div>
     </div>

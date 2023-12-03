@@ -11,7 +11,7 @@ import Footer from "../../Components/Common/Footer";
 import CourseDetail from "../../Components/Course/CourseDetail";
 import AdsCard from "../../Components/Course/AdsCard";
 import image from "../../assets/images/Image (4).png";
-import {  useLocation, useNavigate } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import { useState } from "react";
 import '../../styles/global.css'
 import { isAuthenticated, returnTokenData } from "../../Api/authenticate";

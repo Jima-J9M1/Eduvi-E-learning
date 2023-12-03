@@ -15,27 +15,7 @@ const CourseListed: React.FC = () => {
   const {data:courseData} = ListCourses();
   const courseWithCategory = fetchCoursesWithCategory("IDS")
   console.log(courseWithCategory);
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // const courses: Course[] = [
-  //   { id: 1, courseType: "High School" },
-  //   { id: 5, courseType: "Engineering", image: a },
-  //   { id: 6, courseType: "College", image: b },
-  //   { id: 7, courseType: "College", image: c },
-  //   { id: 8, courseType: "High School", image: d },
-  //   { id: 9, courseType: "Computer", image: e },
-  //   { id: 10, courseType: "Science", image: f },
-  //   { id: 11, courseType: "College", image: a },
-  //   { id: 12, courseType: "Kindergarten", image: image2 },
-  //   { id: 4, courseType: "Science", image: a },
-  //   { id: 2, courseType: "Computer", image: a },
-  //   { id: 3, courseType: "Kindergarten", image: image3 },
-  //   { id: 13, courseType: "High School" },
-  //   { id: 14, courseType: "Engineering", image: b },
-  //   { id: 15, courseType: "College", image: c },
-  //   { id: 16, courseType: "Computer" },
-  //   { id: 17, courseType: "Computer", image: d },
-  //   { id: 18, courseType: "Science", image: f },
-  // ];
+
 
   const [selectedCourseType, setSelectedCourseType] = useState<string>('All Courses');
   const [currentPage, setCurrentPage] = useState<number>(1);
