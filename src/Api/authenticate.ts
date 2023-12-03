@@ -1,3 +1,5 @@
+// import jwt from 'jsonwebtoken'
+import { jwtDecode } from 'jwt-decode';
 
 export type user = {
   token:string,
@@ -17,7 +19,8 @@ export const authenticate = (token: string, userData: user["student"]) => {
   
   export const isAuthenticated = () => {
     const token = localStorage.getItem('token');
-    console.log(token, !!token)
+    console.log(typeof(token))
+    console.log("token", token, !!token)
     return !!token;
   };
   
@@ -30,3 +33,12 @@ export const authenticate = (token: string, userData: user["student"]) => {
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
   };
+
+
+export const returnTokenData = () => {
+    const token = localStorage.getItem('token');
+    
+    const decodeData:{userId:number, iat:number} = jwtDecode(String(token));
+    
+    return decodeData.userId
+}

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useMutation } from "@tanstack/react-query"
 import axios from "axios"
 import { user } from "./authenticate"
@@ -30,6 +31,12 @@ export type userLogin = {
   password:string,
 }
 
+export type byeCoursetype = {
+  studentId:string,
+  courseId: string,
+  portfolio: string
+}
+
 const createCourse = async (data: userData): Promise<user> => {
     const response = await axios.post('https://portal.bluemarkcollege.com/student/register', data);
     return response.data;
@@ -40,12 +47,28 @@ const createCourse = async (data: userData): Promise<user> => {
     console.log(response)
     return response.data;
   };
+
+  const buyCourse = async (data:byeCoursetype) => {
+    try {
+      const response = await axios.post('https://portal.bluemarkcollege.com/apply/buy-course', data)
+      
+
+      return response.data
+
+    } catch (error) {
+
+      return error
+
+    }
+  }
   
   export const useCreateCourseMutation = () => {
     return useMutation((data: userData) => createCourse(data));
   };
 
-
+  export const useBuyCourseMutation = () =>{
+    return useMutation((data: byeCoursetype) => buyCourse(data));
+  }
   export const useLoginCourseMutation = () => {
     return useMutation((data: userLogin) => loginUser(data));
   };
