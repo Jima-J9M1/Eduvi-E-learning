@@ -12,16 +12,6 @@ const ButtonList: React.FC<ButtonListProps> = ({ handleButtonClick, activeButton
 
   const category = ListCategories().data?.data.categories;
 
-  const names = [
-    "All Courses",
-    "Kindergarten",
-    "High School",
-    "College",
-    "Computer",
-    "Science",
-    "Engineering",
-    "More Courses"
-  ];
 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
   

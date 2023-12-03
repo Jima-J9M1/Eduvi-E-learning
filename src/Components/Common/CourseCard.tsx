@@ -3,7 +3,6 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import React from 'react';
 import { CourseCardProps } from '../../types';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 
 const CourseCard: React.FC<CourseCardProps> = ({

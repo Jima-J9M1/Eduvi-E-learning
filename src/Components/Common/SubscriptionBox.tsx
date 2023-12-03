@@ -22,7 +22,7 @@ const SubscriptionBox: React.FC = () => {
       { resolver: yupResolver(schema),}
     );
    
-    const onSubmit: SubmitHandler<FormValues> = data => console.log(data);
+    const onSubmit: SubmitHandler<FormValues> = (data:{data:FormValues}) => console.log(data);
    
  
     return (

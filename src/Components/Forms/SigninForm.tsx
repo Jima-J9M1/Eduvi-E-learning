@@ -45,18 +45,7 @@ type userData = {
   linkdln_link:string,
   profile_img:string
 }
-const SigninForm = (
-  {
-    open,
-    onClose,
-  }: {
-    open: boolean;
-    onClose: (
-      event: React.MouseEvent,
-      reason: "backdropClick" | "escapeKeyDown"| "userClick"
-    ) => void;
-  }
-) => {
+const SigninForm = () => {
   
   const createCourseMutation = useCreateCourseMutation()
   
@@ -91,7 +80,7 @@ const SigninForm = (
   });
 
 
-  const onSubmit = async (event, data: userData) => {
+  const onSubmit = async (data: userData) => {
       const response = await createCourseMutation.mutateAsync(data);
 
       if(response.token){
