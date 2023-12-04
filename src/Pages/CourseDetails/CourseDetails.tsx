@@ -16,27 +16,20 @@ import { useEffect, useState } from "react";
 import '../../styles/global.css'
 import { getCurrentCourse, isAuthenticated, returnTokenData, setCurrentCourse } from "../../Api/authenticate";
 import { useBuyCourseMutation } from "../../Api/user-api";
-import { CourseCardProps } from "../../types";
+// import { CourseCardProps } from "../../types";
 // import { CourseCardProps } from "../../types";
 
 const CourseDetailPage = () => {
   const { state } = useLocation();
   const [disable] = useState<boolean>(true);
-  const [data, setData] = useState<CourseCardProps>()
+  // const [data, setData] = useState<CourseCardProps>()
   const [error, setError] = useState<string>('')
   
-  if(state){
-   setData(state.data)
-  }else{
-    const val = getCurrentCourse()
-   setData(val)
-  }
+  const val = getCurrentCourse()
+  const data = state?.data ||  val
 
   console.log(data)
   const buyCourseMutation = useBuyCourseMutation()
-
- 
- 
 
 
 
@@ -69,8 +62,9 @@ const CourseDetailPage = () => {
 
 
         // navigate('../courses',{replace:true})
-
-        setCurrentCourse(data)
+        
+        console.log("----------------------------------------", state.data, "what")
+        await setCurrentCourse(data)
         window.location.replace(response.paymentUrl);
         // return <Navigate to={response.paymentUrl} />
        }else{
@@ -85,7 +79,7 @@ const CourseDetailPage = () => {
     }, 5000);
   }, [error])
   return (
-    <Wrapper>
+    data && <Wrapper>
       <Nav />
       <div className="flex justify-center mt-3">
       <span className={error ? "bg-red-500 p-3 rounded-lg text-white": ''}>{error}</span>
