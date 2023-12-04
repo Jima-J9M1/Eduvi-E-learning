@@ -25,6 +25,11 @@ export type userData = {
     profile_img:string
   }
 
+  type accessType = {
+    studentId:number,
+    courseId:number
+  }
+
 
 export type userLogin = {
   email:string, 
@@ -73,6 +78,18 @@ const createCourse = async (data: userData): Promise<user> => {
 
     }
   }
+
+  export const courseAccess = async (data: accessType) => {
+    try{
+      const response = await axios.post('https://portal.bluemarkcollege.com/apply/check-course-access', data)
+
+      return response.data
+    }catch(error) {
+
+      return error.response.data
+
+    }
+  }
   
   export const useCreateCourseMutation = () => {
     return useMutation((data: userData) => createCourse(data));
@@ -84,5 +101,10 @@ const createCourse = async (data: userData): Promise<user> => {
   export const useLoginCourseMutation = () => {
     return useMutation((data: userLogin) => loginUser(data));
   };
+
+
+  // export const useCourseAccess = () => {
+  //   return useMutation((data:accessType) => courseAccess(data))
+  // }
   
   
