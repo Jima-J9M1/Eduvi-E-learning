@@ -1,5 +1,6 @@
 // import jwt from 'jsonwebtoken'
 import { jwtDecode } from 'jwt-decode';
+import { CourseCardProps } from '../types';
 
 export type user = {
   token:string,
@@ -41,4 +42,20 @@ export const returnTokenData = () => {
     const decodeData:{userId:number, iat:number} = jwtDecode(String(token));
     
     return decodeData.userId
+}
+
+export const getCurrentCourse = () => {
+  const data = localStorage.getItem('currentCourse');
+  
+  if(data){
+    return JSON.parse(data)
+  }else{
+
+    return null
+  }
+
+}
+
+export const setCurrentCourse = (currentData:CourseCardProps) => {
+  localStorage.setItem('currentData', JSON.stringify(currentData))
 }
