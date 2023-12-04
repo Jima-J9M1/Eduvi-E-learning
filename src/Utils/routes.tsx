@@ -1,19 +1,22 @@
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
-import Home from "../Pages/Home";
-import Error404 from "../Pages/ErrorPages/404";
-
+import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import AllCourses from "../Pages/AllCourses/AllCourses";
+import CoursePage from "../Pages/CourseDetails/CourseDetails";
+import NotFoundPage from "../Pages/ErrorPages/404";
+import Home from "../Pages/Home/Home";
+import ApplicationForm from "../Pages/ApplicantForm/ApplicationForm";
 //Add your routes here
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route index element={<Home />} />
-      <Route path="*" element={<Error404 />} />
-    </Route>
+      <Route path="/" element={<Home />}/>
+      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/Courses" element={<AllCourses />} />
+      <Route path="/courses/:id" element={<CoursePage />} />    
+       <Route path="/Aboutus" element={<Home />}/>
+       <Route path="/Contact" element={<Home />}/>
+       <Route path="/application/" element= {<ApplicationForm />} />
+    </Route >
   )
 );
 

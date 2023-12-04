@@ -3,14 +3,23 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from "./link"
-import  Avatar  from "./avater";
 import MenuIcon from '@mui/icons-material/Menu';
 import Selecter from "./selecte"
-
+import { ModalProvider } from '../../Utils/Contexts/ModalContext';
+import AuthModal from '../Modals/AuthModal';
+import '../../styles/global.css';
+import ToggleButton from '../Forms/toggleButton';
 
 
 
 export default function BasicPopover() {
+  
+  const [modalOpen, isModalOpen] = React.useState(false)
+
+  const openModalMethod = ()=>{
+     isModalOpen(!modalOpen)
+  }
+
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,9 +32,10 @@ export default function BasicPopover() {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-
+  
   return (
     <div>
+       <ModalProvider>
       <Button aria-describedby={id} variant="text" onClick={handleClick}>
         <MenuIcon fontSize='large' />
       </Button>
@@ -43,10 +53,17 @@ export default function BasicPopover() {
         <Typography sx={{ p: 2 }}><Link text="Courses" url="/Courses" /></Typography>
         <Typography sx={{ p: 2 }}><Selecter /></Typography>
         <Typography sx={{ p: 2 }}><Link text="About us" url="/Aboutus" /></Typography>
-        <Typography sx={{ p: 2 }}><Link text="About us" url="/Aboutus" /></Typography>
-        <Typography sx={{ p: 2 }}><Link text="Contact" url="./Contact" /></Typography>
-        <Typography sx={{ p: 2 }}> <Avatar /></Typography>
+        <Typography onClick={openModalMethod} sx={{ p: 2 }}><Link text="Contact" url="./Contact" /></Typography>
+        <Typography onClick={openModalMethod} sx={{ p: 0.5, m:1, ml:3 }} className=' m-auto p-24'>  
+        
+           <ToggleButton onClose={isModalOpen}  />
+         
+        </Typography>
       </Popover>
+        <AuthModal open={modalOpen} onClose={()=>isModalOpen(!modalOpen)}   />
+      </ModalProvider>
+    
+    
     </div>
   );
 }

@@ -1,5 +1,16 @@
 @import "@fontsource-variable/open-sans";
+@import "@splidejs/react-splide/css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@layer base {
+  body {
+    font-family: "Open Sans Variable", sans-serif;
+  }
+}
+
+
