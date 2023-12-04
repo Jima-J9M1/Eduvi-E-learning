@@ -14,15 +14,24 @@ import image from "../../assets/images/Image (4).png";
 import {  useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../../styles/global.css'
-import { isAuthenticated, returnTokenData } from "../../Api/authenticate";
+import { getCurrentCourse, isAuthenticated, returnTokenData, setCurrentCourse } from "../../Api/authenticate";
 import { useBuyCourseMutation } from "../../Api/user-api";
+import { CourseCardProps } from "../../types";
+// import { CourseCardProps } from "../../types";
 
 const CourseDetailPage = () => {
   const { state } = useLocation();
-  const [disable] = useState<boolean>(true)
+  const [disable] = useState<boolean>(true);
+  const [data, setData] = useState<CourseCardProps>()
   const [error, setError] = useState<string>('')
+  
+  if(state){
+   setData(state.data)
+  }else{
+    const val = getCurrentCourse()
+   setData(val)
+  }
 
-  const data = state.data
   console.log(data)
   const buyCourseMutation = useBuyCourseMutation()
 
@@ -57,8 +66,12 @@ const CourseDetailPage = () => {
         console.log("response values" ,response.paymentUrl)
         
         console.log("type", typeof(response.paymentUrl))
+
+
         // navigate('../courses',{replace:true})
-        // window.location.replace(response.paymentUrl);
+
+        setCurrentCourse(data)
+        window.location.replace(response.paymentUrl);
         // return <Navigate to={response.paymentUrl} />
        }else{
         alert("UnAhuthorized User")
