@@ -56,6 +56,11 @@ export const getCurrentCourse = () => {
 
 }
 
-export const setCurrentCourse = (currentData:CourseCardProps) => {
+export const setCurrentCourse = async (currentData:CourseCardProps) => {
+  console.log(currentData)
   localStorage.setItem('currentData', JSON.stringify(currentData))
+}
+
+export const removeCurrentCourse = () => {
+  localStorage.removeItem('currentData');
 }
