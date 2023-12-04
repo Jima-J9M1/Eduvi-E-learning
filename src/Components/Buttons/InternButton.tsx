@@ -15,8 +15,8 @@ const InternButton: React.FC<ButtonProps> = ({text,onClick}) => {
       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       paddingLeft: 0, // Equivalent to px-3 in Tailwind CSS
       paddingRight: 0, // Equivalent to px-3 in Tailwind CSS
-      paddingTop: 2, // Equivalent to py-3 in Tailwind CSS
-      paddingBottom: 2, // Equivalent to py-3 in Tailwind CSS
+      paddingTop: 0, // Equivalent to py-3 in Tailwind CSS
+      paddingBottom: 0, // Equivalent to py-3 in Tailwind CSS
       fontFamily: 'Inter',
         fontSize: 16,
         fontWeight: 500,
@@ -24,7 +24,7 @@ const InternButton: React.FC<ButtonProps> = ({text,onClick}) => {
         letterSpacing: '0em',
         textAlign: 'center',
         width: '200px',
-        height: '52.97043228149414px',
+        height: '45px',
         // top: '632px',
         // left: '140px',
     }}>

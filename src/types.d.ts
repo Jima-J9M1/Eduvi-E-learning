@@ -17,6 +17,21 @@ export interface CourseCardProps {
   thumbnail:string,
   video_count:number,
   }
+
+
+  export interface CourseCardDetailProps {
+    rating:number,
+    category_id : number,
+    description : string,
+    id:number,
+    introduction_video:string,
+    name:string,
+    price:string,
+    target_audience:string,
+    img:string,
+    videos:[]
+    }
+    
   
 
   interface QuoteProps {
