@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 
 
 
-const SimilarCourses = () => {
+const SimilarCourses = (courseId:number) => {
   return (
     <div >
     <p className="text-3xl font-bold pb-5  ml-10">
     <Link 
             to="/application"
+            state={{data:courseId}}
            ><InternButton text="Apply to internship" />
            </Link>
         <p className='mt-3'> Similar Courses</p>

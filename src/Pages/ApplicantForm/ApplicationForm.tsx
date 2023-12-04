@@ -2,19 +2,52 @@ import { useForm } from 'react-hook-form';
 import Nav from '../../Components/Common/Nav';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import {  useLocation,} from "react-router-dom";
+import { isAuthenticated, returnTokenData } from "../../Api/authenticate";
+import { useState,useEffect } from 'react';
+import CoustemCreateap from "../../Api/internApllication"
+import {Toaster,toast} from "react-hot-toast"
+import { useNavigate,} from "react-router-dom";
     export type Application = {
-        resume:string,
+        resume:File,
         essay:string,
         portfolio:string | null | undefined
     }
 
 export default function ApplicationForm() {
+    const navigate = useNavigate();
+    const {pathname}=useLocation()
+    const { state} = useLocation();
+    const [userId,setUserid]=useState("")
+    const [data,setData]=useState({})
+   useEffect(()=>{
+    if(isAuthenticated()){
+        const U_Id = String(returnTokenData())
+        setUserid(U_Id)
+       }else{
+    navigate(`/`)
+    alert("UnAhuthorized User   please Login first")
+       }
+   },[])
+   
+   const props ={
+    onSuccess:(data)=>{
+        console.log("sey   a "+  data);
+        
+        toast.success("your application is successfull");  
+    },
+    onError:(error)=>{
+        console.log("sey   a      "+error);
+        
+        toast.error("some thing is wrong please try a gain");  
+    },
+    data:data,
+  }
+const{refetch,}=CoustemCreateap(props)
 
     const schema = yup
     .object().shape({
         essay:yup.string().required(),
-        resume:yup.string().url().required(),
         portfolio:yup.string().nullable().notRequired().when('portfolio', {
             is: (value:string) => value?.length,
             then: (rule) => rule.url(),
@@ -36,8 +69,15 @@ export default function ApplicationForm() {
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = (data:any) => console.log(data)
-
+    const onSubmit = (data:Application) =>{
+           const dat={
+            studentId:String(userId)  ,
+            courseId:String(state.data.courseId)   
+          } 
+       const applicationdata =Object.assign(dat,data)
+       setData(applicationdata)
+       return refetch()
+    } 
   return (
     <div>
     <Nav />
@@ -47,10 +87,11 @@ export default function ApplicationForm() {
         <div className='mt-4'>
             <label className="block mb-2 text-sm font-medium text-gray-900 text-[20px]" htmlFor="user_avatar">Resume</label>
             <input 
-            type="text" 
+            type="file" 
+            accept=".pdf"
             id="resume"
             {...register('resume')} 
-            className="outline-0 shadow-sm  text-sm rounded-lg border border-green-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Resume Link"></input>
+            className="outline-0 shadow-sm text-sm rounded-lg border border-green-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Resume Link"></input>
             <span className="text-red-500">{errors.resume?.message}</span>
         </div>
 
@@ -77,6 +118,10 @@ export default function ApplicationForm() {
             className="w-1/2 sm:w-1/3  text-white bg-green-700 hover:bg-green-800 
             font-medium rounded-lg text-sm sm:px-16 py-2.5  dark:bg-green-600 dark:hover:bg-green-700 ">Apply</button>
         </div>
+        <Toaster
+       position="top-center"
+       reverseOrder={false}
+      />
         </form>
 
     

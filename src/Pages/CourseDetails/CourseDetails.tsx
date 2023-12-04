@@ -11,19 +11,17 @@ import Footer from "../../Components/Common/Footer";
 import CourseDetail from "../../Components/Course/CourseDetail";
 import AdsCard from "../../Components/Course/AdsCard";
 import image from "../../assets/images/Image (4).png";
-import {  useLocation, useNavigate } from "react-router-dom";
+import {  useLocation,} from "react-router-dom";
 import { useState } from "react";
 import '../../styles/global.css'
 import { isAuthenticated, returnTokenData } from "../../Api/authenticate";
 import { useBuyCourseMutation } from "../../Api/user-api";
 
 const CourseDetailPage = () => {
-  const { state } = useLocation();
+  const { state} = useLocation();
   const [disable] = useState<boolean>(true)
-  const data = state.data
-  console.log(data)
+  const data=state.data
   const buyCourseMutation = useBuyCourseMutation()
-
   const handleSubmit = async () => {
        if(isAuthenticated()){
         const U_Id = String(returnTokenData())
@@ -89,7 +87,7 @@ const CourseDetailPage = () => {
           <AdsCard image={image} adName="adds" />
         </Grid>
       </Grid>
-      <SimilarCourses />
+      <SimilarCourses  courseId={data.id} />
       <SubscriptionBox />
       <Footer />
     </Wrapper>
