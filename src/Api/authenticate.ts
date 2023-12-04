@@ -57,10 +57,19 @@ export const getCurrentCourse = () => {
 }
 
 export const setCurrentCourse = async (currentData:CourseCardDetailProps) => {
-  console.log(currentData)
   localStorage.setItem('currentData', JSON.stringify(currentData))
 }
 
 export const removeCurrentCourse = () => {
   localStorage.removeItem('currentData');
 }
+
+
+// export const CourseAccessResponse  = async (data:{studentId:number, courseId:number}) => {
+//     const CourseAccess = useCourseAccess()
+    
+//     const response = await CourseAccess.mutateAsync(data);
+    
+//     console.log("---------------------", response)
+//     return response
+// }

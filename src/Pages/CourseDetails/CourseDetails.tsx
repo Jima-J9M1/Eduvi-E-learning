@@ -14,7 +14,7 @@ import {  Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../../styles/global.css'
 import { getCurrentCourse, isAuthenticated, returnTokenData, setCurrentCourse } from "../../Api/authenticate";
-import { useBuyCourseMutation } from "../../Api/user-api";
+import { courseAccess, useBuyCourseMutation } from "../../Api/user-api";
 import { CourseDetailData } from "../../Api/courselist-api";
 import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSectionCard";
 import InternButton from "../../Components/Buttons/InternButton";
@@ -22,9 +22,39 @@ import InternButton from "../../Components/Buttons/InternButton";
 // import { CourseCardProps } from "../../types";
 
 const CourseDetailPage = () => {
+  
+  const getId = returnTokenData()
+
+  if(!getId){
+    alert("unAuthorized")
+  }
+  
+  
+  console.log(getId)
   const { state } = useLocation();
-  const [disable] = useState<boolean>(false);
-  // const [data, setData] = useState<CourseCardProps>()
+  const [disable,setDisable] = useState<boolean>(true);
+
+  const courseAccessDatas = {
+    studentId: getId,
+    courseId: state?.data.id
+  }
+  
+  useEffect( () =>{
+      courseAccess(courseAccessDatas).then(
+        (res) => {
+          if(res.courseAccess){
+            setDisable(false)
+          }else{
+            setDisable(true)
+          }
+        }
+      ).catch(err => console.log(err))
+
+  }, [])
+
+  // if(AccessCourse.courseAccess){
+  //   setDisable
+  // }
   const [error, setError] = useState<string>('')
   const val = getCurrentCourse()
   const courseData = state?.data ||  val
@@ -46,7 +76,7 @@ const CourseDetailPage = () => {
           portfolio:"https://example.com/portfolio"
         }
         
-
+        console.log(purchaseData)
         const response = await buyCourseMutation.mutateAsync(purchaseData)
         if(response.error){
           setError(response.error)
@@ -55,7 +85,7 @@ const CourseDetailPage = () => {
 
 
         await setCurrentCourse(data)
-        window.location.replace(response.paymentUrl);
+        // window.location.replace(response.paymentUrl);
         // return <Navigate to={response.paymentUrl} />
        }else{
         alert("UnAhuthorized User")
