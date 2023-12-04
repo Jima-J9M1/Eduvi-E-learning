@@ -1,6 +1,6 @@
 // import jwt from 'jsonwebtoken'
 import { jwtDecode } from 'jwt-decode';
-import { CourseCardProps } from '../types';
+import { CourseCardDetailProps } from '../types';
 
 export type user = {
   token:string,
@@ -56,7 +56,7 @@ export const getCurrentCourse = () => {
 
 }
 
-export const setCurrentCourse = async (currentData:CourseCardProps) => {
+export const setCurrentCourse = async (currentData:CourseCardDetailProps) => {
   console.log(currentData)
   localStorage.setItem('currentData', JSON.stringify(currentData))
 }
