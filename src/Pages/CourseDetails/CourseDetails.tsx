@@ -14,27 +14,49 @@ import {  Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../../styles/global.css'
 import { getCurrentCourse, isAuthenticated, returnTokenData, setCurrentCourse } from "../../Api/authenticate";
-import { useBuyCourseMutation } from "../../Api/user-api";
+import { courseAccess, useBuyCourseMutation } from "../../Api/user-api";
 import { CourseDetailData } from "../../Api/courselist-api";
 import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSectionCard";
 import InternButton from "../../Components/Buttons/InternButton";
-// import { CourseCardProps } from "../../types";
-// import { CourseCardProps } from "../../types";
 
-const CourseDetailPage = () => {
+
+const CourseDetailPage =  () => {
+    
+  const getId = returnTokenData()
+  
+  
+  
   const { state } = useLocation();
-  const [disable] = useState<boolean>(false);
-  // const [data, setData] = useState<CourseCardProps>()
+  const [disable,setDisable] = useState<boolean>(true);
+
+  const courseAccessDatas = {
+    studentId: getId,
+    courseId: state?.data.id
+  }
+  
+  useEffect( () =>{
+      courseAccess(courseAccessDatas).then(
+        (res) => {
+          if(res.courseAccess){
+            setDisable(false)
+          }else{
+            setDisable(true)
+          }
+        }
+      ).catch(err => console.log(err))
+
+  }, [])
+
+
+
   const [error, setError] = useState<string>('')
   const val = getCurrentCourse()
   const courseData = state?.data ||  val
   const [video, setVideo] = useState(courseData.introduction_video)
   
-  console.log(video)
   const buyCourseMutation = useBuyCourseMutation()
   const { data} = CourseDetailData(courseData.id)
 
-  console.log(data)
 
   const handleSubmit = async () => {
        if(isAuthenticated()){
@@ -46,17 +68,19 @@ const CourseDetailPage = () => {
           portfolio:"https://example.com/portfolio"
         }
         
-
         const response = await buyCourseMutation.mutateAsync(purchaseData)
         if(response.error){
           setError(response.error)
+        }else{
+          
+          await setCurrentCourse(data)
+          console.log(response)
+          window.location.replace(response.paymentUrl);
         }
         
 
 
-        await setCurrentCourse(data)
-        window.location.replace(response.paymentUrl);
-        // return <Navigate to={response.paymentUrl} />
+        
        }else{
         alert("UnAhuthorized User")
        }
@@ -66,7 +90,7 @@ const CourseDetailPage = () => {
   useEffect(()=>{
     setTimeout(() => {
       setError('')
-    }, 5000);
+    }, 10000);
   }, [error])
   return (
     data && <Wrapper>
@@ -117,7 +141,7 @@ const CourseDetailPage = () => {
 
 
           </Grid>
-          <h2 className="text-lg text-blue-400">Maths for Standard 3 student | Episode 3 </h2>
+          <h2 className="text-lg text-blue-400">{data.name}  </h2>
         </Grid>
 
       </HeaderContainer>

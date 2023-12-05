@@ -20,8 +20,6 @@ export const authenticate = (token: string, userData: user["student"]) => {
   
   export const isAuthenticated = () => {
     const token = localStorage.getItem('token');
-    console.log(typeof(token))
-    console.log("token", token, !!token)
     return !!token;
   };
   
@@ -57,10 +55,10 @@ export const getCurrentCourse = () => {
 }
 
 export const setCurrentCourse = async (currentData:CourseCardDetailProps) => {
-  console.log(currentData)
   localStorage.setItem('currentData', JSON.stringify(currentData))
 }
 
 export const removeCurrentCourse = () => {
   localStorage.removeItem('currentData');
 }
+
