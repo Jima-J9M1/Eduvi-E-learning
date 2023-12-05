@@ -13,15 +13,16 @@ import image from "../../assets/images/Image (4).png";
 import {  Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../../styles/global.css'
-import { getCurrentCourse, isAuthenticated, returnTokenData, setCurrentCourse } from "../../Api/authenticate";
+import { authenticate, getCurrentCourse, returnTokenData } from "../../Api/authenticate";
 import { courseAccess, useBuyCourseMutation } from "../../Api/user-api";
 import { CourseDetailData } from "../../Api/courselist-api";
 import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSectionCard";
 import InternButton from "../../Components/Buttons/InternButton";
+import useAuth from "../../hooks/useAuth";
 
 
 const CourseDetailPage =  () => {
-    
+  
   const getId = returnTokenData()
   
   
@@ -48,7 +49,7 @@ const CourseDetailPage =  () => {
   }, [])
 
 
-
+  const {auth} = useAuth()
   const [error, setError] = useState<string>('')
   const val = getCurrentCourse()
   const courseData = state?.data ||  val
@@ -59,8 +60,9 @@ const CourseDetailPage =  () => {
 
 
   const handleSubmit = async () => {
-       if(isAuthenticated()){
+       if(auth){
         const U_Id = String(returnTokenData())
+
         const purchaseData = 
         {
           studentId:U_Id,
@@ -71,10 +73,12 @@ const CourseDetailPage =  () => {
         const response = await buyCourseMutation.mutateAsync(purchaseData)
         if(response.error){
           setError(response.error)
+
+          console.log("error")
         }else{
           
-          await setCurrentCourse(data)
-          console.log(response)
+          
+          authenticate(auth)
           window.location.replace(response.paymentUrl);
         }
         

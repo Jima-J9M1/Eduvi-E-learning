@@ -8,7 +8,6 @@ import LabeledCheckbox from "../Common/Checkbox/LabeledCheckbox";
 import EmailField from "../Common/Forms/EmailField";
 import PasswordField from "../Common/Forms/PasswordField";
 import { useLoginCourseMutation, userLogin } from "../../Api/user-api";
-import { authenticate } from "../../Api/authenticate";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
@@ -44,7 +43,6 @@ const SignupForm = () => {
 
      if(response.token){
 
-      authenticate(response?.token, response?.student)
       setAuth(response?.token)
 
     }else{
