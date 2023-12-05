@@ -10,6 +10,7 @@ import PasswordField from "../Common/Forms/PasswordField";
 import {  useModal } from "../../Utils/Contexts/ModalContext";
 import { useCreateCourseMutation } from "../../Api/user-api";
 import { authenticate } from "../../Api/authenticate";
+import useAuth from "../../hooks/useAuth";
 // import { useState } from "react";
 
 
@@ -48,7 +49,7 @@ type userData = {
 const SigninForm = () => {
   
   const createCourseMutation = useCreateCourseMutation()
-  
+  const {setAuth } = useAuth()
   // const [modalOpen, isModalOpen] = useState(false)
 
   
@@ -86,6 +87,7 @@ const SigninForm = () => {
       if(response.token){
 
         authenticate(response?.token, response?.student)
+        setAuth(response?.token)
       }else{
         
         console.log("Error", response.error)
