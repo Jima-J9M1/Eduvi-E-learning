@@ -7,10 +7,14 @@ import AuthModal from "../Modals/AuthModal";
 import image from '../../assets/logo/mss 1.png'
 import '../../styles/global.css';
 import ToggleButton from "../Forms/toggleButton";
+import useAuth from "../../hooks/useAuth";
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
+  const { auth } = useAuth()
 
+
+  console.log("autttthhhhhhhhhhhhhhhhhhhhhhhhhh", auth)
   
   return (
     <div className="flex align-middle justify-between px-4 	">

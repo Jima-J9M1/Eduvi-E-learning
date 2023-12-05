@@ -20,8 +20,6 @@ export const authenticate = (token: string, userData: user["student"]) => {
   
   export const isAuthenticated = () => {
     const token = localStorage.getItem('token');
-    console.log(typeof(token))
-    console.log("token", token, !!token)
     return !!token;
   };
   
@@ -64,12 +62,3 @@ export const removeCurrentCourse = () => {
   localStorage.removeItem('currentData');
 }
 
-
-// export const CourseAccessResponse  = async (data:{studentId:number, courseId:number}) => {
-//     const CourseAccess = useCourseAccess()
-    
-//     const response = await CourseAccess.mutateAsync(data);
-    
-//     console.log("---------------------", response)
-//     return response
-// }

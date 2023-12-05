@@ -10,11 +10,12 @@ import PasswordField from "../Common/Forms/PasswordField";
 import { useLoginCourseMutation, userLogin } from "../../Api/user-api";
 import { authenticate } from "../../Api/authenticate";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const SignupForm = () => {
 
   const loginCourseMutation = useLoginCourseMutation()
-  
+  const {setAuth} = useAuth()
 
   const schema = yup
     .object({
@@ -44,6 +45,7 @@ const SignupForm = () => {
      if(response.token){
 
       authenticate(response?.token, response?.student)
+      setAuth(response?.token)
 
     }else{
       

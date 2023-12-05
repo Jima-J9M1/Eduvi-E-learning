@@ -18,19 +18,14 @@ import { courseAccess, useBuyCourseMutation } from "../../Api/user-api";
 import { CourseDetailData } from "../../Api/courselist-api";
 import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSectionCard";
 import InternButton from "../../Components/Buttons/InternButton";
-// import { CourseCardProps } from "../../types";
-// import { CourseCardProps } from "../../types";
 
-const CourseDetailPage = () => {
-  
+
+const CourseDetailPage =  () => {
+    
   const getId = returnTokenData()
-
-  if(!getId){
-    alert("unAuthorized")
-  }
   
   
-  console.log(getId)
+  
   const { state } = useLocation();
   const [disable,setDisable] = useState<boolean>(true);
 
@@ -52,19 +47,16 @@ const CourseDetailPage = () => {
 
   }, [])
 
-  // if(AccessCourse.courseAccess){
-  //   setDisable
-  // }
+
+
   const [error, setError] = useState<string>('')
   const val = getCurrentCourse()
   const courseData = state?.data ||  val
   const [video, setVideo] = useState(courseData.introduction_video)
   
-  console.log(video)
   const buyCourseMutation = useBuyCourseMutation()
   const { data} = CourseDetailData(courseData.id)
 
-  console.log(data)
 
   const handleSubmit = async () => {
        if(isAuthenticated()){
@@ -76,17 +68,19 @@ const CourseDetailPage = () => {
           portfolio:"https://example.com/portfolio"
         }
         
-        console.log(purchaseData)
         const response = await buyCourseMutation.mutateAsync(purchaseData)
         if(response.error){
           setError(response.error)
+        }else{
+          
+          await setCurrentCourse(data)
+          console.log(response)
+          window.location.replace(response.paymentUrl);
         }
         
 
 
-        await setCurrentCourse(data)
-        // window.location.replace(response.paymentUrl);
-        // return <Navigate to={response.paymentUrl} />
+        
        }else{
         alert("UnAhuthorized User")
        }
@@ -96,7 +90,7 @@ const CourseDetailPage = () => {
   useEffect(()=>{
     setTimeout(() => {
       setError('')
-    }, 5000);
+    }, 10000);
   }, [error])
   return (
     data && <Wrapper>
@@ -147,7 +141,7 @@ const CourseDetailPage = () => {
 
 
           </Grid>
-          <h2 className="text-lg text-blue-400">Maths for Standard 3 student | Episode 3 </h2>
+          <h2 className="text-lg text-blue-400">{data.name}  </h2>
         </Grid>
 
       </HeaderContainer>
