@@ -1,6 +1,7 @@
 // import jwt from 'jsonwebtoken'
 import { jwtDecode } from 'jwt-decode';
 import { CourseCardDetailProps } from '../types';
+import useAuth from '../hooks/useAuth';
 
 export type user = {
   token:string,
@@ -13,9 +14,8 @@ export type user = {
   error:string
 }
 
-export const authenticate = (token: string, userData: user["student"]) => {
+export const authenticate = (token: string) => {
     localStorage.setItem('token', token);
-    localStorage.setItem('userData', JSON.stringify(userData));
   };
   
   export const isAuthenticated = () => {
@@ -29,15 +29,21 @@ export const authenticate = (token: string, userData: user["student"]) => {
   };
   
   export const logout = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { setAuth } = useAuth()
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
+    
+    setAuth('')
+
   };
 
 
 export const returnTokenData = () => {
-    const token = localStorage.getItem('token');
     
-    const decodeData:{userId:number, iat:number} = jwtDecode(String(token));
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {auth} = useAuth()
+    const decodeData:{userId:number, iat:number} = jwtDecode(String(auth));
     
     return decodeData.userId
 }
