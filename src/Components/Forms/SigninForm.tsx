@@ -9,7 +9,6 @@ import  { CityField, CountryField, DepartmentField, FirstName, GitLinkField, Las
 import PasswordField from "../Common/Forms/PasswordField";
 import {  useModal } from "../../Utils/Contexts/ModalContext";
 import { useCreateCourseMutation } from "../../Api/user-api";
-import { authenticate } from "../../Api/authenticate";
 import useAuth from "../../hooks/useAuth";
 // import { useState } from "react";
 
@@ -86,7 +85,6 @@ const SigninForm = () => {
 
       if(response.token){
 
-        authenticate(response?.token, response?.student)
         setAuth(response?.token)
       }else{
         
