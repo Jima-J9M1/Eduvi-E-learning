@@ -10,9 +10,17 @@ import PasswordField from "../Common/Forms/PasswordField";
 import { useLoginCourseMutation, userLogin } from "../../Api/user-api";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate, useLocation} from "react-router-dom";
+import {Toaster,toast} from "react-hot-toast"
 
-const SignupForm = () => {
 
+type props={
+  onClose:React.Dispatch<React.SetStateAction<boolean>>
+}
+
+
+const SignupForm = ({onClose}:props) => {
+  const navigate=useNavigate()
   const loginCourseMutation = useLoginCourseMutation()
   const {setAuth} = useAuth()
 
@@ -41,14 +49,14 @@ const SignupForm = () => {
     //  isModalOpen(!modalOpen)
     //  }
 
-     if(response.token){
-
-      setAuth(response?.token)
-
+   if(response.token){
+    setAuth(response?.token)
+    onClose((prev)=>!prev)
+    return navigate("/")
     }else{
-      
+      toast.error("some thing is wrong please try a gain");
       console.log("Error", response.error)
-
+      
     }
 
   }
@@ -96,6 +104,10 @@ const SignupForm = () => {
         >
           Submit
         </Button>
+        <Toaster
+       position="top-center"
+       reverseOrder={false}
+      />
       </form>
       <p className="text-sm italic font-light text-slate-500 self-center">
         Don't have an account?{" "}

@@ -10,6 +10,8 @@ import PasswordField from "../Common/Forms/PasswordField";
 import {  useModal } from "../../Utils/Contexts/ModalContext";
 import { useCreateCourseMutation } from "../../Api/user-api";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate, useLocation} from "react-router-dom";
+import {Toaster,toast} from "react-hot-toast"
 // import { useState } from "react";
 
 
@@ -45,8 +47,11 @@ type userData = {
   linkdln_link:string,
   profile_img:string
 }
-const SigninForm = () => {
-  
+type props={
+  onClose:React.Dispatch<React.SetStateAction<boolean>>
+}
+const SigninForm = ({onClose}:props) => {
+   const navigate=useNavigate()
   const createCourseMutation = useCreateCourseMutation()
   const {setAuth } = useAuth()
   // const [modalOpen, isModalOpen] = useState(false)
@@ -84,12 +89,12 @@ const SigninForm = () => {
       const response = await createCourseMutation.mutateAsync(data);
 
       if(response.token){
-
-        setAuth(response?.token)
+      setAuth(response?.token)
+      onClose((prev)=>!prev)
+       return navigate("/") 
       }else{
-        
+        toast.error("some thing is wrong please try a gain");
         console.log("Error", response.error)
-
       }
 
       
@@ -162,6 +167,10 @@ const SigninForm = () => {
         >
           Submit
         </Button>
+        <Toaster
+       position="top-center"
+       reverseOrder={false}
+      />
       </form>
       <p className="text-sm italic font-light text-slate-500 self-center">
         Already have account?{" "}

@@ -86,7 +86,7 @@ const AuthModal = ({
           <Carousel />
         </div>
         <Divider orientation="vertical" className="" />
-        {isSignin? <SigninForm /> : <SignupForm />}
+        {isSignin? <SigninForm   onClose={onClose} /> : <SignupForm onClose={onClose} />}
       </div>
       </div>
     </Modal>
