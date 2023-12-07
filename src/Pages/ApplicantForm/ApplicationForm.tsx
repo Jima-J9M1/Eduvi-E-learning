@@ -2,19 +2,54 @@ import { useForm } from 'react-hook-form';
 import Nav from '../../Components/Common/Nav';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import {Toaster,toast} from "react-hot-toast"
+import {useLocation} from "react-router-dom";
+import CoustemCreateap from "../../Api/internApplication"
+import {returnTokenData } from "../../Api/authenticate";
+import { useState,useMemo} from 'react';
+import useAuth from "../../hooks/useAuth";
+import { useNavigate,} from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
     export type Application = {
-        resume:string,
+        resume:File,
         essay:string,
         portfolio:string | null | undefined
     }
 
 export default function ApplicationForm() {
+    const navigate=useNavigate()
+    const { state,} = useLocation();
+    const [data,setData]=useState({})
+    const {auth} = useAuth()
+    const [userId,setUserid]=useState("")
+    useMemo(()=>{
+        if(auth){
+            const U_Id = String(returnTokenData())
+            setUserid(U_Id)
+           }else{
+        navigate("/")
+        alert("UnAhuthorized User   please Login first")
+           }
 
+    },[])
+       
+    const props ={
+        onSuccess:(data)=>{
+            console.log(data);
+            toast.success("your application is successfull");  
+        },
+        onError:(error)=>{
+            console.log(error);
+            toast.error("some thing is wrong please try a gain");  
+        },
+        data:data,
+      }
+    const{refetch,isFetching}=CoustemCreateap(props)
+    
     const schema = yup
     .object().shape({
         essay:yup.string().required(),
-        resume:yup.string().url().required(),
         portfolio:yup.string().nullable().notRequired().when('portfolio', {
             is: (value:string) => value?.length,
             then: (rule) => rule.url(),
@@ -36,7 +71,15 @@ export default function ApplicationForm() {
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = (data:any) => console.log(data)
+    const onSubmit = (data:any) =>{
+        const dat={
+            studentId:Number( userId)   ,
+            courseId:state?.data   
+          } 
+       const applicationdata =Object.assign(dat,data)
+       setData(applicationdata)
+       return refetch()
+    }
 
   return (
     <div>
@@ -47,7 +90,8 @@ export default function ApplicationForm() {
         <div className='mt-4'>
             <label className="block mb-2 text-sm font-medium text-gray-900 text-[20px]" htmlFor="user_avatar">Resume</label>
             <input 
-            type="text" 
+              type="file" 
+              accept=".pdf" 
             id="resume"
             {...register('resume')} 
             className="outline-0 shadow-sm  text-sm rounded-lg border border-green-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Resume Link"></input>
@@ -75,8 +119,13 @@ export default function ApplicationForm() {
         <div className='my-12 flex justify-center'>
             <button type="submit" 
             className="w-1/2 sm:w-1/3  text-white bg-green-700 hover:bg-green-800 
-            font-medium rounded-lg text-sm sm:px-16 py-2.5  dark:bg-green-600 dark:hover:bg-green-700 ">Apply</button>
+            font-medium rounded-lg text-sm sm:px-16 py-2.5  dark:bg-green-600 dark:hover:bg-green-700  ">
+                {isFetching?<CircularProgress size={20}/>:(<p> Apply</p>)}</button>
         </div>
+        <Toaster
+       position="top-center"
+       reverseOrder={false}
+      />
         </form>
 
     
