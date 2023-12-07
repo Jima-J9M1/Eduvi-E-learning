@@ -11,13 +11,9 @@ type coustemprops ={
 
 
 const createApplication = async (data)=> {
-    console.log(data.resume[0]);
-    
     const response =  await axios.post("https://portal.bluemarkcollege.com/apply/aparentship",{
         data:data
     }).then((res)=>res)
-    console.log(response);
-    
     return response
   }
 

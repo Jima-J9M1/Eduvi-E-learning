@@ -36,13 +36,11 @@ export default function ApplicationForm() {
        
     const props ={
         onSuccess:(data)=>{
-            console.log("sey   a "+  data);
-            
+            console.log(data);
             toast.success("your application is successfull");  
         },
         onError:(error)=>{
-            console.log("sey   a      "+error);
-            
+            console.log(error);
             toast.error("some thing is wrong please try a gain");  
         },
         data:data,
