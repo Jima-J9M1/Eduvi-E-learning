@@ -53,11 +53,16 @@ export type byeCoursetype = {
 
 const createCourse = async (data: userData): Promise<user> => {
 
+    try{
+       const response = await axios.post('https://portal.bluemarkcollege.com/student/register', data)
+        
+       return response.data
 
+    } catch (error){
+      
+      return error.response.data
 
-    const response = await axios.post('https://portal.bluemarkcollege.com/student/register', data).
-    then((res)=>res.data).catch((err)=>err)
-    return response.data;
+    }
   };
   
   const loginUser = async (data: userLogin): Promise<user> => {
