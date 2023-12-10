@@ -16,6 +16,13 @@ import CircularProgress from '@mui/material/CircularProgress';
         essay:string,
         portfolio:string | null | undefined
     }
+    
+    interface FileObject {
+        name: string;
+        size: number;
+        // Add other properties as needed
+      }
+      
 
 export default function ApplicationForm() {
     const navigate=useNavigate()
@@ -56,9 +63,23 @@ export default function ApplicationForm() {
         formData:data,
       }
     const{refetch,isFetching}=CoustemCreateap(props)
-    
+    const MAX_FILE_SIZE = 102400;
+
+    const validFileExtensions = {file:['pdf']}
+    function isValidFileType(fileName, fileType) {
+        return fileName && validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1;
+      }
+
     const schema = yup
     .object().shape({
+        resume:yup
+        .mixed<FileObject>()
+        .required("Required")
+        .test('is-valid-type', 'Not a valid pdf type',
+        value => isValidFileType(value && value?.name.toLowerCase(), 'file'))
+        .test("is-valid-size", "Max allowed size is 100KB",
+        value => value && value.size <= MAX_FILE_SIZE),
+
         essay:yup.string().required(),
         portfolio:yup.string().nullable().notRequired().when('portfolio', {
             is: (value:string) => value?.length,

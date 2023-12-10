@@ -43,8 +43,9 @@ export const returnTokenData = () => {
     
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const {auth} = useAuth()
+    console.log("authentication",auth)
     const decodeData:{userId:number, iat:number} = jwtDecode(String(auth));
-    
+    console.log("decodeData", decodeData)
     return decodeData.userId
 }
 

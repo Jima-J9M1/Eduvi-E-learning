@@ -13,7 +13,7 @@ import image from "../../assets/images/Image (4).png";
 import {  Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../../styles/global.css'
-import { authenticate, getCurrentCourse, returnTokenData } from "../../Api/authenticate";
+import { getCurrentCourse, returnTokenData } from "../../Api/authenticate";
 import { courseAccess, useBuyCourseMutation } from "../../Api/user-api";
 import { CourseDetailData } from "../../Api/courselist-api";
 import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSectionCard";
@@ -23,7 +23,8 @@ import useAuth from "../../hooks/useAuth";
 
 const CourseDetailPage =  () => {
   
-  const getId = returnTokenData()
+  
+  const getId = String(returnTokenData())
   
   
   
@@ -31,7 +32,7 @@ const CourseDetailPage =  () => {
   const [disable,setDisable] = useState<boolean>(true);
 
   const courseAccessDatas = {
-    studentId: getId,
+    studentId: parseInt(getId),
     courseId: state?.data.id
   }
   
@@ -60,25 +61,25 @@ const CourseDetailPage =  () => {
 
 
   const handleSubmit = async () => {
-       if(auth){
-        const U_Id = String(returnTokenData())
+    
+    if(auth){
 
         const purchaseData = 
         {
-          studentId:U_Id,
+          studentId:getId,
           courseId:String(courseData.id),
           portfolio:"https://example.com/portfolio"
         }
         
+
         const response = await buyCourseMutation.mutateAsync(purchaseData)
         if(response.error){
           setError(response.error)
-
-          console.log("error")
+          console.log(purchaseData)
         }else{
           
-          
-          authenticate(auth)
+          console.log(response)
+          // authenticate(auth)
           window.location.replace(response.paymentUrl);
         }
         
@@ -172,7 +173,6 @@ const CourseDetailPage =  () => {
          <p className="text-3xl font-bold ">
          <Link
             to="/application"
-            state={{data:courseData.id}}
            ><InternButton text="Apply to internship" />
            </Link>
       </p>
