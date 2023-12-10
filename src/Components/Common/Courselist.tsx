@@ -1,5 +1,4 @@
 import React from "react";
-import { ListCategories } from "../../Api/courselist-api";
 import CourseListed from "../Course/CourseListed";
 
 // type dataprops={
