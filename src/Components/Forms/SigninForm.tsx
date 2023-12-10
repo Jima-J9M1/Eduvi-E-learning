@@ -88,7 +88,7 @@ const SigninForm = ({onClose}) => {
 
   const onSubmit = async (data: userData) => {
       const response = await createCourseMutation.mutateAsync(data);
-
+      console.log("register", response)
       if(response.token){
       authenticate(response?.token)
       setAuth(response?.token)
