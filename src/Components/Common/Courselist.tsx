@@ -1,5 +1,4 @@
 import React from "react";
-import VisitButton from "../Buttons/VisitButton";
 import { ListCategories } from "../../Api/courselist-api";
 import CourseListed from "../Course/CourseListed";
 
@@ -17,7 +16,6 @@ const CourseList: React.FC = () => {
   // ];
 
 
-const{data:categoryData}=ListCategories()
 
   return (
     <div className=" md:mt-0   mt-52">

@@ -69,7 +69,7 @@ const createCourse = async (data: userData): Promise<user> => {
   const buyCourse = async (data:byeCoursetype) => {
     try {
       const response = await axios.post('https://portal.bluemarkcollege.com/apply/buy-course', data)
-      
+        
       
       return response.data
 

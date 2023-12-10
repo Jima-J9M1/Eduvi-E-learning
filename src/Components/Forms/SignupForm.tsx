@@ -10,7 +10,7 @@ import PasswordField from "../Common/Forms/PasswordField";
 import { useLoginCourseMutation, userLogin } from "../../Api/user-api";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {Toaster,toast} from "react-hot-toast"
 
 
@@ -49,6 +49,8 @@ const SignupForm = ({onClose}:props) => {
     //  isModalOpen(!modalOpen)
     //  }
 
+
+   console.log('tooookeeeeeennnnnnnnnnnn', response)
    if(response.token){
     setAuth(response?.token)
     onClose((prev)=>!prev)

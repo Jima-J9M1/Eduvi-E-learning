@@ -10,7 +10,7 @@ import PasswordField from "../Common/Forms/PasswordField";
 import {  useModal } from "../../Utils/Contexts/ModalContext";
 import { useCreateCourseMutation } from "../../Api/user-api";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {Toaster,toast} from "react-hot-toast"
 // import { useState } from "react";
 
@@ -48,8 +48,10 @@ type userData = {
   profile_img:string
 }
 type props={
-  onClose:React.Dispatch<React.SetStateAction<boolean>>
+  onClose:React.Dispatch<React.SetStateAction<boolean>> 
 }
+
+
 const SigninForm = ({onClose}:props) => {
    const navigate=useNavigate()
   const createCourseMutation = useCreateCourseMutation()
