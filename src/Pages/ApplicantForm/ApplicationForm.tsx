@@ -20,9 +20,11 @@ import CircularProgress from '@mui/material/CircularProgress';
 export default function ApplicationForm() {
     const navigate=useNavigate()
     const { state,} = useLocation();
-    const [data,setData]=useState({})
+    const [data,setData]=useState<globalThis.FormData>()
     const {auth} = useAuth()
     const [userId,setUserid]=useState("")
+    const [file, setFile] = useState(null);
+ 
     useMemo(()=>{
         if(auth){
             const U_Id = String(returnTokenData())
@@ -34,16 +36,24 @@ export default function ApplicationForm() {
 
     },[])
        
+    const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        setFile(selectedFile);
+      };
+
+
+
+
     const props ={
         onSuccess:(data)=>{
             console.log(data);
-            toast.success("your application is successfull");  
+            toast.success("Application successful");  
         },
         onError:(error)=>{
             console.log(error);
             toast.error("some thing is wrong please try a gain");  
         },
-        data:data,
+        formData:data,
       }
     const{refetch,isFetching}=CoustemCreateap(props)
     
@@ -72,12 +82,13 @@ export default function ApplicationForm() {
     });
 
     const onSubmit = (data:any) =>{
-        const dat={
-            studentId:Number( userId)   ,
-            courseId:state?.data   
-          } 
-       const applicationdata =Object.assign(dat,data)
-       setData(applicationdata)
+        const formData = new FormData();
+        formData.append('courseId',state?.data);
+        formData.append('resume', file, file.name);
+        formData.append('studentId',userId);
+        formData.append('essay',data.essay);
+        formData.append(' portfolio',data.portfolio);
+       setData(formData)
        return refetch()
     }
 
@@ -92,10 +103,11 @@ export default function ApplicationForm() {
             <input 
               type="file" 
               accept=".pdf" 
+              required={true}
             id="resume"
-            {...register('resume')} 
+            onChange={handleFileChange}
             className="outline-0 shadow-sm  text-sm rounded-lg border border-green-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Resume Link"></input>
-            <span className="text-red-500">{errors.resume?.message}</span>
+            {/* <span className="text-red-500">{errors.resume?.message}</span> */}
         </div>
 
         <div className='mt-8'>
