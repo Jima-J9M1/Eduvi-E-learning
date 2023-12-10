@@ -1,20 +1,26 @@
 import { NavLink } from "react-router-dom";
 import MouseOverPopover from "../Ui/popover";
 import Selecte from "../Ui/selecte";
-import { useState } from "react";
-import { ModalProvider } from "../../Utils/Contexts/ModalContext";
+import { useEffect, useState } from "react";
+import { ModalProvider, useModal } from "../../Utils/Contexts/ModalContext";
 import AuthModal from "../Modals/AuthModal";
 import image from '../../assets/logo/mss 1.png'
 import '../../styles/global.css';
 import ToggleButton from "../Forms/toggleButton";
-import useAuth from "../../hooks/useAuth";
 
 const Nav = () => {
   const [modalOpen, isModalOpen] = useState(false)
-  const { auth } = useAuth()
-
-
-  console.log("autttthhhhhhhhhhhhhhhhhhhhhhhhhh", auth)
+  const {isSignin,setIsSignin} = useModal()
+  
+  console.log("This is after the set sign is true", isSignin)
+  
+  
+  useEffect(()=>{
+    if(isSignin){
+      isModalOpen(true)
+      setIsSignin(false)
+    }
+  }, [])
   
   return (
     <div className="flex align-middle justify-between px-4 	">

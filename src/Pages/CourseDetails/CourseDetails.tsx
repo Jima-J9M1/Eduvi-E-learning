@@ -109,7 +109,7 @@ const CourseDetailPage =  () => {
             <ReactPlayer
               className="rounded-xl object-cover"
               width='100%'
-              height='90%'
+              height='400px'
               url={video}
             />
           </Grid>
@@ -119,15 +119,14 @@ const CourseDetailPage =  () => {
             </p>
             
             
-            <div className="grid gap-5 pl-8  h-[400px] overflow-y-scroll overflow-x-hidden">
       
-         <div className="grid gap-2 ">
+         <div className="flex flex-col gap-3 border  w-full ml-5 mt-4 p-2">
           {
             data &&  data.videos.map((video:{name:string, video_id:number, url:string}) =>(
                <NavLink
                to={`/courses/${video.name}`} state={{ data: data }}
                onClick={()=>setVideo(video.url)}
-              className={disable ? "pointer-events-none opacity-[0.4]": ({ isActive, isPending }) =>
+              className={disable ? "pointer-events-none opacity-[0.4] h-auto": ({ isActive, isPending }) =>
               isPending ? "" : isActive ? "bg-blue-200 rounded-lg" : ""
             }
                 // className={disable ? "pointer-events-none opacity-[0.4]": ""}
@@ -141,7 +140,6 @@ const CourseDetailPage =  () => {
               </NavLink>
             ))
           }
-      </div>
     </div>
 
 

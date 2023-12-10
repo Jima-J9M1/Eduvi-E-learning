@@ -3,6 +3,8 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import React from 'react';
 import { CourseCardProps } from '../../types';
+import image from '../../assets/logo/mss 1.png'
+
 
 
 const CourseCard: React.FC<CourseCardProps> = ({
@@ -18,7 +20,8 @@ category,
 // target_audience= "All users who is curios about IDS.",
 thumbnail,
 video_count,
-price
+price,
+name
 
 }) => {
   const handleClick = (Id: number) => {
@@ -30,7 +33,14 @@ price
   return (
     <div 
     onClick={() => handleClick(id)} className="card bg-card-bg w-card-width h-card-height relative rounded-lg overflow-hidden">
-      <img src={thumbnail} alt="The course pic" className="w-card-width h-image-height" />
+      <img src={thumbnail} onError={(e:React.SyntheticEvent<HTMLImageElement, Event>)=>{
+        const target = e.target as HTMLImageElement
+        target.onerror = null; 
+        target.src = image
+        }}
+        alt={name} className="w-card-width h-image-height" 
+        /> 
+      {/* <img src={thumbnail} alt="The course pic" className="w-card-width h-image-height" /> */}
         <div className="rating w-rating-width h-rating-height bg-rating-color flex justify-center items-center text-white absolute  bottom-rating-bottom right-2 rounded-2xl overflow-hidden">
         <StarRateRoundedIcon className="text-yellow-500" />{average_rating}
         </div>

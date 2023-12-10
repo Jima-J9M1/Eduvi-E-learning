@@ -3,7 +3,7 @@ import { ReactNode, createContext, useContext, useState } from "react";
 
 
 const ModalContext = createContext({
-  isSignin: true,
+  isSignin: false,
   setIsSignin: (value:boolean) => {value},  
 });
 
@@ -13,7 +13,7 @@ export const useModal = () => {
 };
 
 const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isSignin, setIsSignin] = useState<boolean>(true);
+  const [isSignin, setIsSignin] = useState<boolean>(false);
 
   return (
     <ModalContext.Provider value={{ isSignin, setIsSignin }}>

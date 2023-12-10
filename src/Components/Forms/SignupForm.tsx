@@ -12,14 +12,12 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate} from "react-router-dom";
 import {Toaster,toast} from "react-hot-toast"
+import { authenticate } from "../../Api/authenticate";
 
 
-type props={
-  onClose:React.Dispatch<React.SetStateAction<boolean>>
-}
 
 
-const SignupForm = ({onClose}:props) => {
+const SignupForm = ({onClose}) => {
   const navigate=useNavigate()
   const loginCourseMutation = useLoginCourseMutation()
   const {setAuth} = useAuth()
@@ -50,8 +48,8 @@ const SignupForm = ({onClose}:props) => {
     //  }
 
 
-   console.log('tooookeeeeeennnnnnnnnnnn', response)
    if(response.token){
+    authenticate(response?.token)
     setAuth(response?.token)
     onClose((prev)=>!prev)
     return navigate("/")

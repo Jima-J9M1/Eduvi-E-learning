@@ -12,6 +12,7 @@ import { useCreateCourseMutation } from "../../Api/user-api";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate} from "react-router-dom";
 import {Toaster,toast} from "react-hot-toast"
+import { authenticate } from "../../Api/authenticate";
 // import { useState } from "react";
 
 
@@ -47,12 +48,10 @@ type userData = {
   linkdln_link:string,
   profile_img:string
 }
-type props={
-  onClose:React.Dispatch<React.SetStateAction<boolean>> 
-}
 
 
-const SigninForm = ({onClose}:props) => {
+
+const SigninForm = ({onClose}) => {
    const navigate=useNavigate()
   const createCourseMutation = useCreateCourseMutation()
   const {setAuth } = useAuth()
@@ -91,6 +90,7 @@ const SigninForm = ({onClose}:props) => {
       const response = await createCourseMutation.mutateAsync(data);
 
       if(response.token){
+      authenticate(response?.token)
       setAuth(response?.token)
       onClose((prev)=>!prev)
        return navigate("/") 
