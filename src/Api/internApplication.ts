@@ -11,9 +11,6 @@ type coustemprops ={
 
 
 const createApplication = async (formData)=> {
-    for (let obj of formData) {
-        console.log(obj);
-      }
     const response =  await axios.post("https://portal.bluemarkcollege.com/apply/aparentship",formData,{
       headers: {
         'Content-Type': 'multipart/form-data',

@@ -11,17 +11,18 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate,} from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
+
     export type Application = {
         resume:File,
         essay:string,
         portfolio:string | null | undefined
     }
     
-    interface FileObject {
-        name: string;
-        size: number;
-        // Add other properties as needed
-      }
+    // interface FileObject {
+    //     name: string;
+    //     size: number;
+    //     // Add other properties as needed
+    //   }
       
 
 export default function ApplicationForm() {
@@ -31,6 +32,7 @@ export default function ApplicationForm() {
     const {auth} = useAuth()
     const [userId,setUserid]=useState("")
     const [file, setFile] = useState(null);
+    const [filerror,setFileerror]=useState(false)
  
     useMemo(()=>{
         if(auth){
@@ -45,12 +47,10 @@ export default function ApplicationForm() {
        
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
+        if(selectedFile.size > 102400*2) return setFileerror(true)
         setFile(selectedFile);
+        setFileerror(false)
       };
-
-
-
-
     const props ={
         onSuccess:(data)=>{
             console.log(data);
@@ -63,23 +63,9 @@ export default function ApplicationForm() {
         formData:data,
       }
     const{refetch,isFetching}=CoustemCreateap(props)
-    const MAX_FILE_SIZE = 102400;
-
-    const validFileExtensions = {file:['pdf']}
-    function isValidFileType(fileName, fileType) {
-        return fileName && validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1;
-      }
 
     const schema = yup
     .object().shape({
-        resume:yup
-        .mixed<FileObject>()
-        .required("Required")
-        .test('is-valid-type', 'Not a valid pdf type',
-        value => isValidFileType(value && value?.name.toLowerCase(), 'file'))
-        .test("is-valid-size", "Max allowed size is 100KB",
-        value => value && value.size <= MAX_FILE_SIZE),
-
         essay:yup.string().required(),
         portfolio:yup.string().nullable().notRequired().when('portfolio', {
             is: (value:string) => value?.length,
@@ -128,7 +114,7 @@ export default function ApplicationForm() {
             id="resume"
             onChange={handleFileChange}
             className="outline-0 shadow-sm  text-sm rounded-lg border border-green-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Resume Link"></input>
-            {/* <span className="text-red-500">{errors.resume?.message}</span> */}
+              {filerror&& <span className="text-red-500">Max allowed size is 200KB</span>} 
         </div>
 
         <div className='mt-8'>
