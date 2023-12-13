@@ -171,6 +171,7 @@ const CourseDetailPage =  () => {
          <p className="text-3xl font-bold ">
          <Link
             to="/application"
+            state={{data:courseData.id}}
            ><InternButton text="Apply to internship" />
            </Link>
       </p>
