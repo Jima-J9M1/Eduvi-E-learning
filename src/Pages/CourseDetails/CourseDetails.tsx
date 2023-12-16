@@ -19,17 +19,18 @@ import { CourseDetailData } from "../../Api/courselist-api";
 import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSectionCard";
 import InternButton from "../../Components/Buttons/InternButton";
 import useAuth from "../../hooks/useAuth";
-
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 const CourseDetailPage =  () => {
   
-  
+ 
   const getId = String(returnTokenData())
   
   
   
   const { state } = useLocation();
   const [disable,setDisable] = useState<boolean>(true);
+  const [panding,setPanding]=useState<boolean>(false)
 
   const courseAccessDatas = {
     studentId: parseInt(getId),
@@ -39,14 +40,15 @@ const CourseDetailPage =  () => {
   useEffect( () =>{
       courseAccess(courseAccessDatas).then(
         (res) => {
-          if(res.courseAccess){
-            setDisable(false)
-          }else{
-            setDisable(true)
-          }
+        if(res.courseAccess!==0){
+             if(res.courseAccess===1){
+                  setDisable(false)
+             }else {
+                setPanding(true)
+                   }
+        }  
         }
       ).catch(err => console.log(err))
-
   }, [])
 
 
@@ -165,15 +167,25 @@ const CourseDetailPage =  () => {
       </Grid>
       
       { disable && <div className="flex items-center gap-7 ml-6 mb-8">
-        <div className="">
-            <button className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleSubmit()}>Pay Now</button>
-          </div>
+       
          <p className="text-3xl font-bold ">
+          {panding?(<p className="flex font-normal text-xl items-center text-pink-600 gap-3 border-2 border-pink-600 
+          p-2 rounded-lg  hover:bg-pink-300  w-80 md:w-full ml-3 "> <PacmanLoader
+        color={"#123abc"}
+        size={30}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        
+      /> you are already applay for this course </p>):(
+        <div className=" md:flex gap-3 items-center">
+        <button className="bg-green-500 hover:bg-blue-700 text-white mb-2 md:mb-0 font-bold py-2 px-4 rounded" onClick={() => handleSubmit()}>Pay Now</button>
          <Link
             to="/application"
             state={{data:courseData.id}}
            ><InternButton text="Apply to internship" />
            </Link>
+           </div>
+           )}
       </p>
       </div>}
       <SimilarCourses />
