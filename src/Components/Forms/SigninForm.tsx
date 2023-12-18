@@ -64,7 +64,11 @@ const SigninForm = ({onClose}) => {
       last_name:yup.string().required(),
       email: yup.string().email().required(),
       password: yup.string().min(8).required(),
-      phone_number: yup.string().length(10).required(),
+      phone_number: yup
+      .string()
+      .length(10)
+      .matches(/^[0][9][0-9]{8}$/,'Use 0912344567 format')
+      .required(),
       country: yup.string().required(),
       city: yup.string().required(),
       university: yup.string().required(),
