@@ -70,7 +70,7 @@ export const CountryField: FC<PasswordFieldProps> = ({ register, error }) => {
         <MapsHomeWorkSharp  className="text-slate-300" />
         <input
           type="text"
-          placeholder="Ester Howard"
+          placeholder="Ethiopia"
           className="outline-none"
           required
           {...register("country")}
@@ -89,7 +89,7 @@ export const PhoneNumberField: FC<PasswordFieldProps> = ({ register, error }) =>
         <Phone className="text-slate-300" />
         <input
           type="text"
-          placeholder="Ester Howard"
+          placeholder="0904342343"
           className="outline-none"
           required
           {...register("phone_number")}
@@ -110,7 +110,7 @@ export const CityField: FC<PasswordFieldProps> = ({ register, error }) => {
         <LocationCity className="text-slate-300"/>
         <input
           type="text"
-          placeholder="Ester Howard"
+          placeholder="Addis Ababa"
           className="outline-none"
           required
           {...register("city")}
@@ -129,7 +129,7 @@ export const UniversityField: FC<PasswordFieldProps> = ({ register, error }) => 
         <School className="text-slate-300" />
         <input
           type="text"
-          placeholder="Ester Howard"
+          placeholder="AASTU"
           className="outline-none"
           required
           {...register("university")}
@@ -149,7 +149,7 @@ export const DepartmentField: FC<PasswordFieldProps> = ({ register, error }) => 
         <SchoolTwoTone className="text-slate-300"  />
         <input
           type="text"
-          placeholder="Ester Howard"
+          placeholder="Software Engineering"
           className="outline-none"
           required
           {...register("department")}
@@ -168,7 +168,7 @@ export const GitLinkField: FC<PasswordFieldProps> = ({ register, error }) => {
         <GitHub className="text-slate-300" />
         <input
           type="text"
-          placeholder="Ester Howard"
+          placeholder="https://www.github.com/username"
           className="outline-none"
           required
           {...register("git_link")}
@@ -189,7 +189,7 @@ export const LinkdlnLinkField: FC<PasswordFieldProps> = ({ register, error }) =>
         <LinkedIn className="text-slate-300" />
         <input
           type="text"
-          placeholder="Ester Howard"
+          placeholder="https://www.linkedin.com/in/username"
           className="outline-none"
           required
           {...register("linkdln_link")}
