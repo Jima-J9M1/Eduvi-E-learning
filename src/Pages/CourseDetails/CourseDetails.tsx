@@ -122,7 +122,7 @@ const CourseDetailPage =  () => {
             
             
       
-         <div className="flex flex-col gap-3 border  w-full ml-5 mt-4 p-2">
+         <div className="flex flex-col gap-3 border  w-[300px] md:w-full ml-5 mt-4 p-2">
           {
             data &&  data.videos.map((video:{name:string, video_id:number, url:string}) =>(
                <NavLink
@@ -170,7 +170,7 @@ const CourseDetailPage =  () => {
        
          <p className="text-3xl font-bold ">
           {panding?(<p className=" font-bold  text-2xl items-center text-pink-600  border-2 border-pink-600 
-          py-4 p-2 rounded-lg  w-80 md:w-full ml-3   ">you are already applay for this course </p>):(
+          py-4 p-2 rounded-lg  w-80 md:w-full ml-3   ">you are already applay for this course !</p>):(
         <div className=" md:flex gap-3 items-center">
         <button className="bg-green-500 hover:bg-blue-700 text-white mb-2 md:mb-0 font-bold py-2 px-4 rounded" onClick={() => handleSubmit()}>Pay Now</button>
          <Link

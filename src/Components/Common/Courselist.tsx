@@ -17,10 +17,10 @@ const CourseList: React.FC = () => {
 
 
   return (
-    <div className=" md:mt-0   mt-52">
+    <div className="flex md:mt-0 mt-32 justify-center">
       <CourseListed />
       </div>
-  );
+  ); 
 };
 
 export default CourseList;
