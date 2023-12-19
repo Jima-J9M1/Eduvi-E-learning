@@ -32,7 +32,7 @@ name
 
   return (
     <div 
-    onClick={() => handleClick(id)} className="card bg-card-bg w-card-width h-card-height relative rounded-lg overflow-hidden">
+    onClick={() => handleClick(id)} className="card bg-card-bg md:w-card-width w-[350px] h-card-height relative rounded-lg overflow-hidden">
       <img src={thumbnail} onError={(e:React.SyntheticEvent<HTMLImageElement, Event>)=>{
         const target = e.target as HTMLImageElement
         target.onerror = null; 
