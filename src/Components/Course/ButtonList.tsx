@@ -50,16 +50,16 @@ const ButtonList: React.FC<ButtonListProps> = ({ handleButtonClick, activeButton
       ):
       (
         <div className="grid sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-5 bg-blue pt-10 mt-10">
-        {category && category.map((name) => (
-          name.name === 'More Courses' ? (
+          {
             <CoursesButton
-              key={name.name}
-              text={name.name}
+              key="all_course"
+              text="All Course"
               color="#9C4DF4"
-              active={activeButton === name.name}
-              handleClick={() => handleButtonClick(name.name)}
+              active={activeButton === "All Courses"}
+              handleClick={() => handleButtonClick('All Courses')}
             />
-          ) : (
+            }
+        {category && category.map((name) => (
             <CoursesButton
               key={name.categoryId}
               text={name.name}
@@ -67,7 +67,7 @@ const ButtonList: React.FC<ButtonListProps> = ({ handleButtonClick, activeButton
               handleClick={() => handleButtonClick(name.name)}
             />
           )
-        ))}
+        )}
       </div>
       )}
     </div>
