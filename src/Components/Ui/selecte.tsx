@@ -2,6 +2,7 @@ import * as React from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { ListCategories } from "../../Api/courselist-api";
 import { fetchCoursesWithCategory } from '../../Api/courselist-api';
+import { Link } from 'react-router-dom';
 
 
 
@@ -31,9 +32,11 @@ const handleClick=(event:string)=>{
     return <div className='absolute lg:top-10 top-70  bg-white border shadow-lg w-32  text-center '> 
     { data && data.data && data.data.categories.map((category)=>(
       
-      <h1 onClick={()=>handleClick(category.categoryId)} className='hover:text-purple-500 cursor-pointer my-2 ' key={category.categoryId}>
+       <Link to={`/courses?category=${category.name}`}>
+        <h1 onClick={()=>handleClick(category.categoryId)} className='hover:text-purple-500 cursor-pointer my-2 ' key={category.categoryId}>
         {category.name}
         </h1>
+        </Link>
      
     ))}
   </div>}

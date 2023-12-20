@@ -1,20 +1,23 @@
-import React, { useState, useMemo} from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useMemo, useEffect} from 'react';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import CourseCard from '../Common/CourseCard';
 import Pagination from '@mui/material/Pagination';
 import ButtonList from './ButtonList';
 import EmptyCategoriy from './EmptyCategoriy';
 
-import { ListCourses, fetchCoursesWithCategory } from '../../Api/courselist-api';
+import { ListCourses } from '../../Api/courselist-api';
 
 
 
 
 const CourseListed: React.FC = () => {
-
+  
+  const [params] = useSearchParams();
+  
+  const category = params.get('category')
   const {data:courseData} = ListCourses();
-  const courseWithCategory = fetchCoursesWithCategory("IDS")
-  console.log(courseWithCategory);
+  // const courseWithCategory = fetchCoursesWithCategory("IDS")
+  // console.log(courseWithCategory);
 
 
   const [selectedCourseType, setSelectedCourseType] = useState<string>('All Courses');
@@ -25,6 +28,14 @@ const CourseListed: React.FC = () => {
     setSelectedCourseType(courseType);
     setCurrentPage(1);
   };
+
+  useEffect(()=>{
+    if(category !== null){
+       setSelectedCourseType(category)
+    }else{
+      setSelectedCourseType('All Courses')
+    }
+  }, [category])
 
   const filteredCourses = useMemo(() => {
     if (selectedCourseType === 'All Courses') {

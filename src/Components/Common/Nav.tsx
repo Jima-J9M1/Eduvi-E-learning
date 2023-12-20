@@ -37,7 +37,7 @@ const Nav = () => {
     </NavLink>
 {/*       <NavLink to={'/CoursePage'} >Course</NavLink> */}
         
-      <NavLink to={'/Courses'}  className={({ isActive, isPending }) =>
+      <NavLink to={'/courses'}  className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "border-b-4 border-b-blue-600 text-gray-600" : "text-gray-600"
   }>
     Course
