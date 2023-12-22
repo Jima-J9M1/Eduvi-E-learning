@@ -13,7 +13,7 @@ export default {
         'trans-right': 'trans-right 1.5s ease-in-out infinite'
       },
       spacing: {
-        "card-width": "370px",
+        "card-width": "385px",
         "card-height": "418px",
         "rating-width": "63px",
         "rating-height": "25px",

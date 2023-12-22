@@ -54,7 +54,8 @@ export default function ApplicationForm() {
     const props ={
         onSuccess:(data)=>{
             console.log(data);
-            toast.success("Application successful");  
+            toast.success("Application successful"); 
+            return window.location.href=`/courses/${state?.data.name}` 
         },
         onError:(error)=>{
             console.log(error);
@@ -90,7 +91,7 @@ export default function ApplicationForm() {
 
     const onSubmit = (data:any) =>{
         const formData = new FormData();
-        formData.append('courseId',state?.data);
+        formData.append('courseId',state?.data.id);
         formData.append('resume', file, file.name);
         formData.append('studentId',userId);
         formData.append('essay',data.essay);

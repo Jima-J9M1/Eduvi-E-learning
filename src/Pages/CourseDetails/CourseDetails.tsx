@@ -10,8 +10,8 @@ import Footer from "../../Components/Common/Footer";
 import CourseDetail from "../../Components/Course/CourseDetail";
 import AdsCard from "../../Components/Course/AdsCard";
 import image from "../../assets/images/Image (4).png";
-import {  Link, NavLink, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {  Link, NavLink, useLocation} from "react-router-dom";
+import { useEffect, useState,useMemo } from "react";
 import '../../styles/global.css'
 import { getCurrentCourse, returnTokenData } from "../../Api/authenticate";
 import { courseAccess, useBuyCourseMutation } from "../../Api/user-api";
@@ -23,7 +23,6 @@ import useAuth from "../../hooks/useAuth";
 
 const CourseDetailPage =  () => {
   
- 
   const getId = String(returnTokenData())
   
   
@@ -31,12 +30,10 @@ const CourseDetailPage =  () => {
   const { state } = useLocation();
   const [disable,setDisable] = useState<boolean>(true);
   const [panding,setPanding]=useState<boolean>(false)
-
   const courseAccessDatas = {
     studentId: parseInt(getId),
     courseId: state?.data.id
   }
-  
   useEffect( () =>{
       courseAccess(courseAccessDatas).then(
         (res) => {
@@ -51,11 +48,18 @@ const CourseDetailPage =  () => {
       ).catch(err => console.log(err))
   }, [])
 
-
+ useMemo(()=>{
+   if(state?.data){
+    const data=JSON.stringify(state?.data)
+    localStorage.setItem("coures",data)
+   }
+ },[])
+  
   const {auth} = useAuth()
   const [error, setError] = useState<string>('')
   const val = getCurrentCourse()
-  const courseData = state?.data ||  val
+  const cou=localStorage.getItem("coures")
+  const courseData =JSON.parse(cou) ||  val
   const [video, setVideo] = useState(courseData.introduction_video)
   
   const buyCourseMutation = useBuyCourseMutation()
@@ -175,7 +179,7 @@ const CourseDetailPage =  () => {
         <button className="bg-green-500 hover:bg-blue-700 text-white mb-2 md:mb-0 font-bold py-2 px-4 rounded" onClick={() => handleSubmit()}>Pay Now</button>
          <Link
             to="/application"
-            state={{data:courseData.id}}
+            state={{data:courseData}}
            ><InternButton text="Apply to internship" />
            </Link>
            </div>
