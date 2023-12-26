@@ -12,9 +12,16 @@ type categoryProps={
 const SimilarCourses = ({catagory,id}:categoryProps) => {
   const {data:courseData} = ListCourses();
   const filteredCourses = useMemo(() => {
-      return courseData?.courses.filter((course) => course.category===catagory && course.id!==id);
+       const Courses= courseData?.courses.filter((course) => course.category===catagory && course.id!==id);
+      if(Courses?.length<5){
+        return Courses
+      }else{
+        const Length=Courses?.length
+        const number=Math.floor(Math.random() *(Length-4));
+             return Courses?.slice(number,number+4);
+      }
   }, [courseData]);
-  const currentCourses = filteredCourses
+   const currentCourses = filteredCourses
   const handleClick=(name:string)=>{
      window.location.href=`/courses/${name}`
   }
