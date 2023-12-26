@@ -64,8 +64,7 @@ const CourseDetailPage =  () => {
   
   const buyCourseMutation = useBuyCourseMutation()
   const { data} = CourseDetailData(courseData.id)
-
-
+ 
   const handleSubmit = async () => {
     
     if(auth){
@@ -186,7 +185,7 @@ const CourseDetailPage =  () => {
            )}
       </p>
       </div>}
-      <SimilarCourses />
+      <SimilarCourses   catagory={courseData.category} id={courseData.id} />
       <SubscriptionBox />
       <Footer />
     </Wrapper>

@@ -25,7 +25,9 @@ const Nav = () => {
   return (
     <div className="flex align-middle justify-between px-4 	">
       <div className="ml-3">
+        <NavLink to={"/"}>
         <img src={image} width="70%" height="70%" />
+        </NavLink>
       </div>
 
       <div className="items-center w-1/2  hidden lg:flex lg:justify-between lg:gap-3">

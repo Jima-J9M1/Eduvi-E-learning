@@ -72,8 +72,9 @@ export interface CourseCardProps {
   interface SimilarCoursesProps {
     img?: string;
     title?: string;
-    price?: number;
+    price?: string;
     rating?: number;
+    thumbnail?:string;
   }
   interface RatingPoint {
     rating: number;
