@@ -1,6 +1,6 @@
 import { Card, CardActions, CardContent, Typography, useMediaQuery } from '@mui/material';
 import { Theme } from '@mui/material/styles';
-import ApplyButton from '../../Buttons/ApplyButton';
+
 
 
 
@@ -30,20 +30,19 @@ const ApplyCard = () =>{
             <Typography component="div"  
             sx={{
             width: (isSmallerScreen || isSmallScreen || isMediumScreen) ? "100%":"828px",
-            fontSize: (isSmallerScreen || isSmallScreen) ? "20px": isMediumScreen ? "25px": "32px",
+            fontSize: (isSmallerScreen || isSmallScreen) ? "20px": isMediumScreen ? "20px": "25px",
             marginBottom:'0',
             }}>
-              
-              Current internship is availiable in front-end, 
-              Back-end mobile and Graphics Designer.
-              If you are interseted, hit the green button now!
+              Welcome to our e-learning platform, where learning is not just a solitary journey 
+             but a collaborative and supportive experience. 
+              We are dedicated to providing the resources and
+               assistance you need to thrive in your educational endeavors.
             </Typography>
         </CardContent>
 
         <CardActions sx={{
           marginTop:(isLargeScreen || isExtraLargeScreen  ) ? "80px": "0",
           }}>
-            <ApplyButton text='Apply' />
         </CardActions>
 
     </Card>
