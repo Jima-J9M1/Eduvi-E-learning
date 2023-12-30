@@ -1,8 +1,10 @@
 import SimilarCourseCard from '../Common/Cards/SimilarCourseCard'
 import img1 from '../../assets/images/Image (1).png'
 import { ListCourses } from '../../Api/courselist-api';
-import{ useMemo} from 'react';
+import{ useMemo,useState} from 'react';
 import { NavLink,} from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import EmptyCategoriy from './EmptyCategoriy';
 
 type categoryProps={
   catagory:string
@@ -10,21 +12,36 @@ type categoryProps={
 }
 
 const SimilarCourses = ({catagory,id}:categoryProps) => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const coursesPerPage = 4;
   const {data:courseData} = ListCourses();
   const filteredCourses = useMemo(() => {
-       const Courses= courseData?.courses.filter((course) => course.category===catagory && course.id!==id);
-      if(Courses?.length<5){
-        return Courses
-      }else{
-        const Length=Courses?.length
-        const number=Math.floor(Math.random() *(Length-4));
-             return Courses?.slice(number,number+4);
-      }
+    return courseData?.courses.filter((course) => course.category === catagory && course.id!==id);
   }, [courseData]);
-   const currentCourses = filteredCourses
+  const totalCourses = filteredCourses?.length || 0;
+  const totalPages = Math.ceil(totalCourses / coursesPerPage);
+  const indexOfLastCourse = currentPage * coursesPerPage;
+  const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
+  const currentCourses = filteredCourses?.slice(indexOfFirstCourse, indexOfLastCourse);
+
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
   const handleClick=(name:string)=>{
      window.location.href=`/courses/${name}`
   }
+  const paginationStyle = useMemo(() => ({
+    '& .MuiPaginationItem-root': {
+      border: 'none',
+    },
+    '& .Mui-selected': {
+      backgroundColor: '#FCD980',
+      color: '#3446eb',
+    },
+  }), []);
+
+  const L=currentCourses?.length
+  if(L===0) return <EmptyCategoriy />
   return (
     <div >
         <p className='mt-3 text-2xl font-bold'> Similar Courses</p>
@@ -35,6 +52,18 @@ const SimilarCourses = ({catagory,id}:categoryProps) => {
                </NavLink>
          )):<h1 className="text-2xl border border-slate-600 ">No Course</h1> }
     </div>
+    <div className='flex justify-center'>
+    <Pagination
+          sx={paginationStyle}
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+          hidePrevButton
+          hideNextButton
+        />
+     </div>
     </div>
   )
 }

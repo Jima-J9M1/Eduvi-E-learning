@@ -61,7 +61,7 @@ const CourseListed: React.FC = () => {
     },
     '& .Mui-selected': {
       backgroundColor: '#FCD980',
-      color: '#FFFFFF',
+      color: '#3446eb',
     },
   }), []);
   
