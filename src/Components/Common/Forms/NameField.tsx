@@ -163,7 +163,7 @@ export const DepartmentField: FC<PasswordFieldProps> = ({ register, error }) => 
 export const GitLinkField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">GitHub<small>(optional)</small></label>
+      <label htmlFor="fullname">GitHub<small className="text-gray-400">(optional)</small></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <GitHub className="text-slate-300" />
         <input
@@ -183,7 +183,7 @@ export const GitLinkField: FC<PasswordFieldProps> = ({ register, error }) => {
 export const LinkdlnLinkField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">LinkedIn<small>(optional)</small></label>
+      <label htmlFor="fullname">LinkedIn<small className="text-gray-400">(optional)</small></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <LinkedIn className="text-slate-300" />
         <input
@@ -203,7 +203,7 @@ export const LinkdlnLinkField: FC<PasswordFieldProps> = ({ register, error }) =>
 export const ProfileImgField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">Profile Image<small>(optional)</small></label>
+      <label htmlFor="fullname">Profile Image<small className="text-gray-400">(optional)</small></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <Person className="text-slate-300"/>
         <input
