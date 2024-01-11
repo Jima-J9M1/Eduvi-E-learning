@@ -73,7 +73,7 @@ const SigninForm = ({onClose}) => {
       city: yup.string().required(),
       university: yup.string().required(),
       department: yup.string().required(),
-      git_link: yup.string().url()
+      git_link: yup.string().url(),
       linkdln_link: yup.string().url(),
       profile_img: yup.string().url()
     })
