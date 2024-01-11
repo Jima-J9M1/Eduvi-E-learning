@@ -73,11 +73,10 @@ const SigninForm = ({onClose}) => {
       city: yup.string().required(),
       university: yup.string().required(),
       department: yup.string().required(),
-      git_link: yup.string().url().required(),
-      linkdln_link: yup.string().url().required(),
-      profile_img: yup.string().url().required()
+      git_link: yup.string().url()
+      linkdln_link: yup.string().url(),
+      profile_img: yup.string().url()
     })
-    .required();
 
 
   type FormData = yup.InferType<typeof schema>;
