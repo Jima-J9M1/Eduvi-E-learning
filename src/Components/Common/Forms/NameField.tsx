@@ -25,7 +25,7 @@ import { GitHub, LinkedIn, LocationCity, MapsHomeWorkSharp, Person, Phone, Schoo
 export const FirstName: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">First Name</label>
+      <label htmlFor="fullname">First Name <span className="text-red-500"> * </span></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <PersonOutlinedIcon className="text-slate-300" />
         <input
@@ -45,7 +45,7 @@ export const FirstName: FC<PasswordFieldProps> = ({ register, error }) => {
 export const LastName: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">Last Name</label>
+      <label htmlFor="fullname">Last Name<span className="text-red-500"> * </span></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <PersonOutlinedIcon className="text-slate-300" />
         <input
@@ -65,7 +65,7 @@ export const LastName: FC<PasswordFieldProps> = ({ register, error }) => {
 export const CountryField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">Country</label>
+      <label htmlFor="fullname">Country<span className="text-red-500"> * </span></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <MapsHomeWorkSharp  className="text-slate-300" />
         <input
@@ -84,7 +84,7 @@ export const CountryField: FC<PasswordFieldProps> = ({ register, error }) => {
 export const PhoneNumberField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">Phone Number</label>
+      <label htmlFor="fullname">Phone Number<span className="text-red-500"> * </span></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <Phone className="text-slate-300" />
         <input
@@ -105,7 +105,7 @@ export const PhoneNumberField: FC<PasswordFieldProps> = ({ register, error }) =>
 export const CityField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">City</label>
+      <label htmlFor="fullname">City<span className="text-red-500"> * </span></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <LocationCity className="text-slate-300"/>
         <input
@@ -124,7 +124,7 @@ export const CityField: FC<PasswordFieldProps> = ({ register, error }) => {
 export const UniversityField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">University</label>
+      <label htmlFor="fullname">University<span className="text-red-500"> * </span></label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <School className="text-slate-300" />
         <input
@@ -144,7 +144,7 @@ export const UniversityField: FC<PasswordFieldProps> = ({ register, error }) => 
 export const DepartmentField: FC<PasswordFieldProps> = ({ register, error }) => {
   return (
     <div>
-      <label htmlFor="fullname">Department</label>
+      <label htmlFor="fullname">Departmen<span className="text-red-500"> * </span>t</label>
       <div className="flex border-2 border-solid border-slate-200 rounded-lg px-4 py-2 gap-6">
         <SchoolTwoTone className="text-slate-300"  />
         <input
@@ -170,7 +170,6 @@ export const GitLinkField: FC<PasswordFieldProps> = ({ register, error }) => {
           type="text"
           placeholder="Ester Howard"
           className="outline-none"
-          required
           {...register("git_link")}
         />
       </div>
@@ -191,7 +190,6 @@ export const LinkdlnLinkField: FC<PasswordFieldProps> = ({ register, error }) =>
           type="text"
           placeholder="Ester Howard"
           className="outline-none"
-          required
           {...register("linkdln_link")}
         />
       </div>
@@ -212,7 +210,6 @@ export const ProfileImgField: FC<PasswordFieldProps> = ({ register, error }) => 
           type="text"
           placeholder="Ester Howard"
           className="outline-none"
-          required
           {...register("profile_img")}
         />
       </div>
