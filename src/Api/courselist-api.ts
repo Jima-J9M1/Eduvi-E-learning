@@ -1,13 +1,16 @@
 
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
-import { CourseCardDetailProps, CourseCardProps } from "../types"
+import {CourseCardProps } from "../types"
 
 type categories = {
   categoryId:string,
   name:string
 }
-
+type VideoseenProps={
+  studentId:number
+   videoId:number
+}
 
 type ApiResponseCategory = {
   data: {
@@ -18,7 +21,11 @@ type ApiResponseCategory = {
 type ApiResponseCourse = {
     courses:CourseCardProps[];
 }
-
+type IdProps={
+  userid:number
+  couresid:number
+  onSuccess?:(test)=>unknown
+}
 
 const fetchCategory = async ():Promise<ApiResponseCategory> => {
   const response =  await axios.get('https://portal.bluemarkcollege.com/categories')
@@ -27,24 +34,30 @@ const fetchCategory = async ():Promise<ApiResponseCategory> => {
 
 const fetchCourses = async ():Promise<ApiResponseCourse> => {
   const response =  await axios.get('https://portal.bluemarkcollege.com/courses')
+  console.log(response);
+  
   return response.data
 }
 
 
-export const fetchDetailCourses = async (id:number) => {
-
-  try {
-    const response = await axios.get(`https://portal.bluemarkcollege.com/courses/course/${id}`)    
-    
-    return response.data.course
-
-  } catch (error) {
-
-    return error.response.data
-
-  }
+export const fetchDetailCourses = async ({userid,couresid}:IdProps) => {
+  const response =  await axios.get(`https://portal.bluemarkcollege.com/courses/course/${couresid}/student/${userid}`).then((res)=>res)
+  return response
 }
-
+export const VideoSeen = async ({studentId,videoId}:VideoseenProps) => {
+  const data={
+    studentId:studentId,
+    videoId:videoId
+  }
+  console.log(data);
+  
+const response =  await axios.post("https://portal.bluemarkcollege.com/apply/video-seen",data,{
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+}).then((res)=>res)
+  return response
+}
 
 export const fetchCoursesWithCategory = async(category:string) => {
     const {data} = ListCourses();
@@ -67,6 +80,33 @@ export const ListCourses = () => {
  }
 
 
- export const CourseDetailData = (id:number) => {
-  return useQuery<CourseCardDetailProps, Error>(['detailCourse'], () => fetchDetailCourses(id))
+ export const CourseDetailData = ({userid,couresid,onSuccess}:IdProps) => {
+  const id={
+    userid:userid,
+    couresid:couresid
+  }
+  return useQuery(['posts',id],()=>fetchDetailCourses (id),{
+    onSuccess,
+      select:(data)=>{
+        console.log(data.data.course
+          );
+       return data.data.course
+
+      },
+      enabled:false
+  })
+ }
+ export const coustemVideoSeen = ({studentId,videoId}:VideoseenProps) => {
+  const props={
+    studentId:studentId,
+    videoId:videoId
+  }
+  return useQuery(['posts',props],()=>VideoSeen(props),{
+      select:(data)=>{
+        console.log("sya"+data);
+       return data.data.course
+
+      },
+      enabled:false
+  })
  }

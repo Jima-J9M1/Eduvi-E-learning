@@ -19,21 +19,38 @@ import { CourseDetailData } from "../../Api/courselist-api";
 import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSectionCard";
 import InternButton from "../../Components/Buttons/InternButton";
 import useAuth from "../../hooks/useAuth";
+import { coustemVideoSeen } from "../../Api/courselist-api";
 
 
-const CourseDetailPage =  () => {
-  
+
+
+const CourseDetailPage =  () => { 
   const getId = String(returnTokenData())
-  
-  
-  
   const { state } = useLocation();
   const [disable,setDisable] = useState<boolean>(true);
   const [panding,setPanding]=useState<boolean>(false)
+  const [video, setVideo] = useState("")
+  const [next,setNext]=useState<number>()
+  const [videoId,setVideoId]=useState<number>()
   const courseAccessDatas = {
     studentId: parseInt(getId),
-    courseId: state?.data.id
+    courseId: state?.data
   }
+  const props={
+    studentId:Number(getId),
+    videoId:videoId
+  }
+  const id={
+    userid:Number(getId),
+    couresid:state.data.id,
+    onSuccess:(data)=>{
+      return setVideo(data.introduction_video) 
+  },
+ }
+ const {refetch,data}=CourseDetailData(id)
+ const {refetch:videoSeen}=coustemVideoSeen(props)
+ 
+
   useEffect( () =>{
       courseAccess(courseAccessDatas).then(
         (res) => {
@@ -50,8 +67,9 @@ const CourseDetailPage =  () => {
 
  useMemo(()=>{
    if(state?.data){
-    const data=JSON.stringify(state?.data)
-    localStorage.setItem("coures",data)
+    refetch()
+    const datas=JSON.stringify(state?.data)
+    localStorage.setItem("coures",datas)
    }
  },[])
   
@@ -60,10 +78,10 @@ const CourseDetailPage =  () => {
   const val = getCurrentCourse()
   const cou=localStorage.getItem("coures")
   const courseData =JSON.parse(cou) ||  val
-  const [video, setVideo] = useState(courseData.introduction_video)
+
   
   const buyCourseMutation = useBuyCourseMutation()
-  const { data} = CourseDetailData(courseData.id)
+  // const {} = CourseDetailData(courseData.id)
  
   const handleSubmit = async () => {
     
@@ -96,6 +114,15 @@ const CourseDetailPage =  () => {
        }
 
   }
+const HandleVideoEnd=()=>{
+  const co=data.videos.filter((v:{url:string})=>v.url===video)
+  const id=co[0].id
+  setNext(()=>co[0].id+1)
+  setVideoId(id)
+  return videoSeen()
+}
+
+
 
   useEffect(()=>{
     setTimeout(() => {
@@ -116,6 +143,8 @@ const CourseDetailPage =  () => {
               width='100%'
               height='400px'
               url={video}
+              controls={true}
+            onEnded={()=>HandleVideoEnd()}
             />
           </Grid>
           <Grid sm={12} lg={3} justifyContent="center" className="justify-center align-center">
@@ -127,12 +156,13 @@ const CourseDetailPage =  () => {
       
          <div className="flex flex-col gap-3 border  w-[300px] md:w-full ml-5 mt-4 p-2">
           {
-            data &&  data.videos.map((video:{name:string, video_id:number, url:string}) =>(
+            data &&  data.videos.map((video:{name:string, id:number, url:string,status:string}) =>(
                <NavLink
                to={`/courses/${video.name}`} state={{ data: data }}
-               onClick={()=>setVideo(video.url)}
-              className={disable ? "pointer-events-none opacity-[0.4] h-auto": ({ isActive, isPending }) =>
-              isPending ? "" : isActive ? "bg-blue-200 rounded-lg" : ""
+               onClick={()=>setVideo(()=>video.url)}
+              className={disable||video.status===null&&next!==video.id?"pointer-events-none opacity-[0.4] h-auto":next===video.id?
+              ({ isActive, isPending }) =>
+              isPending? "" : isActive ? "bg-blue-200 rounded-lg" : "":""
             }
                 // className={disable ? "pointer-events-none opacity-[0.4]": ""}
                 aria-disabled>
@@ -142,8 +172,8 @@ const CourseDetailPage =  () => {
                   cardName={video.name}
                 />
 
-              </NavLink>
-            ))
+              </NavLink>)
+                                  )
           }
     </div>
 
@@ -178,7 +208,7 @@ const CourseDetailPage =  () => {
         <button className="bg-green-500 hover:bg-blue-700 text-white mb-2 md:mb-0 font-bold py-2 px-4 rounded" onClick={() => handleSubmit()}>Pay Now</button>
          <Link
             to="/application"
-            state={{data:courseData}}
+            state={{courseData:data}}
            ><InternButton text="Apply to internship" />
            </Link>
            </div>
