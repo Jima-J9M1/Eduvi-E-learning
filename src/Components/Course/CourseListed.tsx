@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect} from 'react';
+import { useState, useMemo, useEffect} from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import CourseCard from '../Common/CourseCard';
 import Pagination from '@mui/material/Pagination';

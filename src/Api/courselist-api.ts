@@ -34,8 +34,6 @@ const fetchCategory = async ():Promise<ApiResponseCategory> => {
 
 const fetchCourses = async ():Promise<ApiResponseCourse> => {
   const response =  await axios.get('https://portal.bluemarkcollege.com/courses')
-  console.log(response);
-  
   return response.data
 }
 
@@ -86,8 +84,7 @@ export const ListCourses = () => {
   return useQuery(['course',id],()=>fetchDetailCourses (id),{
     onSuccess,
       select:(data)=>{
-        console.log(data.data.course
-          );
+        console.log("courseDitals",data.data);
        return data.data.course
 
       },
@@ -101,7 +98,7 @@ export const ListCourses = () => {
   }
   return useQuery(['seenVideo',props],()=>VideoSeen(props),{
       select:(data)=>{
-        console.log("sya"+data);
+        console.log("vedio seen",data);
        return data.data.course
       },
       enabled:false

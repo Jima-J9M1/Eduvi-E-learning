@@ -78,9 +78,7 @@ const CourseDetailPage =  () => {
   const [error, setError] = useState<string>('')
   const val = getCurrentCourse()
   const cou=localStorage.getItem("coures")
-  const courseData =JSON.parse(cou) ||  val
-
-  
+  const courseData =JSON.parse(cou) ||  val 
   const buyCourseMutation = useBuyCourseMutation()
   // const {} = CourseDetailData(courseData.id)
  
@@ -115,7 +113,7 @@ const CourseDetailPage =  () => {
        }
 
   }
-const HandleVideoEnd=()=>{
+const HandleVideoEnd=async()=>{
   const co=data.videos.filter((v:{url:string})=>v.url===video)
   const id=co[0].id
   setNext(()=>co[0].id+1)
