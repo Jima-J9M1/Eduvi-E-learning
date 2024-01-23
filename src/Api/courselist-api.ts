@@ -48,12 +48,10 @@ export const VideoSeen = async ({studentId,videoId}:VideoseenProps) => {
   const data={
     studentId:studentId,
     videoId:videoId
-  }
-  console.log(data);
-  
+  }  
 const response =  await axios.post("https://portal.bluemarkcollege.com/apply/video-seen",data,{
   headers: {
-    'Content-Type': 'multipart/form-data',
+    'Content-Type': 'application/json'
   },
 }).then((res)=>res)
   return response
@@ -85,7 +83,7 @@ export const ListCourses = () => {
     userid:userid,
     couresid:couresid
   }
-  return useQuery(['posts',id],()=>fetchDetailCourses (id),{
+  return useQuery(['course',id],()=>fetchDetailCourses (id),{
     onSuccess,
       select:(data)=>{
         console.log(data.data.course
@@ -101,11 +99,10 @@ export const ListCourses = () => {
     studentId:studentId,
     videoId:videoId
   }
-  return useQuery(['posts',props],()=>VideoSeen(props),{
+  return useQuery(['seenVideo',props],()=>VideoSeen(props),{
       select:(data)=>{
         console.log("sya"+data);
        return data.data.course
-
       },
       enabled:false
   })
