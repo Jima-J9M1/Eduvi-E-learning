@@ -1,5 +1,5 @@
 import SimilarCourseCard from '../Common/Cards/SimilarCourseCard'
-import img1 from '../../assets/images/Image (1).png'
+import img1 from '../../assets/logo/mss 1.png'
 import { ListCourses } from '../../Api/courselist-api';
 import{ useMemo,useState} from 'react';
 import { NavLink,} from 'react-router-dom';
@@ -48,7 +48,7 @@ const SimilarCourses = ({catagory,id}:categoryProps) => {
     <div className='md:grid md:grid-cols-2 gap-8 ml-3'>
           {currentCourses?currentCourses.map((course)=>(
               <NavLink to={`/courses/${course.name}`} state={{data:course}}  onClick={()=>handleClick(course.name)} >
-               <SimilarCourseCard img={img1} title={course.name} price={course.price} rating={course.average_rating} thumbnail={course.thumbnail} />
+                <SimilarCourseCard img={img1} title={course.name} price={course.price} rating={course.average_rating} thumbnail={course.thumbnail?course.thumbnail:img1} />
                </NavLink>
          )):<h1 className="text-2xl border border-slate-600 ">No Course</h1> }
     </div>

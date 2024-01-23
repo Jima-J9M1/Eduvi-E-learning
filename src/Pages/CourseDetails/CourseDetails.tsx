@@ -20,6 +20,7 @@ import CourseVideoSectionCard from "../../Components/Common/Cards/CourseVideoSec
 import InternButton from "../../Components/Buttons/InternButton";
 import useAuth from "../../hooks/useAuth";
 import { coustemVideoSeen } from "../../Api/courselist-api";
+import img1 from "../../assets/logo/mss 1.png"
 
 
 
@@ -71,7 +72,7 @@ const CourseDetailPage =  () => {
     const datas=JSON.stringify(state?.data)
     localStorage.setItem("coures",datas)
    }
- },[])
+ },[id])
   
   const {auth} = useAuth()
   const [error, setError] = useState<string>('')
@@ -167,7 +168,7 @@ const HandleVideoEnd=()=>{
                 // className={disable ? "pointer-events-none opacity-[0.4]": ""}
                 aria-disabled>
                 <CourseVideoSectionCard
-                  image={data.img}
+                  image={courseData.thumbnail?courseData.thumbnail:img1}
                   adName={video.name}
                   cardName={video.name}
                 />
