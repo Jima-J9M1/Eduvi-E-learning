@@ -1,8 +1,11 @@
 import React from 'react';
-import {useForm,SubmitHandler, Resolver} from 'react-hook-form';
+import {useForm, Resolver} from 'react-hook-form';
 import SubscribeButton from '../Buttons/SubscribeButton';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
+import {Toaster,toast} from "react-hot-toast"
+import { CoustemSubscription } from '../../Api/internApplication';
+import { useState } from 'react';
 
 
 type FormValues = {
@@ -17,12 +20,30 @@ const schema = yup.object({
 });
 
 const SubscriptionBox: React.FC = () => {
+  const [email,setEmail]=useState("")
+ 
+  const props ={
+    onSuccess:(data)=>{
+        console.log(data);
+     return   toast.success("Subscription successful");  
+    },
+    onError:(error)=>{
+        console.log(error);
+       return toast.error("some thing is wrong please try a gain");  
+    },
+    email:email
+  }
+const{refetch}=CoustemSubscription(props)
+
 
     const {register,handleSubmit, formState: {errors},} = useForm<FormValues>({ 
         resolver: yupResolver(schema) as Resolver<FormValues>,
       });
    
-    const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+    const onSubmit=(data:{email:string}) =>{
+            setEmail(data.email) 
+            return refetch()     
+    }
    
  
     return (
@@ -64,7 +85,10 @@ const SubscriptionBox: React.FC = () => {
      
 
       </form>
-      
+      <Toaster
+       position="top-center"
+       reverseOrder={false}
+      />
     </div>
   );
 };

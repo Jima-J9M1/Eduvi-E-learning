@@ -1,9 +1,10 @@
-import React, { useState, useMemo, useEffect} from 'react';
+import { useState, useMemo, useEffect} from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import CourseCard from '../Common/CourseCard';
 import Pagination from '@mui/material/Pagination';
 import ButtonList from './ButtonList';
 import EmptyCategoriy from './EmptyCategoriy';
+import img1 from "../../assets/logo/mss 1.png"
 
 import { ListCourses } from '../../Api/courselist-api';
 
@@ -84,7 +85,7 @@ const CourseListed: React.FC = () => {
               name={course.category}
               id={course.id}
               key={course.id}
-              thumbnail={course.thumbnail} 
+              thumbnail={course.thumbnail?course.thumbnail:img1} 
               category_id={course.category_id}
               description={course.description}
             />
