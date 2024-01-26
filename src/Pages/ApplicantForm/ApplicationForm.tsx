@@ -91,7 +91,7 @@ export default function ApplicationForm() {
 
     const onSubmit = (data:any) =>{
         const formData = new FormData();
-        formData.append('courseId',state?.data.id);
+        formData.append('courseId',state?.courseData.id);
         formData.append('resume', file, file.name);
         formData.append('studentId',userId);
         formData.append('essay',data.essay);
