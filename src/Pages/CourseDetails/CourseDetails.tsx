@@ -35,7 +35,7 @@ const CourseDetailPage =  () => {
   const [videoId,setVideoId]=useState<number>()
   const courseAccessDatas = {
     studentId: parseInt(getId),
-    courseId: state?.data
+    courseId: state?.data.id
   }
   const props={
     studentId:Number(getId),
