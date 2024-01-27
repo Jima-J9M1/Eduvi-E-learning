@@ -62,6 +62,7 @@ const CourseDetailPage =  () => {
                 setPanding(true)
                    }
         }  
+          console.log(res.courseAccess)
         }
       ).catch(err => console.log(err))
   }, [])
