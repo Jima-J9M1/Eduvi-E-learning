@@ -10,7 +10,7 @@ import Footer from "../../Components/Common/Footer";
 import CourseDetail from "../../Components/Course/CourseDetail";
 import AdsCard from "../../Components/Course/AdsCard";
 import image from "../../assets/images/Image (4).png";
-import {  Link, NavLink, useLocation} from "react-router-dom";
+import {  Link, NavLink, redirect, useLocation} from "react-router-dom";
 import { useEffect, useState,useMemo } from "react";
 import '../../styles/global.css'
 import { getCurrentCourse, returnTokenData } from "../../Api/authenticate";
@@ -48,8 +48,14 @@ const CourseDetailPage =  () => {
       return setVideo(data.introduction_video) 
   },
  }
- const {refetch,data}=CourseDetailData(id)
- const {refetch:videoSeen}=coustemVideoSeen(props)
+
+ console.log("id value",id)
+
+ if(getId){
+
+ }
+ const {refetch:videoSeen}=getId && coustemVideoSeen(props)
+ const {refetch,data}=getId && CourseDetailData(id)
  
 
   useEffect( () =>{
@@ -130,7 +136,7 @@ const HandleVideoEnd=async()=>{
     }, 10000);
   }, [error])
   return (
-    data && <Wrapper>
+    getId && data && <Wrapper>
       <Nav />
       <div className="flex justify-center mt-3">
       <span className={error ? "bg-red-500 p-3 rounded-lg text-white": ''}>{error}</span>
@@ -155,8 +161,30 @@ const HandleVideoEnd=async()=>{
             
       
          <div className="flex flex-col gap-3 border  w-[300px] md:w-full ml-5 mt-4 p-2">
+          
+         {
+            data &&  data.videos.slice(0,1).map((video:{name:string, id:number, url:string,status:string}) =>(
+               <NavLink
+               to={`/courses/${video.name}`} state={{ data: data }}
+               onClick={()=>setVideo(()=>video.url)}
+              className={({isActive,isPending})=>isPending ? "":isActive? "bg-blue-200 rounded-lg":""}
+                // className={disable ? "pointer-events-none opacity-[0.4]": ""}
+                aria-disabled>
+                <CourseVideoSectionCard
+                  image={courseData.thumbnail?courseData.thumbnail:img1}
+                  adName={video.name}
+                  cardName={video.name}
+                />
+
+              </NavLink>)
+                                  )
+          }
+          
+          
+          
+          
           {
-            data &&  data.videos.map((video:{name:string, id:number, url:string,status:string}) =>(
+            data &&  data.videos.slice(1).map((video:{name:string, id:number, url:string,status:string}) =>(
                <NavLink
                to={`/courses/${video.name}`} state={{ data: data }}
                onClick={()=>setVideo(()=>video.url)}

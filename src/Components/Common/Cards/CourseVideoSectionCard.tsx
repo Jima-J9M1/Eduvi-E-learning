@@ -14,8 +14,8 @@ import logo from '../../../assets/logo/mss 1.png'
   }) => {
 
     return (
-      <div className=" flex w-full  items-center  rounded-2xl border  border-gray-300 ">
-          <div className="rounded-full border  overflow-hidden">
+      <div className=" flex  w-full  items-center  rounded-2xl border  border-gray-300 ">
+          <div className="rounded-full   overflow-hidden w-[90px] h-[70px]">
           <img  src={image} 
           
           onError={(e:React.SyntheticEvent<HTMLImageElement, Event>)=>{
@@ -23,9 +23,9 @@ import logo from '../../../assets/logo/mss 1.png'
             target.onerror = null; 
             target.src = logo
             }}
-          alt={adName} className="w-[90px] h-[70px]  object-scale-down" />
+          alt={adName} width={90} height={90} className="w-90px] h-[80px]  object-scale-down object-[-50%,30%]" />
           </div>
-          <p className="text-xl text-gray-700">{cardName}</p>
+          <p className="text-xl text-gray-700">{cardName? cardName : "Micro sun solution course material"}</p>
       </div>
     );
   };
