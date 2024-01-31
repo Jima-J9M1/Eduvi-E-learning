@@ -52,9 +52,9 @@ export const returnTokenData = () => {
     setAuth(token)
   }
     console.log("authentication",auth)
-    const decodeData:{userId:number, iat:number} = jwtDecode(String(tokeValue));
+    const decodeData:{id:number, iat:number} = jwtDecode(String(tokeValue));
     console.log("decodeData", decodeData)
-    return decodeData.userId
+    return decodeData.id
 }
 
 export const getCurrentCourse = () => {
