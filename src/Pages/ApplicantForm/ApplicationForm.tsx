@@ -40,7 +40,6 @@ export default function ApplicationForm() {
             setUserid(U_Id)
            }else{
         navigate("/")
-        alert("UnAhuthorized User   please Login first")
            }
 
     },[])
