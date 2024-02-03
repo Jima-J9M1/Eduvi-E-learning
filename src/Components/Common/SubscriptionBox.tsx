@@ -61,7 +61,15 @@ const{refetch}=CoustemSubscription(props)
           20k+ students daily learn with Eduvi, subscribe for new courses.
         </p>
       </div>
-
+      <Toaster
+       position="bottom-center"
+       containerStyle={{
+        position: 'relative',
+        top:"40px",
+        width:'300px'
+      }}
+       reverseOrder={false}
+      />
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-row justify-center mt-8">
           <input type="email"
@@ -80,15 +88,7 @@ const{refetch}=CoustemSubscription(props)
           </div>
            
             {errors.email && <p className="text-red-500 ml-1">{errors.email.message}</p> }
-          
-                   
-     
-
       </form>
-      <Toaster
-       position="top-center"
-       reverseOrder={false}
-      />
     </div>
   );
 };
