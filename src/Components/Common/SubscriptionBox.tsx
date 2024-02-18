@@ -47,7 +47,7 @@ const{refetch}=CoustemSubscription(props)
    
  
     return (
-    <div className="w-full max-w-[90%] mx-auto  px-8 lg:px-16 my-20 h-80  bg-[#0A033C]
+    <div className="w-full max-w-[95%] mx-auto  px-8 lg:px-16 my-20 h-80  bg-[#0A033C]
      text-white rounded-lg flex flex-col items-center justify-center">
       <div className="text-center">
         <p className="text-4xl max-w-prose font-bold leading-14  ">
